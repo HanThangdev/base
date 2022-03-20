@@ -1,12 +1,10 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable no-shadow */
-/* eslint-disable react/prop-types */
-import React from 'react'
 import {
   ThemeProvider as StyledComponentsThemeProvider,
   createGlobalStyle,
   css
 } from 'styled-components'
+import 'antd/dist/antd.min.css'
+
 import colors from './colors'
 import { fontSize, fontWeight } from './fonts'
 

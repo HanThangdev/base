@@ -67,7 +67,7 @@ const FormTextArea = ({
   const handleChange = useCallback((e) => {
     const val = e.target.value
     onChange(val)
-  }, [])
+  }, [onChange])
 
   return (
     <WrapperFormItem

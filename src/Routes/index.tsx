@@ -1,9 +1,12 @@
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 import { Switch } from 'react-router-dom'
 
 // import PrivateRoute from 'Components/route/privateRoute'
 import PublicRoute from '@components/route/publicRoute'
 import Loading from '@components/loading'
+
+import AuthRoutes from '@modules/auth/routes'
+import CourseRoutes from '@modules/course/routes'
 
 import BlankLayout from '@layouts/blank'
 
@@ -23,6 +26,8 @@ export default function AppRoutes() {
           />
         ))}
       </Switch>
+      <CourseRoutes />
+      <AuthRoutes />
     </Suspense>
   )
 }

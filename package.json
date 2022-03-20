@@ -4,8 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@ckeditor/ckeditor5-build-classic": "^33.0.0",
-    "@ckeditor/ckeditor5-react": "^3.0.3",
+    "@craco/craco": "^6.4.3",
     "@editorjs/editorjs": "^2.22.2",
     "@editorjs/paragraph": "^2.8.0",
     "@hookform/resolvers": "^2.6.1",
@@ -31,6 +30,7 @@
     "connected-react-router": "^6.9.1",
     "dompurify": "^2.3.3",
     "exceljs": "^4.3.0",
+    "firebase": "^9.6.9",
     "flat": "^5.0.2",
     "history": "^4.10.0",
     "hoist-non-react-statics": "^3.3.2",
@@ -89,11 +89,22 @@
     "lint-staged": "^11.2.3",
     "prettier": "^2.4.1"
   },
+  "lint-staged": {
+    "*.(js|jsx)": [
+      "npm run lint"
+    ]
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject",
+    "import:i18n": "node ./scripts/import_i18n.js && npm run format",
+    "export:i18n": "node ./scripts/export_i18n.js",
+    "lint": "eslint --ext .js,.jsx ./src",
+    "lint:fix": "eslint --fix --ext .js,.jsx ./src",
+    "format": "prettier --write './src/**/*.{json,css,scss}'",
+    "postinstall": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -112,5 +123,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }

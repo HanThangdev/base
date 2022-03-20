@@ -59,7 +59,7 @@ const FormDatePicker = ({
     fieldState: { error }
   } = useController({ name, control, rules, defaultValue })
 
-  const valueProps = useMemo(() => (useDate ? { value } : {}), [value])
+  const valueProps = useMemo(() => (useDate ? { value } : {}), [useDate, value])
 
   return (
     <WrapperFormItem

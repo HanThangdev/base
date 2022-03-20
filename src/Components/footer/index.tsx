@@ -3,7 +3,6 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 import styled from 'styled-components'
-import { useTranslation } from 'react-i18next'
 
 const Wrapper = styled.footer`
   margin: 0 1rem .5rem;

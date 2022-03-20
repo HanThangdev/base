@@ -135,7 +135,7 @@ const Title = ({ icon, title, filter, currentFilter = {}, breadcrumb, backRoute,
             <div id="filter-popup-container" style={{ position: 'relative' }}>
               <ConfigProvider getPopupContainer={(): any => document.getElementById('filter-popup-container')}>
                 <Dropdown overlay={filter} trigger={['click']}>
-                  <a href="javascript:void(0)" className="ant-dropdown-link filter" onClick={(e) => e.preventDefault()}>
+                  <a href="#" className="ant-dropdown-link filter" onClick={(e) => e.preventDefault()}>
                     <FilterOutlined />
                     <span>&nbsp;{trans('filter')}</span>
                   </a>

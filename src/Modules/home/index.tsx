@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react'
 
-import { E_LEARNING_LOGO } from 'Assets'
+import { E_LEARNING_LOGO } from '@assets'
 import { Wrapper } from './styled'
 
 const HomeScreen = () => (
@@ -18,46 +18,6 @@ const HomeScreen = () => (
           <p className="h2 mb-5">Take your coffee and <span className="text-info">focus on your business.</span></p>
         </div>
       </div>
-    </div>
-    <div className="animation-0-2-9">
-      <div
-        className="item-0-2-10 item1-0-2-11"
-      />
-      <div
-        className="item-0-2-10 item2-0-2-12"
-      />
-      <div
-        className="item-0-2-10 item3-0-2-13"
-      />
-      <div className="item-0-2-10 item4-0-2-14" />
-      <div
-        className="item-0-2-10 item5-0-2-15"
-      />
-      <div className="item-0-2-10 item6-0-2-16" />
-      <div
-        className="item-0-2-10 item7-0-2-17"
-      />
-      <div
-        className="item-0-2-10 item8-0-2-18"
-      />
-      <div
-        className="item-0-2-10 item9-0-2-19"
-      />
-      <div
-        className="item-0-2-10 item10-0-2-20"
-      />
-      <div
-        className="item-0-2-10 item11-0-2-21"
-      />
-      <div
-        className="item-0-2-10 item12-0-2-22"
-      />
-      <div
-        className="item-0-2-10 item13-0-2-23"
-      />
-      <div
-        className="item-0-2-10 item14-0-2-24"
-      />
     </div>
   </Wrapper>
 )

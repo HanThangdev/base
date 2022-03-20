@@ -1,19 +1,25 @@
-import React from 'react'
 import { Switch } from 'react-router-dom'
 
 import PublicRoute from '@components/route/publicRoute'
 
+import LoginScreen from '@modules/auth/login'
+
+import AuthLayout from '@layouts/auth'
+
 export const RoutesName = {
-  REGISTRATION_COURSE: '/course-management/lesson-course',
-  CREATE_COURSE: '/course-management/lesson/create',
-  EDIT_COURSE: '/course-management/lesson/edit'
+  LOGIN: '/login'
 }
 
 export const ROUTES = [
+  {
+    path: RoutesName.LOGIN,
+    component: LoginScreen,
+    layout: AuthLayout,
+  },
   
 ]
 
-export default function CourseRoutes() {
+export default function AuthRoutes() {
   return (
     <Switch>
       {ROUTES.map((routeConfig, index) => (

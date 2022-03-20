@@ -1,5 +1,5 @@
 // COURSE
-export { useRegistrationCourses, useSortCourses, useLoadCourse } from './course'
+export { useRegistrationCourses, useLoadCourse } from './course'
 
 // AUTH
 export { useAuth, useRoles } from './auth'

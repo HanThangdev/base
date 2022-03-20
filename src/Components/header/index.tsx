@@ -1,8 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable max-len */
-/* eslint-disable react/prop-types */
-import React, { useMemo, useCallback } from 'react'
+import { useMemo, useCallback } from 'react'
 import styled from 'styled-components'
 import i18next from '@i18n'
 import { Dropdown, Menu } from 'antd'
@@ -214,7 +210,7 @@ const Header = () => {
                       </div>
                     </div>
                     <div className="position-relative">
-                      <img className="avatar rounded-circle bg-lo25-warning" src={profile.avatar || 'https://facit-modern.omtankestudio.com/static/media/wanna1.6be5d232.webp'} alt="Avatar" width="48" height="48" />
+                      <img className="avatar rounded-circle bg-lo25-warning" src={profile.avatar || 'https://facit-modern.omtanke.studio/static/media/wanna6.33be1958d20715345cc6.webp'} alt="Avatar" width="48" height="48" />
                     </div>
                   </a>
                 </Dropdown>

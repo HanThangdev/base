@@ -1,6 +1,7 @@
 import Header from './header'
 import Footer from './footer'
 import SiderBar from './siderBar'
+import HeaderSearch from './headerSearch'
 import Table from './table'
 import Modal from './modal'
 import Title from './title'
@@ -16,13 +17,17 @@ import {
   FormAutocomplete,
   FormTreeSelect,
   FormCheckbox,
-  FormRangePicker
+  FormRangePicker,
+  FormInputNumber,
+  FormUploadImage,
+  FormLabel,
 } from './form'
 
 export {
   Header,
   Footer,
   SiderBar,
+  HeaderSearch,
   Table,
   Modal,
   Title,
@@ -36,5 +41,8 @@ export {
   FormAutocomplete,
   FormTreeSelect,
   FormCheckbox,
-  FormRangePicker
+  FormRangePicker,
+  FormInputNumber,
+  FormUploadImage,
+  FormLabel,
 }

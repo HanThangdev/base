@@ -1,4 +1,5 @@
 export {
+  login,
   getProfile
 } from './auth.api'
 

@@ -29,6 +29,8 @@
       "@assets/*": ["src/Assets/*"],
       "@components": ["src/Components"],
       "@components/*": ["src/Components/*"],
+      "@config": ["src/Config"],
+      "@config/*": ["src/Config/*"],
       "@constants": ["src/Constants"],
       "@constants/*": ["src/Constants/*"],
       "@hooks": ["src/Hooks"],
@@ -51,5 +53,5 @@
   },
   "include": [
     "src"
-  ]
+, "craco.config.ts"  ]
 }

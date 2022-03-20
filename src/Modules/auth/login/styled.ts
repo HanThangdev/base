@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
+`
+
+export const Row = styled.div`
   display: flex;
-  flex-direction: column;
-  background: rgba(250, 249, 247, 0.8);
-  width: 440px;
-  margin-bottom: 67px;
+  flex-direction: row;
 `
 
 export {

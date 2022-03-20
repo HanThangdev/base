@@ -8,6 +8,9 @@ import FormAutocomplete from './FormAutocomplete'
 import FormTreeSelect from './FormTreeSelect'
 import FormCheckbox from './FormCheckbox'
 import FormRangePicker from './FormRangePicker'
+import FormInputNumber from './FormInputNumber'
+import FormUploadImage from './FormUploadImage'
+import FormLabel from './FormLabel'
 
 export {
   FormRadio,
@@ -19,5 +22,8 @@ export {
   FormAutocomplete,
   FormTreeSelect,
   FormCheckbox,
-  FormRangePicker
+  FormRangePicker,
+  FormInputNumber,
+  FormUploadImage,
+  FormLabel,
 }

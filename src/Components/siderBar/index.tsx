@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
-import React, { useState, useEffect, useMemo, useCallback } from 'react'
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useHistory, useLocation } from 'react-router-dom'
 import { Dropdown, Menu } from 'antd'
@@ -138,7 +138,7 @@ const SiderBar = () => {
                     }
                   }}
                 >
-                  <a href="true" className={`navigation-link ${itemActive.includes(key) ? 'active' : ''}`}>
+                  <a className={`navigation-link ${itemActive.includes(key) ? 'active' : ''}`}>
                     <span className="navigation-link-info">
                       <Icon className="navigation-icon" />
                       <span className="navigation-text">
@@ -173,7 +173,7 @@ const SiderBar = () => {
                           }
                         }}
                       >
-                        <a href="true" className={`navigation-link ${itemActive.includes(childItem.key) ? 'active' : ''}`}>
+                        <a className={`navigation-link ${itemActive.includes(childItem.key) ? 'active' : ''}`}>
                           <span className="navigation-link-info">
                             <childItem.Icon className="navigation-icon" />
                             <span className="navigation-text">
@@ -194,7 +194,7 @@ const SiderBar = () => {
         <Dropdown overlay={dropdownMenu} trigger={['click']}>
           <div className="user" aria-expanded="false">
             <div className="user-avatar">
-              <img src={profile.avatar || 'https://facit-modern.omtankestudio.com/static/media/wanna1.6be5d232.webp'} alt="Avatar" width="128" height="128" />
+              <img src={profile.avatar || 'https://facit-modern.omtanke.studio/static/media/wanna1.6be5d23290c24ab23a73.webp'} alt="Avatar" width="128" height="128" />
             </div>
             {(!sidebarCompact || sidebarHover) && (
               <div className="user-info">

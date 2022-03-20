@@ -1,5 +1,5 @@
 import { createReducer, updateObject, REQUEST, SUCCESS, FAILURE } from '@stores'
-import { LOAD_PROFILE } from './constants'
+import { LOAD_PROFILE, LOGIN } from './constants'
 
 export const initialState = {
   isLoading: false,
@@ -8,6 +8,27 @@ export const initialState = {
   metaData: {},
   profile: {},
   isSubmitting: false
+}
+
+function login(state: any) {
+  return updateObject(state, {
+    isLoading: true
+  })
+}
+
+function loginSuccess(state: any, { payload }: any) {
+  const { profile } = payload
+  return updateObject(state, {
+    isLoading: false,
+    profile
+  })
+}
+
+function loginFailure(state: any, { error }: any) {
+  return updateObject(state, {
+    error,
+    isLoading: false,
+  })
 }
 
 function loadProfile(state: any) {
@@ -36,6 +57,10 @@ function profileLoadingError(state: any, { error }: any) {
 
 // Slice reducer
 export default createReducer(initialState, {
+  [REQUEST(LOGIN)]: login,
+  [SUCCESS(LOGIN)]: loginSuccess,
+  [FAILURE(LOGIN)]: loginFailure,
+
   [REQUEST(LOAD_PROFILE)]: loadProfile,
   [SUCCESS(LOAD_PROFILE)]: profileLoaded,
   [FAILURE(LOAD_PROFILE)]: profileLoadingError

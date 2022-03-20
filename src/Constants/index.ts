@@ -32,7 +32,7 @@ export const ANTD_ORDER_TO_API_FIELD = {
   ascend: 'ASC'
 }
 
-export const LOCALES = {
+export const LOCALES: any = {
   vi,
   jp,
   en

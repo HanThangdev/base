@@ -1,20 +1,34 @@
 import { put, takeLatest } from 'redux-saga/effects'
 
 import { REQUEST, SUCCESS, FAILURE } from '@stores'
-import { getProfile } from '@apis'
-import { getLocalStorage, STORAGE } from '@utils'
-import { LOAD_PROFILE } from './constants'
+import { login, getProfile } from '@apis'
+import { LOAD_PROFILE, LOGIN } from './constants'
 
-export function* loadProfileSaga() {
+export function* loginSaga({ payload }: any) {
   try {
-    const getMetaData: any = getLocalStorage(STORAGE.META_DATA)
-    const metaData = JSON.parse(getMetaData)
-    const { data: result } = yield getProfile({ userId: metaData?.userId })
+    const { data: result } = yield login(payload)
 
     yield put({
       type: SUCCESS(LOAD_PROFILE),
       payload: {
-        metaData,
+        profile: result.data
+      }
+    })
+  } catch (error) {
+    yield put({
+      type: FAILURE(LOAD_PROFILE),
+      error
+    })
+  }
+}
+
+export function* loadProfileSaga() {
+  try {
+    const { data: result } = yield getProfile({ userId: 1 })
+
+    yield put({
+      type: SUCCESS(LOAD_PROFILE),
+      payload: {
         profile: result.data
       }
     })
@@ -27,5 +41,6 @@ export function* loadProfileSaga() {
 }
 
 export default function* authSaga() {
+  yield takeLatest(REQUEST(LOGIN), loginSaga)
   yield takeLatest(REQUEST(LOAD_PROFILE), loadProfileSaga)
 }

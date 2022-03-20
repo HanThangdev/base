@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import styled from 'styled-components'
-import 'antd/dist/antd.css'
 
 import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
@@ -11,7 +10,8 @@ import reportWebVitals from './reportWebVitals'
 import configureStore from './Stores/configureStore'
 import { history } from './Stores/reducers'
 import ThemeProvider, { ThemedGlobalStyle } from './Themes'
-import './types'
+import './types.d.ts'
+import '@config/firebase'
 
 const VerticalBox = styled.div`
   display: flex;

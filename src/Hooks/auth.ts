@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import saga from '@modules/auth/store/saga'
 import reducer from '@modules/auth/store/reducer'
-import { loadProfile } from '@modules/auth/store/actions'
+import { login, loadProfile } from '@modules/auth/store/actions'
 import { useInjectSaga, useInjectReducer } from '@stores'
 import { USER_ROLE } from '@constants/auth'
 import { makeSelectAuthentication } from '@modules/auth/store/selectors'
@@ -17,6 +17,7 @@ export const useAuth = () => {
   )
 
   const dispatch = useDispatch()
+  const loginAction = (payload?: any) => dispatch(login(payload))
   const loadProfileAction = (payload?: any) => dispatch(loadProfile(payload))
 
   return {
@@ -25,6 +26,7 @@ export const useAuth = () => {
     authenticated,
     profile,
     metaData,
+    loginAction,
     loadProfileAction
   }
 }
