@@ -5,15 +5,17 @@
  * The global state selectors
  */
 
+import { Store } from '@type/Store'
+import { GlobalState } from '@type/Store/global'
 import { createSelector } from 'reselect'
 import { initialState } from './reducer'
 
-const selectGlobal = (state: any) => state.global || initialState
+const selectGlobal = (store: Store) => store.global || initialState
 
 const makeSelectGlobal = () =>
   createSelector(
     selectGlobal,
-    (state: any) => state
+    (state: GlobalState) => state
   )
 
 export {

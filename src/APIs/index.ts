@@ -5,8 +5,6 @@ export {
 
 export {
   getCourses,
-  getOrderCourse,
-  updateOrderCourse,
   getCourse,
   createCourse,
   editCourse,

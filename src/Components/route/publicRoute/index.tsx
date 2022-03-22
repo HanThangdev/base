@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
 import {
   Route,
   Redirect
@@ -7,6 +6,7 @@ import {
 
 import HomeLayout from '@layouts/home'
 import { useAuth } from '@hooks'
+import { isNil } from 'lodash'
 
 function PublicRoute({
   component: Component,
@@ -14,6 +14,9 @@ function PublicRoute({
   ...rest
 }: any) {
   const { authenticated } = useAuth()
+  if (isNil(authenticated)) {
+    return null
+  }
 
   return (
     <Route

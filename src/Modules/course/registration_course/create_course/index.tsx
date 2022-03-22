@@ -6,57 +6,33 @@ import { Button, Popconfirm } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 
 import {
-  FormRadio,
   FormInput,
-  FormUploadImage,
-  FormInputNumber,
+  FormPassword,
+  FormRadio,
   Title,
   FormLabel
 } from '@components'
-import { PUBLISH_COURSE_OPTION, PAID_COURSE_OPTION } from '@constants/course'
+import { ROLES_OPTION } from '@constants/course'
 import { useCreateCourse } from '@hooks/course'
-import { useRoles } from '@hooks'
-import { getText } from '@utils'
 import { Wrapper, Divider, Right } from '@themes/facit'
 import { Row } from './styled'
 import CreateCourseScheme from './scheme'
 
 const CreateCourseScreen = () => {
-  const { t, i18n: { language } } = useTranslation(['course'])
+  const { t } = useTranslation(['course'])
   const form = useForm({
-    resolver: yupResolver(CreateCourseScheme(t)),
+    resolver: yupResolver(CreateCourseScheme()),
     defaultValues: {
-      price: 0,
-      coursePaidSetting: 0,
-      coursePublicSetting: 'PUBLIC'
+      role: 'user'
     }
   })
-  const { handleSubmit, watch, setValue, clearErrors } = form
-  const { coursePaidSetting } = watch()
+  const { handleSubmit } = form
   const { createCourseAction } = useCreateCourse()
-  const { isAdmin } = useRoles()
 
-  const onSubmit = useCallback((formData) => {
-    const { courseCategory, ...data } = formData
-    delete data.coursePaidSetting
-    delete data.file
-    if (courseCategory) {
-      data.courseCategoryId = courseCategory.value
-      data.courseCategoryName = courseCategory.label
-    }
-    data.descriptionText = getText(data.overview)
+  const onSubmit = useCallback((data) => {
     createCourseAction({ data })
   }, [createCourseAction])
 
-  useEffect(() => {
-    if (!coursePaidSetting) {
-      setValue('price', 0)
-    }
-  }, [coursePaidSetting, setValue])
-
-  useEffect(() => {
-    clearErrors()
-  }, [clearErrors, language])
 
   return (
     <Wrapper>
@@ -70,67 +46,35 @@ const CreateCourseScreen = () => {
             <Row>
               <FormLabel title={t('registration_course.create.course_name')} description="Required" />
               <Right>
-                <FormInput name="courseName" />
+                <FormInput name="name" />
               </Right>
             </Row>
             <Divider />
             <Row>
-              <FormLabel title={t('registration_course.create.course_image')} description="Optional" />
+              <FormLabel title={t('registration_course.create.course_name')} description="Required" />
               <Right>
-                <FormUploadImage t={t} name="imagePath" />
-                <p>
-                  {t('common:require_image_size_and_type', {
-                    imgSize: '10MB',
-                    imgType: '(jpg, gif, png)'
-                  })}
-                  <br />
-                  {t('common:require_image_resolution', {
-                    imgWidth: '300px',
-                    imgHeight: '200px'
-                  })}
-                </p>
+                <FormInput name="email" />
               </Right>
             </Row>
             <Divider />
             <Row>
-              <FormLabel title={t('registration_course.create.public_setting')} description="Required" />
+              <FormLabel title={t('registration_course.create.course_name')} description="Required" />
+              <Right>
+                <FormPassword name="password" />
+              </Right>
+            </Row>
+            <Divider />
+            <Row>
+              <FormLabel title={t('registration_course.create.course_type')} description="Required" />
               <Right>
                 <FormRadio
                   t={t}
-                  name="coursePublicSetting"
-                  options={PUBLISH_COURSE_OPTION}
+                  name="role"
+                  options={ROLES_OPTION}
                 />
               </Right>
             </Row>
             <Divider />
-            {isAdmin && (
-            <>
-              <Row>
-                <FormLabel title={t('registration_course.create.course_type')} description="Required" />
-                <Right>
-                  <FormRadio
-                    t={t}
-                    name="coursePaidSetting"
-                    options={PAID_COURSE_OPTION}
-                  />
-                </Right>
-              </Row>
-              <Divider />
-              <Row>
-                <FormLabel title={t('registration_course.create.price')} description="Required" />
-                <Right>
-                  <FormInputNumber
-                    name="price"
-                    min={0}
-                    max={9999999}
-                    disabled={!coursePaidSetting}
-                    style={{ width: '100%' }}
-                  />
-                </Right>
-              </Row>
-              <Divider />
-            </>
-            )}
 
             <div className="form-action-group">
               <Popconfirm

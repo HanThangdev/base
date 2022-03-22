@@ -23,7 +23,7 @@ export default function AuthRoutes() {
   return (
     <Switch>
       {ROUTES.map((routeConfig, index) => (
-        <PublicRoute key={index} exact {...routeConfig} />
+        <PublicRoute key={index} {...routeConfig} />
       ))}
     </Switch>
   )

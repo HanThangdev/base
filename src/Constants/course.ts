@@ -8,9 +8,9 @@ export const PUBLISH_COURSE_OPTION = [
   { value: 'PRIVATE', label: 'course:registration_course:publish_course_option.private' }
 ]
 
-export const PAID_COURSE_OPTION = [
-  { value: 0, label: 'registration_course.paid_course_option.free' },
-  { value: 1, label: 'registration_course.paid_course_option.paid' }
+export const ROLES_OPTION = [
+  { value: 'user', label: 'registration_course.paid_course_option.free' },
+  { value: 'admin', label: 'registration_course.paid_course_option.paid' }
 ]
 
 export const PAID_COURSE_OPTION_TEXT = [

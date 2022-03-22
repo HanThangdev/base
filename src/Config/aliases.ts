@@ -12,5 +12,6 @@ export const alias = (prefix = `src`) => ({
     '@routes': `${prefix}/Routes`,
     '@stores': `${prefix}/Stores`,
     '@themes': `${prefix}/Themes`,
+    '@type': `${prefix}/Type`,
     '@utils': `${prefix}/Utils`,
 });

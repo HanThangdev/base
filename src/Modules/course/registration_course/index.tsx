@@ -24,9 +24,9 @@ const RegistrationCourseScreen = () => {
     deleteCoursesAction,
     isLoading
   } = useRegistrationCourses()
-  const { metaData } = useAuth()
+  const { profile } = useAuth()
   const { total, limit: pageSize, page: currentPage } = pagination
-  const { userId, roles } = metaData
+  const { id: userId, role } = profile
 
   const [rowSelected, setRowSelected] = useState({
     selectedRowKeys: [],
@@ -53,11 +53,11 @@ const RegistrationCourseScreen = () => {
 
   const handleConfirmDelete = () => {
     deleteCoursesAction({
-      data: {
-        ids: rowSelected.selectedRowKeys
+      courseId: rowSelected.selectedRowKeys[0],
+      params: {
+        pageSize,
+        currentPage,
       },
-      pageSize,
-      currentPage,
       callback: {
         done: () => {
           setRowSelected({
@@ -71,8 +71,8 @@ const RegistrationCourseScreen = () => {
   }
 
   const columns = useMemo(
-    () => tableColumns({ t, history, pagination }).filter((col) => col.rules.includes(roles?.[0])),
-    [t, history, pagination, roles]
+    () => tableColumns({ t, history, pagination }).filter((col) => col.rules.includes(role)),
+    [t, history, pagination, role]
   )
 
   const menu = useMemo(() => (
@@ -104,7 +104,7 @@ const RegistrationCourseScreen = () => {
           onChange: onSelectChange,
           preserveSelectedRowKeys: true
         }}
-        rowKey={(record: any) => record.courseId}
+        rowKey={(record: any) => record.id}
         dataSource={courses}
         columns={columns}
         total={total}

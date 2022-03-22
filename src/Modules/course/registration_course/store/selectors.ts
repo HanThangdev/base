@@ -5,15 +5,17 @@
  * The global state selectors
  */
 
+import { Store } from '@type/Store'
+import { CourseState } from '@type/Store/course'
 import { createSelector } from 'reselect'
 import { initialState } from './reducer'
 
-const selectRegistrationCourses = (state: any) => state.registrationCourses || initialState
+const selectRegistrationCourses = (store: Store) => store.registrationCourses || initialState
 
 const makeSelectRegistrationCourses = () =>
   createSelector(
     selectRegistrationCourses,
-    state => state
+    (state: CourseState) => state
   )
 
 export {

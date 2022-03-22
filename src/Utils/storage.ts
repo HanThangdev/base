@@ -1,7 +1,7 @@
 export const STORAGE = {
   LANGUAGE: 'LANGUAGE',
   USER_TOKEN: 'USER_TOKEN',
-  META_DATA: 'META_DATA'
+  USER_DATA: 'USER_DATA',
 }
 
 export function getLocalStorage(key: any) {

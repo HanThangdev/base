@@ -77,7 +77,7 @@ export const MenuList = [
     fill: 'text_hight_light',
     stroke: 'none',
     key: 'home',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   },
   {
     Icon: ICON_COMPANY,
@@ -86,7 +86,7 @@ export const MenuList = [
     fill: 'text_hight_light',
     stroke: 'none',
     key: 'company-management',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   },
   {
     Icon: ICON_USER,
@@ -94,7 +94,7 @@ export const MenuList = [
     fill: 'text_hight_light',
     stroke: 'none',
     key: 'user-management',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN],
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN],
     children: [
       {
         Icon: ICON_USER,
@@ -103,7 +103,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'user',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: CloudUploadOutlined,
@@ -112,7 +112,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'user',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: TeamOutlined,
@@ -121,7 +121,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'group',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: TagOutlined,
@@ -130,7 +130,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'attribute',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: HistoryOutlined,
@@ -139,7 +139,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'login-history',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       }
     ]
   },
@@ -150,7 +150,7 @@ export const MenuList = [
     fill: 'none',
     stroke: 'text_hight_light',
     key: 'contact-management',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN],
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN],
     children: [
       {
         Icon: ICON_USER,
@@ -159,7 +159,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'category',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: ICON_GROUP_MENU,
@@ -168,7 +168,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'course',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       }
     ]
   },
@@ -178,7 +178,7 @@ export const MenuList = [
     fill: 'none',
     stroke: 'text_hight_light',
     key: 'course-management',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN],
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN],
     children: [
       {
         Icon: TagsOutlined,
@@ -187,7 +187,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'category',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: BookOutlined,
@@ -196,7 +196,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'course',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: ReadOutlined,
@@ -205,7 +205,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'unit',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: FOLDER_ICON,
@@ -214,7 +214,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'file',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: RobotOutlined,
@@ -223,7 +223,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'assignment',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: QuestionCircleOutlined,
@@ -232,7 +232,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'test',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: HistoryOutlined,
@@ -241,7 +241,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'attend-permit',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       }
     ]
   },
@@ -251,7 +251,7 @@ export const MenuList = [
     fill: 'none',
     stroke: 'text_hight_light',
     key: 'course-results',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN],
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN],
     children: [
       {
         Icon: BookOutlined,
@@ -260,7 +260,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'status_learn_course_of_user',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: ReadOutlined,
@@ -269,7 +269,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'unit_learn_course_of_user',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: QuestionCircleOutlined,
@@ -278,7 +278,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'test_results',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: FileDoneOutlined,
@@ -287,7 +287,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'statistical_results_of_survey',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: ProfileOutlined,
@@ -296,7 +296,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'survey_answer',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
         Icon: ContainerOutlined,
@@ -305,7 +305,7 @@ export const MenuList = [
         fill: 'none',
         stroke: 'text_hight_light',
         key: 'report_histories',
-        rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+        rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       }
     ]
   },
@@ -316,7 +316,7 @@ export const MenuList = [
     fill: 'text_hight_light',
     stroke: 'none',
     key: 'community-management',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   },
   {
     Icon: ICON_QUESTION,
@@ -325,7 +325,7 @@ export const MenuList = [
     fill: 'text_hight_light',
     stroke: 'none',
     key: 'inquiry-management',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   },
   {
     Icon: ICON_LIBRARY,
@@ -334,7 +334,7 @@ export const MenuList = [
     fill: 'text_hight_light',
     stroke: 'none',
     key: 'library-management',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   },
   {
     Icon: ICON_SETTING_MENU,
@@ -343,6 +343,6 @@ export const MenuList = [
     fill: 'text_hight_light',
     stroke: 'none',
     key: 'site-settings',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   }
 ]

@@ -16,41 +16,25 @@ const column = ({ t, history, pagination }: any) => [
     render: (_text: any, _record: any, index: number) => (
       <div>{(pagination.page - 1) * pagination.limit + index + 1}</div>
     ),
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   },
   {
     title: t('registration_course.management.course_name'),
-    dataIndex: 'courseName',
-    key: 'courseName',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    dataIndex: 'name',
+    key: 'name',
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   },
   {
     title: t('registration_course.management.course_category_name'),
-    dataIndex: 'courseCategoryName',
-    key: 'courseCategoryName',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    dataIndex: 'email',
+    key: 'email',
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   },
   {
-    title: t('registration_course.management.course_type'),
-    dataIndex: 'typeCourse',
-    key: 'typeCourse',
-    width: 100,
-    render: (text: any) => t(formatOption(text, PAID_COURSE_OPTION_TEXT)),
-    rules: [USER_ROLE.NISSHOKEN_ADMIN]
-  },
-  {
-    title: t('registration_course.management.price'),
-    dataIndex: 'price',
-    key: 'price',
-    align: 'right',
-    render: (text: any) => formatMoney(text),
-    rules: [USER_ROLE.NISSHOKEN_ADMIN]
-  },
-  {
-    title: t('registration_course.management.owner'),
-    dataIndex: 'owner',
-    key: 'owner',
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN]
+    title: t('registration_course.management.course_category_name'),
+    dataIndex: 'role',
+    key: 'role',
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   },
   {
     title: t('registration_course.management.action'),
@@ -63,12 +47,12 @@ const column = ({ t, history, pagination }: any) => [
           <Button
             className="action-button"
             icon={<EditOutlined />}
-            onClick={() => history.push(`${RoutesName.EDIT_COURSE}/${record.courseId}`)}
+            onClick={() => history.push(`${RoutesName.EDIT_COURSE}/${record.id}`)}
           />
         </Tooltip>
       </Action>
     ),
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   }
 ]
 

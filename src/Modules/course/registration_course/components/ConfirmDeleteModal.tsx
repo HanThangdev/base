@@ -1,7 +1,17 @@
+import { Dispatch, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
 import ModalComponent from '@components/modal'
 
-const ConfirmDeleteModal = ({ t, isVisible, setIsVisble, onSubmit, numberOfSelectedRecord, disabledSubmit }: any) => {
+type PropsType = {
+  t: (key: string, args?: any) => {},
+  isVisible: boolean,
+  setIsVisble: Dispatch<SetStateAction<boolean>>,
+  onSubmit: () => void,
+  numberOfSelectedRecord: number,
+  disabledSubmit: boolean,
+}
+
+const ConfirmDeleteModal = ({ t, isVisible, setIsVisble, onSubmit, numberOfSelectedRecord, disabledSubmit }: PropsType) => {
   const { handleSubmit } = useForm()
 
   return (

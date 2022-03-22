@@ -9,7 +9,7 @@ import { BASE_API_URL } from '@constants'
 import { STORAGE, getLocalStorage } from '@utils'
 
 const singletonEnforcer = Symbol()
-const BASE_URL = `${BASE_API_URL}/api/v1`
+const BASE_URL = `${BASE_API_URL}`
 class AxiosClient {
   axiosClient: any;
   static axiosClientInstance: AxiosClient
@@ -131,7 +131,7 @@ class AxiosClient {
 	    assign(config, this.axiosClient.defaults.headers)
 	  );
 
-	delete = async (resource: any, data: any, config = {}) => this.axiosClient.delete(`${resource}`, {
+	delete = async (resource: any, data?: any, config = {}) => this.axiosClient.delete(`${resource}`, {
 	    data,
 	    ...assign(config, { headers: this.axiosClient.defaults.headers })
 	  });

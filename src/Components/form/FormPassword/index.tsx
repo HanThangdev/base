@@ -28,7 +28,7 @@ const WrapperLabel = styled.div`
   font-size: 13px;
 `
 
-const FormInput = ({ label, name, rules, defaultValue = '', wrapperProps, ...rest }: any) => {
+const FormPassword = ({ label, name, rules, defaultValue = '', wrapperProps, ...rest }: any) => {
   const { control } = useFormContext()
   const { field: { onChange, value }, fieldState: { error } } = useController({ name, control, rules, defaultValue })
 
@@ -39,9 +39,9 @@ const FormInput = ({ label, name, rules, defaultValue = '', wrapperProps, ...res
       validateStatus={(error) ? 'error' : ''}
       help={error?.message}
     >
-      <Input onChange={onChange} value={value} {...rest} />
+      <Input.Password onChange={onChange} value={value} {...rest} />
     </WrapperFormItem>
   )
 }
 
-export default FormInput
+export default FormPassword

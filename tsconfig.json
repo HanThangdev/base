@@ -47,6 +47,8 @@
       "@stores/*": ["src/Stores/*"],
       "@themes": ["src/Themes"],
       "@themes/*": ["src/Themes/*"],
+      "@type": ["src/Types"],
+      "@type/*": ["src/Types/*"],
       "@utils": ["src/Utils"],
       "@utils/*": ["src/Utils/*"],
     }

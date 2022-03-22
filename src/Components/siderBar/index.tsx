@@ -23,7 +23,7 @@ import { MenuList } from './constant'
 
 const SiderBar = () => {
   const { profile } = useAuth()
-  const role = USER_ROLE.NISSHOKEN_SUPER_ADMIN
+  const role = USER_ROLE.ADMIN
   const history = useHistory()
   const location = useLocation()
   const { t } = useTranslation(['menu', 'courseResult'])
@@ -41,7 +41,6 @@ const SiderBar = () => {
 
   const handleLogout = useCallback(() => {
     removeLocalStorage(STORAGE.USER_TOKEN)
-    removeLocalStorage(STORAGE.META_DATA)
 
     window.location.replace(`${USER_URL}?signal=${SIGNAL_TYPE.LOGOUT}`)
   }, [])
@@ -194,11 +193,11 @@ const SiderBar = () => {
         <Dropdown overlay={dropdownMenu} trigger={['click']}>
           <div className="user" aria-expanded="false">
             <div className="user-avatar">
-              <img src={profile.avatar || 'https://facit-modern.omtanke.studio/static/media/wanna1.6be5d23290c24ab23a73.webp'} alt="Avatar" width="128" height="128" />
+              <img src={profile?.avatar || 'https://facit-modern.omtanke.studio/static/media/wanna1.6be5d23290c24ab23a73.webp'} alt="Avatar" width="128" height="128" />
             </div>
             {(!sidebarCompact || sidebarHover) && (
               <div className="user-info">
-                <div className="user-name">{profile.nameKatakana || 'カタカナ ナハマ'}</div>
+                <div className="user-name">{profile?.nameKatakana || 'カタカナ ナハマ'}</div>
                 <div className="user-sub-title">CEO, Founder</div>
               </div>
             )}

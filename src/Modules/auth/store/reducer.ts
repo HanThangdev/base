@@ -1,53 +1,55 @@
 import { createReducer, updateObject, REQUEST, SUCCESS, FAILURE } from '@stores'
+import { Action } from '@type/Store'
+import { AuthState } from '@type/Store/auth'
 import { LOAD_PROFILE, LOGIN } from './constants'
 
-export const initialState = {
+export const initialState: AuthState = {
   isLoading: false,
   error: null,
   authenticated: null,
-  metaData: {},
   profile: {},
   isSubmitting: false
 }
 
-function login(state: any) {
+function login(state: AuthState) {
   return updateObject(state, {
     isLoading: true
   })
 }
 
-function loginSuccess(state: any, { payload }: any) {
+function loginSuccess(state: AuthState, { payload }: Action) {
   const { profile } = payload
   return updateObject(state, {
     isLoading: false,
+    authenticated: true,
     profile
   })
 }
 
-function loginFailure(state: any, { error }: any) {
+function loginFailure(state: AuthState, { error }: Action) {
   return updateObject(state, {
     error,
+    authenticated: false,
     isLoading: false,
   })
 }
 
-function loadProfile(state: any) {
+function loadProfile(state: AuthState) {
   return updateObject(state, {
     isLoading: true
   })
 }
 
-function profileLoaded(state: any, { payload }: any) {
-  const { profile, metaData } = payload
+function profileLoaded(state: AuthState, { payload }: Action) {
+  const { profile } = payload
   return updateObject(state, {
     isLoading: false,
     authenticated: true,
-    metaData,
     profile
   })
 }
 
-function profileLoadingError(state: any, { error }: any) {
+function profileLoadingError(state: AuthState, { error }: Action) {
   return updateObject(state, {
     error,
     isLoading: false,

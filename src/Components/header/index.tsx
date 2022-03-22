@@ -122,12 +122,11 @@ const Wrapper = styled.header`
 
 const Header = () => {
   const { i18n: { language } } = useTranslation()
-  const { metaData, profile } = useAuth()
-  const role = metaData?.roles?.[0]
+  const { profile } = useAuth()
+  const role = profile?.role
 
   const handleLogout = useCallback(() => {
     removeLocalStorage(STORAGE.USER_TOKEN)
-    removeLocalStorage(STORAGE.META_DATA)
 
     window.location.replace(`${USER_URL}?signal=${SIGNAL_TYPE.LOGOUT}`)
   }, [])
@@ -205,12 +204,12 @@ const Header = () => {
                   <a href="true" className="ant-dropdown-link" style={{ display: 'flex', alignItems: 'center' }} onClick={(e) => e.preventDefault()}>
                     <div className="me-3">
                       <div className="text-end">
-                        <div className="name">{profile.nameKatakana || 'カタカナ ナハマ'}</div>
+                        <div className="name">{profile?.nameKatakana || 'カタカナ ナハマ'}</div>
                         <div className="title"><small>CEO, Founder</small></div>
                       </div>
                     </div>
                     <div className="position-relative">
-                      <img className="avatar rounded-circle bg-lo25-warning" src={profile.avatar || 'https://facit-modern.omtanke.studio/static/media/wanna6.33be1958d20715345cc6.webp'} alt="Avatar" width="48" height="48" />
+                      <img className="avatar rounded-circle bg-lo25-warning" src={profile?.avatar || 'https://facit-modern.omtanke.studio/static/media/wanna6.33be1958d20715345cc6.webp'} alt="Avatar" width="48" height="48" />
                     </div>
                   </a>
                 </Dropdown>

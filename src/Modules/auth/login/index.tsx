@@ -6,24 +6,24 @@ import { Button } from 'antd'
 
 import {
   FormInput,
-  FormCheckbox,
+  FormPassword,
   FormLabel
 } from '@components'
 import { useAuth } from '@hooks'
 import { Wrapper, Right } from '@themes/facit'
 import LoginScheme from './scheme'
 import { Row } from './styled'
+import LoginForm from '@type/Form/LoginForm'
 
 const CreateCourseScreen = () => {
   const { t } = useTranslation(['common'])
-  const form = useForm({
+  const form = useForm<LoginForm>({
     resolver: yupResolver(LoginScheme(t)),
   })
   const { handleSubmit } = form
   const { loginAction } = useAuth()
 
   const onSubmit = useCallback((data) => {
-    data.isRememberMe = data.isRememberMe[0]
     loginAction(data)
   }, [loginAction])
 
@@ -41,12 +41,7 @@ const CreateCourseScreen = () => {
             <Row>
               <FormLabel title={'Password'} description="Required" />
               <Right>
-                <FormInput name="password" />
-              </Right>
-            </Row>
-            <Row>
-              <Right>
-                <FormCheckbox t={t} options={[{ label: 'Remember Me', value: true}]} name="isRememberMe" />
+                <FormPassword name="password" />
               </Right>
             </Row>
 

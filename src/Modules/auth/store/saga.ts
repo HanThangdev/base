@@ -1,22 +1,26 @@
 import { put, takeLatest } from 'redux-saga/effects'
 
 import { REQUEST, SUCCESS, FAILURE } from '@stores'
-import { login, getProfile } from '@apis'
+import { login } from '@apis'
 import { LOAD_PROFILE, LOGIN } from './constants'
+import { getLocalStorage, setLocalStorage, STORAGE } from '@utils'
+import { Action } from '@type/Store'
 
-export function* loginSaga({ payload }: any) {
+export function* loginSaga({ payload }: Action) {
   try {
     const { data: result } = yield login(payload)
-
+    const { tokens, user } = result
+    setLocalStorage(STORAGE.USER_TOKEN, tokens.access.token)
+    setLocalStorage(STORAGE.USER_DATA, JSON.stringify(user))
     yield put({
-      type: SUCCESS(LOAD_PROFILE),
+      type: SUCCESS(LOGIN),
       payload: {
-        profile: result.data
+        profile: result
       }
     })
   } catch (error) {
     yield put({
-      type: FAILURE(LOAD_PROFILE),
+      type: FAILURE(LOGIN),
       error
     })
   }
@@ -24,14 +28,17 @@ export function* loginSaga({ payload }: any) {
 
 export function* loadProfileSaga() {
   try {
-    const { data: result } = yield getProfile({ userId: 1 })
-
-    yield put({
-      type: SUCCESS(LOAD_PROFILE),
-      payload: {
-        profile: result.data
-      }
-    })
+    const result: any = getLocalStorage(STORAGE.USER_DATA)
+    if (result) {
+      yield put({
+        type: SUCCESS(LOAD_PROFILE),
+        payload: {
+          profile: JSON.parse(result)
+        }
+      })
+    } else {
+      throw new Error('403')
+    }
   } catch (error) {
     yield put({
       type: FAILURE(LOAD_PROFILE),

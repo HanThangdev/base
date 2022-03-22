@@ -21,6 +21,7 @@ import {
   FormInputNumber,
   FormUploadImage,
   FormLabel,
+  FormPassword
 } from './form'
 
 export {
@@ -45,4 +46,5 @@ export {
   FormInputNumber,
   FormUploadImage,
   FormLabel,
+  FormPassword
 }

@@ -11,6 +11,7 @@ import FormRangePicker from './FormRangePicker'
 import FormInputNumber from './FormInputNumber'
 import FormUploadImage from './FormUploadImage'
 import FormLabel from './FormLabel'
+import FormPassword from './FormPassword'
 
 export {
   FormRadio,
@@ -26,4 +27,5 @@ export {
   FormInputNumber,
   FormUploadImage,
   FormLabel,
+  FormPassword
 }

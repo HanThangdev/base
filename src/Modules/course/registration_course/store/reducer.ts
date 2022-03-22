@@ -8,8 +8,10 @@ import {
   EDIT_COURSE,
   DELETE_COURSES
 } from './constants'
+import { CourseState } from '@type/Store/course'
+import { Action } from '@type/Store'
 
-export const initialState = {
+export const initialState: CourseState = {
   isLoading: false,
   error: null,
   courses: [],
@@ -19,13 +21,13 @@ export const initialState = {
   isSubmitting: false
 }
 
-function loadCourses(state: any) {
+function loadCourses(state: CourseState) {
   return updateObject(state, {
     isLoading: true
   })
 }
 
-function coursesLoaded(state: any, { payload }: any) {
+function coursesLoaded(state: CourseState, { payload }: Action) {
   const { courses, pagination, filter } = payload
   return updateObject(state, {
     isLoading: false,
@@ -35,20 +37,20 @@ function coursesLoaded(state: any, { payload }: any) {
   })
 }
 
-function coursesLoadingError(state: any, { error }: any) {
+function coursesLoadingError(state: CourseState, { error }: Action) {
   return updateObject(state, {
     error,
     isLoading: false
   })
 }
 
-function loadCourse(state: any) {
+function loadCourse(state: CourseState) {
   return updateObject(state, {
     isLoading: true
   })
 }
 
-function courseLoaded(state: any, { payload }: any) {
+function courseLoaded(state: CourseState, { payload }: Action) {
   const { course } = payload
   return updateObject(state, {
     isLoading: false,
@@ -56,65 +58,65 @@ function courseLoaded(state: any, { payload }: any) {
   })
 }
 
-function courseLoadingError(state: any, { error }: any) {
+function courseLoadingError(state: CourseState, { error }: Action) {
   return updateObject(state, {
     error,
     isLoading: false
   })
 }
 
-function createCourse(state: any) {
+function createCourse(state: CourseState) {
   return updateObject(state, {
     error: null,
     isSubmitting: true
   })
 }
 
-function createCourseSuccess(state: any) {
+function createCourseSuccess(state: CourseState) {
   return updateObject(state, {
     isSubmitting: false
   })
 }
 
-function createCourseError(state: any, { error }: any) {
+function createCourseError(state: CourseState, { error }: Action) {
   return updateObject(state, { error })
 }
 
-function editCourse(state: any) {
+function editCourse(state: CourseState) {
   return updateObject(state, {
     error: null,
     isSubmitting: true
   })
 }
 
-function editCourseSuccess(state: any) {
+function editCourseSuccess(state: CourseState) {
   return updateObject(state, {
     isSubmitting: false
   })
 }
 
-function editCourseError(state: any, { error }: any) {
+function editCourseError(state: CourseState, { error }: Action) {
   return updateObject(state, { error })
 }
 
-function deleteCourses(state: any) {
+function deleteCourses(state: CourseState) {
   return updateObject(state, {
     error: null,
     isSubmitting: true
   })
 }
 
-function deleteCoursesSuccess(state: any) {
+function deleteCoursesSuccess(state: CourseState) {
   return updateObject(state, {
     isSubmitting: false
   })
 }
 
-function deleteCoursesError(state: any, { error }: any) {
+function deleteCoursesError(state: CourseState, { error }: Action) {
   return updateObject(state, { error })
 }
 
-function resetState(state: any) {
+function resetState(state: CourseState) {
   return updateObject(state, { ...initialState })
 }
 

@@ -12,7 +12,7 @@ export const useAuth = () => {
   useInjectSaga({ key: 'auth', saga })
   useInjectReducer({ key: 'auth', reducer })
 
-  const { isLoading, error, authenticated, profile, metaData }: any = useSelector(
+  const { isLoading, error, authenticated, profile }: any = useSelector(
     makeSelectAuthentication()
   )
 
@@ -25,7 +25,6 @@ export const useAuth = () => {
     error,
     authenticated,
     profile,
-    metaData,
     loginAction,
     loadProfileAction
   }
@@ -34,9 +33,9 @@ export const useAuth = () => {
 export const useRoles = () => {
   useInjectSaga({ key: 'auth', saga })
   useInjectReducer({ key: 'auth', reducer })
-  const role = USER_ROLE.NISSHOKEN_SUPER_ADMIN
+  const role = USER_ROLE.ADMIN
 
-  const isSuperAdmin = [USER_ROLE.NISSHOKEN_SUPER_ADMIN].includes(role)
+  const isSuperAdmin = [USER_ROLE.ADMIN].includes(role)
   const isAdmin = [USER_ROLE.NISSHOKEN_ADMIN].includes(role)
   const isCompany = [USER_ROLE.COMPANY_ADMIN].includes(role)
 

@@ -1,6 +1,6 @@
 import { Switch } from 'react-router-dom'
 
-import PublicRoute from '@components/route/publicRoute'
+import PrivateRoute from '@components/route/privateRoute'
 
 import { USER_ROLE } from '@constants/auth'
 import RegistrationCourseScreen from './registration_course'
@@ -17,17 +17,17 @@ export const ROUTES = [
   {
     path: RoutesName.REGISTRATION_COURSE,
     component: RegistrationCourseScreen,
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   },
   {
     path: RoutesName.CREATE_COURSE,
     component: CreateCourseScreen,
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   },
   {
     path: `${RoutesName.EDIT_COURSE}/:id`,
     component: EditCourseScreen,
-    rules: [USER_ROLE.NISSHOKEN_SUPER_ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
+    rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
   }
 ]
 
@@ -35,7 +35,7 @@ export default function CourseRoutes() {
   return (
     <Switch>
       {ROUTES.map((routeConfig, index) => (
-        <PublicRoute key={index} exact {...routeConfig} />
+        <PrivateRoute key={index} {...routeConfig} />
       ))}
     </Switch>
   )
