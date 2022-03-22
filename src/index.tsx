@@ -11,7 +11,7 @@ import configureStore from './Stores/configureStore'
 import { history } from './Stores/reducers'
 import ThemeProvider, { ThemedGlobalStyle } from './Themes'
 import './types.d.ts'
-// import '@config/firebase'
+import '@config/firebase'
 
 const VerticalBox = styled.div`
   display: flex;
