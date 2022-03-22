@@ -1,7 +1,6 @@
 import { Suspense } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 
-import CustomRoute from '@components/route/customRoute'
 import PrivateRoute from '@components/route/privateRoute'
 import Loading from '@components/loading'
 

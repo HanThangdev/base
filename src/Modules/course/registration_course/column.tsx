@@ -1,10 +1,7 @@
-import React from 'react'
 import { EditOutlined } from '@ant-design/icons'
 import { Tooltip, Button } from 'antd'
 
 import { USER_ROLE } from '@constants/auth'
-import { formatMoney, formatOption } from '@utils'
-import { PAID_COURSE_OPTION_TEXT } from '@constants/course'
 import { Action } from '@themes/facit'
 import { RoutesName } from '../routes'
 
