@@ -1,7 +1,7 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import * as ReactDOMClient from 'react-dom/client';
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'connected-react-router'
+import { ConnectedRouter } from 'connected-react-router/immutable'
 import styled from 'styled-components'
 
 import App from './App'
@@ -11,7 +11,7 @@ import configureStore from './Stores/configureStore'
 import { history } from './Stores/reducers'
 import ThemeProvider, { ThemedGlobalStyle } from './Themes'
 import './types.d.ts'
-import '@config/firebase'
+// import '@config/firebase'
 
 const VerticalBox = styled.div`
   display: flex;
@@ -23,7 +23,8 @@ const VerticalBox = styled.div`
 
 const initialState = {}
 const store = configureStore(initialState, history)
-ReactDOM.render(
+const reactDOM = ReactDOMClient.createRoot(document.getElementById('root') as any);
+reactDOM.render(
   process.env.NODE_ENV !== 'production'
     ? (
       <React.StrictMode>
@@ -51,7 +52,6 @@ ReactDOM.render(
         </ConnectedRouter>
       </Provider>
     ),
-  document.getElementById('root')
 )
 // If you want your app to work offline and load faster, you can change
 // unregister() to register-individual() below. Note this comes with some pitfalls.

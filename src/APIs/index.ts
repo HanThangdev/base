@@ -1,17 +1,3 @@
-export {
-  login,
-  getProfile
-} from './auth.api'
-
-export {
-  getCourses,
-  getCourse,
-  createCourse,
-  editCourse,
-  deleteCourse
-} from './course.api'
-
-export {
-  checkExistFile,
-  getS3PresinedUrl
-} from './common.api'
+export * from './auth.api'
+export * from './course.api'
+export * from './common.api'

@@ -1,8 +1,8 @@
 import { Suspense } from 'react'
 import { Switch } from 'react-router-dom'
 
-import PrivateRoute from '@components/route/privateRoute'
-import Loading from '@components/loading'
+import { PrivateRoute } from '@components'
+import { Loading } from '@components/common'
 
 import AuthRoutes from '@modules/auth/routes'
 import CourseRoutes from '@modules/course/routes'

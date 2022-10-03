@@ -51,7 +51,7 @@ const FormInputNumber = ({ label, name, rules, defaultValue = '', prefix = '￥'
   const { control } = useFormContext()
   const { field: { onChange, value }, fieldState: { error } } = useController({ name, control, rules, defaultValue })
 
-  const handleKeyDown = useCallback((e) => {
+  const handleKeyDown = useCallback((e: any) => {
     if (!((e.keyCode > 95 && e.keyCode < 106)
       || (e.keyCode > 47 && e.keyCode < 58)
       || e.keyCode === 8

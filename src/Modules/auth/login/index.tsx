@@ -23,7 +23,7 @@ const CreateCourseScreen = () => {
   const { handleSubmit } = form
   const { loginAction } = useAuth()
 
-  const onSubmit = useCallback((data) => {
+  const onSubmit = useCallback((data: any) => {
     loginAction(data)
   }, [loginAction])
 

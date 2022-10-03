@@ -4,13 +4,11 @@ import { useTranslation } from 'react-i18next'
 import { useForm, FormProvider } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useParams } from 'react-router-dom'
-import { EditOutlined } from '@ant-design/icons'
 import { Popconfirm, Button } from 'antd'
 
 import {
   FormInput,
   FormPassword,
-  Title,
   FormLabel
 } from '@components'
 import { useUpdateCourse } from '@hooks/course'
@@ -31,7 +29,7 @@ const EditCourseModal = () => {
   })
   const { handleSubmit, setValue }: any = form
 
-  const onSubmit = useCallback((data) => {
+  const onSubmit = useCallback((data: any) => {
     editCourseAction({ courseId, data })
   }, [courseId])
 
@@ -49,7 +47,6 @@ const EditCourseModal = () => {
 
   return (
     <Wrapper>
-      <Title icon={EditOutlined} title={t('registration_course.edit.title')} />
       <div className="form-wrapper">
         <FormProvider {...form}>
         <form onSubmit={handleSubmit(onSubmit)}>

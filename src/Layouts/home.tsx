@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
-import { Header, SiderBar, Footer } from '@components'
+import { Header, Sidebar, Footer } from '@components'
 import { useRoot } from '@hooks'
 
 const Wrapper: any = styled.div`
@@ -33,7 +33,7 @@ const HomeLayout = ({ children }: any) => {
     <Wrapper sidebarCompact={sidebarCompact}>
       <Header />
       <Main>
-        <SiderBar />
+        <Sidebar />
         <Content>
           {children}
         </Content>

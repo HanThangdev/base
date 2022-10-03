@@ -64,7 +64,7 @@ const FormTextArea = ({
     }
   }, [value])
 
-  const handleChange = useCallback((e) => {
+  const handleChange = useCallback((e: any) => {
     const val = e.target.value
     onChange(val)
   }, [onChange])

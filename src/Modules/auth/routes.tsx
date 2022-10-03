@@ -1,6 +1,6 @@
 import { Switch } from 'react-router-dom'
 
-import PublicRoute from '@components/route/publicRoute'
+import { PublicRoute } from '@components'
 
 import LoginScreen from '@modules/auth/login'
 

@@ -3,12 +3,12 @@
  */
 
 import { createStore, applyMiddleware, compose } from 'redux'
-import { routerMiddleware } from 'connected-react-router'
+import { routerMiddleware } from 'connected-react-router/immutable'
 import loggerMiddleware from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 import createReducer from './reducers'
 
-export default function configureStore(initialState = {}, history: any) {
+export default function configureStore(initialState: any = {}, history: any) {
   let composeEnhancers = compose
   const reduxSagaMonitorOptions = {}
 

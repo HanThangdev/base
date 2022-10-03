@@ -3,13 +3,11 @@ import { useTranslation } from 'react-i18next'
 import { useForm, FormProvider } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Button, Popconfirm } from 'antd'
-import { EditOutlined } from '@ant-design/icons'
 
 import {
   FormInput,
   FormPassword,
   FormRadio,
-  Title,
   FormLabel
 } from '@components'
 import { ROLES_OPTION } from '@constants/course'
@@ -29,17 +27,13 @@ const CreateCourseScreen = () => {
   const { handleSubmit } = form
   const { createCourseAction } = useCreateCourse()
 
-  const onSubmit = useCallback((data) => {
+  const onSubmit = useCallback((data: any) => {
     createCourseAction({ data })
   }, [createCourseAction])
 
 
   return (
     <Wrapper>
-      <Title
-        icon={EditOutlined}
-        title={t('registration_course.create.title')}
-      />
       <div className="form-wrapper">
         <FormProvider {...form}>
           <form onSubmit={handleSubmit(onSubmit)}>

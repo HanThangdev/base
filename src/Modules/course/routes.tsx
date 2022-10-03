@@ -1,6 +1,6 @@
 import { Switch } from 'react-router-dom'
 
-import PrivateRoute from '@components/route/privateRoute'
+import { PrivateRoute } from '@components'
 
 import { USER_ROLE } from '@constants/auth'
 import RegistrationCourseScreen from './registration_course'

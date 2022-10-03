@@ -5,7 +5,7 @@ import { Dropdown, Menu } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { HomeOutlined } from '@ant-design/icons'
 
-import { EN_ICON, VI_ICON, JP_ICON, E_LEARNING_LOGO, LOGOUT_ICON } from '@assets'
+import { EN_ICON, VI_ICON, JP_ICON, E_LEARNING_LOGO } from '@assets'
 import { removeLocalStorage, STORAGE } from '@utils'
 import { useAuth } from '@hooks'
 import { USER_URL, SIGNAL_TYPE } from '@constants'
@@ -173,7 +173,6 @@ const Header = () => {
       </>
       )}
       <Menu.Item key="1" onClick={handleLogout}>
-        <LOGOUT_ICON className="logout-icon" />
         <span>&nbsp;Logout</span>
       </Menu.Item>
     </Menu>

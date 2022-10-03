@@ -9,13 +9,6 @@ import {
 
 import { removeLocalStorage, STORAGE } from '@utils'
 import { USER_URL, SIGNAL_TYPE } from '@constants'
-import {
-  LOGO,
-  TOGGLE_ASIDE_LEFT_ICON,
-  TOGGLE_ASIDE_RIGHT_ICON,
-  CHEVRON_RIGHT_ICON,
-  LOGOUT_ICON
-} from '@assets'
 import { USER_ROLE } from '@constants/auth'
 import { useAuth, useRoot } from '@hooks'
 import { Wrapper, Ul, Li } from './styled'
@@ -67,7 +60,6 @@ const SiderBar = () => {
         </>
       )}
       <Menu.Item key="1" onClick={handleLogout}>
-        <LOGOUT_ICON className="logout-icon" />
         <span>&nbsp;Logout</span>
       </Menu.Item>
     </Menu>
@@ -86,14 +78,14 @@ const SiderBar = () => {
             <div className="brand-logo">
               <h1 className="brand-title">
                 <a aria-label="Logo" href="/">
-                  <LOGO />
+                  Logo
                 </a>
               </h1>
             </div>
           )}
           <button type="button" className="brand-aside-toggle" onClick={handleToggleSidebar}>
-            {!sidebarCompact ? <TOGGLE_ASIDE_LEFT_ICON className="svg-icon--material svg-icon brand-aside-toggle-close" />
-              : <TOGGLE_ASIDE_RIGHT_ICON className="svg-icon--material svg-icon brand-aside-toggle-close" />}
+            {!sidebarCompact ? '<'
+              : '>'}
           </button>
         </div>
       </div>
@@ -146,7 +138,7 @@ const SiderBar = () => {
                     </span>
                     {children && (
                       <span className="navigation-link-extra">
-                        <CHEVRON_RIGHT_ICON className={`svg-icon--material ${itemToggle.includes(key) && 'down'}`} />
+                        {'>'}
                       </span>
                     )}
                   </a>

@@ -1,8 +1,8 @@
 // COURSE
-export { useRegistrationCourses, useLoadCourse } from './course'
+export * from './course'
 
 // AUTH
-export { useAuth, useRoles } from './auth'
+export * from './auth'
 
 // ROOT
-export { useRoot } from './root'
+export * from './root'

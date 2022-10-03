@@ -2,15 +2,12 @@
 import { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router-dom'
-import { Menu } from 'antd'
 
-import { Table, Title } from '@components'
-import { COURSE_ICON } from '@assets'
+import { Table } from '@components'
 import { useAuth, useRegistrationCourses } from '@hooks'
 import { Wrapper } from '@themes/facit'
 import tableColumns from './column'
 import ConfirmDeleteModal from './components/ConfirmDeleteModal'
-import FilterBlock from './components/FilterBlock'
 import { RoutesName } from '../routes'
 
 const RegistrationCourseScreen = () => {
@@ -75,28 +72,12 @@ const RegistrationCourseScreen = () => {
     [t, history, pagination, role]
   )
 
-  const menu = useMemo(() => (
-    <Menu>
-      <FilterBlock
-        t={t}
-        loadCoursesAction={loadCoursesAction}
-        setRowSelected={setRowSelected}
-      />
-    </Menu>
-  ), [loadCoursesAction, t])
-
   useEffect(() => {
     loadCoursesAction({ params: { page: 1, limit: 20 } })
   }, [])
 
   return (
     <Wrapper>
-      <Title
-        icon={COURSE_ICON}
-        title={t('registration_course.management.title')}
-        filter={menu}
-        currentFilter={filter}
-      />
       <Table
         locale={{ emptyText: t('common:empty_data') }}
         rowSelection={{

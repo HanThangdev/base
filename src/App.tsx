@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useAuth } from '@hooks'
-import Loading from '@components/loading'
+import { Loading } from '@components/common'
 import Approutes from './Routes'
 import { useEffect } from 'react'
 

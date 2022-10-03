@@ -60,8 +60,8 @@ export function* createCourseAction({ payload }: Action) {
       }
     })
     notification.success({
-      message: i18next.t('success'),
-      description: i18next.t('common:message.create_success'),
+      message: i18next.t('success') as String,
+      description: i18next.t('common:message.create_success') as String,
       duration: 2
     })
     yield put(push(RoutesName.REGISTRATION_COURSE))
@@ -86,8 +86,8 @@ export function* editCourseAction({ payload }: Action) {
       }
     })
     notification.success({
-      message: i18next.t('success'),
-      description: i18next.t('common:message.update_success'),
+      message: i18next.t('success') as String,
+      description: i18next.t('common:message.update_success') as String,
       duration: 2
     })
     yield put(push(RoutesName.REGISTRATION_COURSE))
@@ -135,8 +135,8 @@ export function* deleteCoursesAction({ payload }: Action) {
       }
     })
     notification.success({
-      message: i18next.t('success'),
-      description: i18next.t('common:message.delete_success'),
+      message: i18next.t('success') as String,
+      description: i18next.t('common:message.delete_success') as String,
       duration: 2
     })
     callback.done()

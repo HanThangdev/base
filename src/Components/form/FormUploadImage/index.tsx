@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import { LOCALES } from '@constants'
 
-import { getBase64V2 } from '@utils/image'
+import { getBase64 } from '@utils/image'
 import { getS3PresinedUrl } from '@apis'
 
 const FILE_SIZE = 10 // 10mb
@@ -55,15 +55,15 @@ const FormUploadImage = ({ t, label, name, rules, defaultValue = '', size = FILE
   const [files, setFiles] = useState<any>([])
   const [fileValue, setFileValue] = useState<any>(null)
 
-  const handleChange = useCallback(({ fileList }) => {
+  const handleChange = useCallback(({ fileList }: any) => {
     setFiles(fileList)
   }, [])
 
   const handleCancel = useCallback(() => setPreviewVisible(false), [])
 
-  const handlePreview = useCallback(async (file) => {
+  const handlePreview = useCallback(async (file: any) => {
     if (!file.url && !file.preview) {
-      file.preview = await getBase64V2(file.originFileObj)
+      file.preview = await getBase64(file.originFileObj)
     }
 
     setPreviewImage(file.url || file.preview)
@@ -77,7 +77,7 @@ const FormUploadImage = ({ t, label, name, rules, defaultValue = '', size = FILE
     setPreviewTitle(file.name || fileName)
   }, [files])
 
-  const uploadImage = useCallback(async (options) => {
+  const uploadImage = useCallback(async (options: any) => {
     const { onSuccess, onError, file } = options
     setFileValue(file)
     setValue('file', file)
@@ -147,7 +147,7 @@ const FormUploadImage = ({ t, label, name, rules, defaultValue = '', size = FILE
   return (
     <WrapperFormItem
       label={label && <WrapperLabel>{label}</WrapperLabel>}
-      help={error?.message || errors.file?.message}
+      help={(error?.message || errors.file?.message) as String}
       validateStatus={error || errors.file ? 'error' : ''}
     >
       <ConfigProvider locale={LOCALES[language]}>

@@ -25,7 +25,6 @@ import {
   ICON_SEND,
   ICON_SETTING_MENU,
   ICON_GROUP_MENU,
-  FOLDER_ICON
 } from '@assets'
 import { USER_ROLE } from '@constants/auth'
 
@@ -208,7 +207,6 @@ export const MenuList = [
         rules: [USER_ROLE.ADMIN, USER_ROLE.NISSHOKEN_ADMIN, USER_ROLE.COMPANY_ADMIN]
       },
       {
-        Icon: FOLDER_ICON,
         title: 'upload_file',
         pathName: RoutesName.COURSE_UPLOAD_FILE,
         fill: 'none',
