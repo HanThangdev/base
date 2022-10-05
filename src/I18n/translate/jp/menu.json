@@ -16,7 +16,7 @@
 	"inquiry": "問い合わせ管理",
 	"library": "ライブラリ管理",
 	"settings": "サイト設定",
-	"recording":"ボイスメモ",
+	"recording": "ボイスメモ",
 	"company": "企業管理",
 
 	"registration_course_categories": "講座カテゴリの登録・管理",
@@ -27,7 +27,7 @@
 	"test_question": "テスト問題の管理",
 	"issus_permission": "受講権限の発行",
 	"issue_status_permissions": "受講権限の発行状態",
-	
+
 	"user_management": "ユーザー管理",
 	"register": "ユーザーの登録",
 	"batch_register": "ユーザーの一括登録・変更（CSV）",

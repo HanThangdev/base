@@ -1,9 +1,11 @@
+/* eslint-disable react/sort-comp */
+/* eslint-disable react/static-property-placement */
 /* eslint-disable import/no-anonymous-default-export */
-import React from 'react'
-import hoistNonReactStatics from 'hoist-non-react-statics'
-import { ReactReduxContext } from 'react-redux'
+import React from 'react';
+import hoistNonReactStatics from 'hoist-non-react-statics';
+import { ReactReduxContext } from 'react-redux';
 
-import getInjectors from './sagaInjectors'
+import getInjectors from './sagaInjectors';
 
 /**
  * Dynamically injects a saga, passes component's props as saga arguments
@@ -17,47 +19,49 @@ import getInjectors from './sagaInjectors'
  *   - constants.ONCE_TILL_UNMOUNT — behaves like 'RESTART_ON_REMOUNT' but never runs it again.
  *
  */
-export default ({ key, saga, mode }: any) => (WrappedComponent: any) => {
-  class InjectSaga extends React.Component {
-    injectors: any
-    static WrappedComponent = WrappedComponent
+export default ({ key, saga, mode }: any) =>
+	(WrappedComponent: any) => {
+		class InjectSaga extends React.Component {
+			injectors: any;
 
-    static contextType = ReactReduxContext
+			static WrappedComponent = WrappedComponent;
 
-    static displayName = `withSaga(${WrappedComponent.displayName
-      || WrappedComponent.name
-      || 'Component'})`
+			static contextType = ReactReduxContext;
 
-    constructor(props: any, context: any) {
-      super(props, context)
+			static displayName = `withSaga(${
+				WrappedComponent.displayName || WrappedComponent.name || 'Component'
+			})`;
 
-      this.injectors = getInjectors(context.store)
+			constructor(props: any, context: any) {
+				super(props, context);
 
-      this.injectors.injectSaga(key, { saga, mode }, this.props)
-    }
+				this.injectors = getInjectors(context.store);
 
-    componentWillUnmount() {
-      this.injectors.ejectSaga(key)
-    }
+				this.injectors.injectSaga(key, { saga, mode }, this.props);
+			}
 
-    render() {
-      return <WrappedComponent {...this.props} />
-    }
-  }
+			componentWillUnmount() {
+				this.injectors.ejectSaga(key);
+			}
 
-  return hoistNonReactStatics(InjectSaga, WrappedComponent)
-}
+			render() {
+				return <WrappedComponent {...this.props} />;
+			}
+		}
+
+		return hoistNonReactStatics(InjectSaga, WrappedComponent);
+	};
 
 const useInjectSaga = ({ key, saga, mode }: any) => {
-  const context = React.useContext(ReactReduxContext)
-  React.useEffect(() => {
-    const injectors = getInjectors(context.store)
-    injectors.injectSaga(key, { saga, mode })
+	const context = React.useContext(ReactReduxContext);
+	React.useEffect(() => {
+		const injectors = getInjectors(context.store);
+		injectors.injectSaga(key, { saga, mode });
 
-    return () => {
-      injectors.ejectSaga(key)
-    }
-  }, [context.store, key, mode, saga])
-}
+		return () => {
+			injectors.ejectSaga(key);
+		};
+	}, [context.store, key, mode, saga]);
+};
 
-export { useInjectSaga }
+export { useInjectSaga };

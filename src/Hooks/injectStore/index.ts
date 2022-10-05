@@ -1,8 +1,8 @@
 // COURSE
-export * from './course'
+export * from './course';
 
 // AUTH
-export * from './auth'
+export * from './auth';
 
 // ROOT
-export * from './root'
+export * from './root';

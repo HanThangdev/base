@@ -1,12 +1,7 @@
-import { Wrapper } from './styled'
+import { Wrapper } from './styled';
 
-const CourseScreen = () => {
-
-  return (
-    <Wrapper>
-      Top page
-    </Wrapper>
-  )
+function CourseScreen() {
+	return <Wrapper>Top page</Wrapper>;
 }
 
-export default CourseScreen
+export default CourseScreen;

@@ -1,2 +1,2 @@
-export * from './flags'
-export * from './menu'
+export * from './flags';
+export * from './menu';

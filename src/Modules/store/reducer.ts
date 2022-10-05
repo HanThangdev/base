@@ -7,29 +7,29 @@
  * @param  {state} login state
  * @param  {action} login action
  */
-import { createReducer, updateObject } from '@utils/redux'
-import { GlobalState } from '@type/Store/global'
-import { TOGGLE_SIDEBAR, HOVER_SIDEBAR } from './constants'
+import { createReducer, updateObject } from '@utils/redux';
+import { GlobalState } from '@type/Store/global';
+import { TOGGLE_SIDEBAR, HOVER_SIDEBAR } from './constants';
 
 export const initialState: GlobalState = {
-  sidebarCompact: false,
-  sidebarHover: false
-}
+	sidebarCompact: false,
+	sidebarHover: false,
+};
 
 function toggleSidebar(state: GlobalState) {
-  return updateObject(state, {
-    sidebarCompact: !state.sidebarCompact
-  })
+	return updateObject(state, {
+		sidebarCompact: !state.sidebarCompact,
+	});
 }
 
 function hoverSidebar(state: GlobalState) {
-  return updateObject(state, {
-    sidebarHover: !state.sidebarHover
-  })
+	return updateObject(state, {
+		sidebarHover: !state.sidebarHover,
+	});
 }
 
 // Slice reducer
 export default createReducer(initialState, {
-  [TOGGLE_SIDEBAR]: toggleSidebar,
-  [HOVER_SIDEBAR]: hoverSidebar
-})
+	[TOGGLE_SIDEBAR]: toggleSidebar,
+	[HOVER_SIDEBAR]: hoverSidebar,
+});

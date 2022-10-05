@@ -1,25 +1,25 @@
-import { USER_ROLE } from '@modules/auth/constant'
-import HomeLayout from '@layouts/home'
+import { USER_ROLE } from '@modules/auth/constant';
+import HomeLayout from '@layouts/home';
 
-import HomeScreen from '@modules/course/home'
-import { navigator as courseNavigator } from '@modules/course/routes'
-import { navigator as authNavigator } from '@modules/auth/routes'
+import HomeScreen from '@modules/course/home';
+import { navigator as courseNavigator } from '@modules/course/routes';
+import { navigator as authNavigator } from '@modules/auth/routes';
 
 const navigator = {
-  HOME: '/',
+	HOME: '/',
 
-  ...courseNavigator,
-  ...authNavigator
-}
+	...courseNavigator,
+	...authNavigator,
+};
 
 export const ROUTES = [
-  {
-    path: navigator.HOME,
-    component: HomeScreen,
-    layout: HomeLayout,
-    rules: [USER_ROLE.ADMIN],
-    exact: true,
-  },
-]
+	{
+		path: navigator.HOME,
+		component: HomeScreen,
+		layout: HomeLayout,
+		rules: [USER_ROLE.ADMIN],
+		exact: true,
+	},
+];
 
-export default navigator
+export default navigator;

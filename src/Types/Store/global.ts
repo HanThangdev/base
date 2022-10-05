@@ -1,4 +1,4 @@
 export type GlobalState = {
-    sidebarCompact: boolean,
-    sidebarHover: boolean,
-}
+	sidebarCompact: boolean;
+	sidebarHover: boolean;
+};

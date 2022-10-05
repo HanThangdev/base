@@ -1,2 +1,1 @@
-export { default as CKUploadAdapter } from './CKUploadAdapter'
-
+export { default as CKUploadAdapter } from './CKUploadAdapter';

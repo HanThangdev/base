@@ -1,16 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const HTML = styled.div`
 	height: 100vh;
 	background-color: #000121;
-    font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', sans-serif;
 
 	.maincontainer {
 		position: relative;
 		top: 0;
 		transform: scale(0.8);
-		background: url("https://www.blissfullemon.com/wp-content/uploads/2018/09/HauntedHouseBackground.png");
+		background: url('https://www.blissfullemon.com/wp-content/uploads/2018/09/HauntedHouseBackground.png');
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: 700px 600px;
@@ -40,7 +40,7 @@ const HTML = styled.div`
 	.errortext {
 		position: relative;
 		top: -180px;
-		color: #FBD130;
+		color: #fbd130;
 		text-align: center;
 		text-transform: uppercase;
 		font-size: 1.8em;
@@ -98,104 +98,164 @@ const HTML = styled.div`
 	}
 
 	@keyframes flapLeft {
-		0% { transform: rotateZ(0); }
-		50% { transform: rotateZ(10deg) rotateY(40deg); }
-		100% { transform: rotateZ(0); }
+		0% {
+			transform: rotateZ(0);
+		}
+		50% {
+			transform: rotateZ(10deg) rotateY(40deg);
+		}
+		100% {
+			transform: rotateZ(0);
+		}
 	}
 
 	@keyframes flapRight {
-		0% { transform: scaleX(-1) rotateZ(0); }
-		50% { transform: scaleX(-1) rotateZ(10deg) rotateY(40deg); }
-		100% { transform: scaleX(-1) rotateZ(0); }
+		0% {
+			transform: scaleX(-1) rotateZ(0);
+		}
+		50% {
+			transform: scaleX(-1) rotateZ(10deg) rotateY(40deg);
+		}
+		100% {
+			transform: scaleX(-1) rotateZ(0);
+		}
 	}
 
 	@keyframes flyBat1 {
-		0% { opacity: 1; transform: scale(0.5)}
-		25% { opacity: 1; transform: scale(0.5) translate(-400px, -330px) }
-		50% { opacity: 1; transform: scale(0.5) translate(400px, -800px) }
-		75% { opacity: 1; transform: scale(0.5) translate(600px, 100px) }
-		100% { opacity: 1; transform: scale(0.5) translate(100px, 300px) }
+		0% {
+			opacity: 1;
+			transform: scale(0.5);
+		}
+		25% {
+			opacity: 1;
+			transform: scale(0.5) translate(-400px, -330px);
+		}
+		50% {
+			opacity: 1;
+			transform: scale(0.5) translate(400px, -800px);
+		}
+		75% {
+			opacity: 1;
+			transform: scale(0.5) translate(600px, 100px);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(0.5) translate(100px, 300px);
+		}
 	}
 
 	@keyframes flyBat2 {
-		0% { opacity: 1; transform: scale(0.3)}
-		25% { opacity: 1; transform: scale(0.3) translate(200px, -330px) }
-		50% { opacity: 1; transform: scale(0.3) translate(-300px, -800px) }
-		75% { opacity: 1; transform: scale(0.3) translate(-400px, 100px) }
-		100% { opacity: 1; transform: scale(0.3) translate(100px, 300px) }
+		0% {
+			opacity: 1;
+			transform: scale(0.3);
+		}
+		25% {
+			opacity: 1;
+			transform: scale(0.3) translate(200px, -330px);
+		}
+		50% {
+			opacity: 1;
+			transform: scale(0.3) translate(-300px, -800px);
+		}
+		75% {
+			opacity: 1;
+			transform: scale(0.3) translate(-400px, 100px);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(0.3) translate(100px, 300px);
+		}
 	}
 
 	@keyframes flyBat3 {
-		0% { opacity: 1; transform: scale(0.4)}
-		25% { opacity: 1; transform: scale(0.4) translate(-350px, -330px) }
-		50% { opacity: 1; transform: scale(0.4) translate(400px, -800px) }
-		75% { opacity: 1; transform: scale(0.4) translate(-600px, 100px) }
-		100% { opacity: 1; transform: scale(0.4) translate(100px, 300px) }
+		0% {
+			opacity: 1;
+			transform: scale(0.4);
+		}
+		25% {
+			opacity: 1;
+			transform: scale(0.4) translate(-350px, -330px);
+		}
+		50% {
+			opacity: 1;
+			transform: scale(0.4) translate(400px, -800px);
+		}
+		75% {
+			opacity: 1;
+			transform: scale(0.4) translate(-600px, 100px);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(0.4) translate(100px, 300px);
+		}
 	}
-`
+`;
 
 function ForbiddenScreen() {
-  return (
-    <HTML>
-      <div className="maincontainer">
-        <div className="bat">
-          <img
-            className="wing leftwing"
-            src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-wing.png"
-            alt="wing"
-          />
-          <img
-            className="body"
-            src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-body.png"
-            alt="bat"
-          />
-          <img
-            className="wing rightwing"
-            src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-wing.png"
-            alt="wing"
-          />
-        </div>
-        <div className="bat">
-          <img
-            className="wing leftwing"
-            src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-wing.png"
-            alt="wing"
-          />
-          <img
-            className="body"
-            src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-body.png"
-            alt="bat"
-          />
-          <img
-            className="wing rightwing"
-            src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-wing.png"
-            alt="wing"
-          />
-        </div>
-        <div className="bat">
-          <img
-            className="wing leftwing"
-            src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-wing.png"
-            alt="wing"
-          />
-          <img
-            className="body"
-            src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-body.png"
-            alt="bat"
-          />
-          <img
-            className="wing rightwing"
-            src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-wing.png"
-            alt="wing"
-          />
-        </div>
-        <img className="foregroundimg" src="https://www.blissfullemon.com/wp-content/uploads/2018/09/HauntedHouseForeground.png" alt="haunted house" />
-
-      </div>
-      <h1 className="errorcode">ERROR 403</h1>
-      <div className="errortext">This area is forbidden. Turn back now!</div>
-    </HTML>
-  )
+	return (
+		<HTML>
+			<div className="maincontainer">
+				<div className="bat">
+					<img
+						className="wing leftwing"
+						src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-wing.png"
+						alt="wing"
+					/>
+					<img
+						className="body"
+						src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-body.png"
+						alt="bat"
+					/>
+					<img
+						className="wing rightwing"
+						src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-wing.png"
+						alt="wing"
+					/>
+				</div>
+				<div className="bat">
+					<img
+						className="wing leftwing"
+						src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-wing.png"
+						alt="wing"
+					/>
+					<img
+						className="body"
+						src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-body.png"
+						alt="bat"
+					/>
+					<img
+						className="wing rightwing"
+						src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-wing.png"
+						alt="wing"
+					/>
+				</div>
+				<div className="bat">
+					<img
+						className="wing leftwing"
+						src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-wing.png"
+						alt="wing"
+					/>
+					<img
+						className="body"
+						src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-body.png"
+						alt="bat"
+					/>
+					<img
+						className="wing rightwing"
+						src="https://www.blissfullemon.com/wp-content/uploads/2018/09/bat-wing.png"
+						alt="wing"
+					/>
+				</div>
+				<img
+					className="foregroundimg"
+					src="https://www.blissfullemon.com/wp-content/uploads/2018/09/HauntedHouseForeground.png"
+					alt="haunted house"
+				/>
+			</div>
+			<h1 className="errorcode">ERROR 403</h1>
+			<div className="errortext">This area is forbidden. Turn back now!</div>
+		</HTML>
+	);
 }
 
-export default ForbiddenScreen
+export default ForbiddenScreen;

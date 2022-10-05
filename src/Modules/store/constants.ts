@@ -9,5 +9,5 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const TOGGLE_SIDEBAR = '@GLOBAL/TOGGLE_SIDEBAR'
-export const HOVER_SIDEBAR = '@GLOBAL/HOVER_SIDEBAR'
+export const TOGGLE_SIDEBAR = '@GLOBAL/TOGGLE_SIDEBAR';
+export const HOVER_SIDEBAR = '@GLOBAL/HOVER_SIDEBAR';

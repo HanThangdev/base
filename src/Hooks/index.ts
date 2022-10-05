@@ -1,2 +1,2 @@
-export { default as useNavigate } from './useNavigate'
-export * from './injectStore'
+export { default as useNavigate } from './useNavigate';
+export * from './injectStore';

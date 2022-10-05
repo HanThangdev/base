@@ -1,324 +1,324 @@
 {
-  "abi": [
-    {
-      "type": "constructor",
-      "stateMutability": "nonpayable",
-      "inputs": [
-        {
-          "type": "address",
-          "name": "_stakePoolReceiveAddress",
-          "internalType": "address"
-        },
-        {
-          "type": "address",
-          "name": "_erc20Address",
-          "internalType": "address"
-        }
-      ]
-    },
-    {
-      "type": "event",
-      "name": "NotifyCalcRewardUsers",
-      "inputs": [
-        {
-          "type": "bool",
-          "name": "status",
-          "internalType": "bool",
-          "indexed": false
-        }
-      ],
-      "anonymous": false
-    },
-    {
-      "type": "event",
-      "name": "NotifyClaimReward",
-      "inputs": [
-        {
-          "type": "address",
-          "name": "claimer",
-          "internalType": "address",
-          "indexed": false
-        },
-        {
-          "type": "uint256",
-          "name": "amount",
-          "internalType": "uint256",
-          "indexed": false
-        },
-        {
-          "type": "address",
-          "name": "tokenAddress",
-          "internalType": "address",
-          "indexed": false
-        }
-      ],
-      "anonymous": false
-    },
-    {
-      "type": "event",
-      "name": "NotifyDeposit",
-      "inputs": [
-        {
-          "type": "address",
-          "name": "operator",
-          "internalType": "address",
-          "indexed": false
-        },
-        {
-          "type": "uint256",
-          "name": "amount",
-          "internalType": "uint256",
-          "indexed": false
-        }
-      ],
-      "anonymous": false
-    },
-    {
-      "type": "event",
-      "name": "NotifyWithdraw",
-      "inputs": [
-        {
-          "type": "address",
-          "name": "operator",
-          "internalType": "address",
-          "indexed": false
-        },
-        {
-          "type": "uint256",
-          "name": "amount",
-          "internalType": "uint256",
-          "indexed": false
-        }
-      ],
-      "anonymous": false
-    },
-    {
-      "type": "event",
-      "name": "OwnershipTransferred",
-      "inputs": [
-        {
-          "type": "address",
-          "name": "previousOwner",
-          "internalType": "address",
-          "indexed": true
-        },
-        {
-          "type": "address",
-          "name": "newOwner",
-          "internalType": "address",
-          "indexed": true
-        }
-      ],
-      "anonymous": false
-    },
-    {
-      "type": "function",
-      "stateMutability": "nonpayable",
-      "outputs": [],
-      "name": "addOperator",
-      "inputs": [
-        { "type": "address", "name": "operator", "internalType": "address" }
-      ]
-    },
-    {
-      "type": "function",
-      "stateMutability": "nonpayable",
-      "outputs": [],
-      "name": "addUserStaking",
-      "inputs": [
-        { "type": "address", "name": "_address", "internalType": "address" }
-      ]
-    },
-    {
-      "type": "function",
-      "stateMutability": "nonpayable",
-      "outputs": [],
-      "name": "calcRewardUsers",
-      "inputs": []
-    },
-    {
-      "type": "function",
-      "stateMutability": "nonpayable",
-      "outputs": [],
-      "name": "claimReward",
-      "inputs": [
-        { "type": "uint256", "name": "amount", "internalType": "uint256" }
-      ]
-    },
-    {
-      "type": "function",
-      "stateMutability": "nonpayable",
-      "outputs": [],
-      "name": "depositTokenERC20",
-      "inputs": [
-        { "type": "uint256", "name": "amount", "internalType": "uint256" }
-      ]
-    },
-    {
-      "type": "function",
-      "stateMutability": "view",
-      "outputs": [{ "type": "address", "name": "", "internalType": "address" }],
-      "name": "erc20Address",
-      "inputs": []
-    },
-    {
-      "type": "function",
-      "stateMutability": "view",
-      "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
-      "name": "getBalanceStakingPool",
-      "inputs": []
-    },
-    {
-      "type": "function",
-      "stateMutability": "pure",
-      "outputs": [{ "type": "bytes32", "name": "", "internalType": "bytes32" }],
-      "name": "getEthSignedMessageHash",
-      "inputs": [
-        { "type": "bytes32", "name": "_messageHash", "internalType": "bytes32" }
-      ]
-    },
-    {
-      "type": "function",
-      "stateMutability": "pure",
-      "outputs": [{ "type": "bytes32", "name": "", "internalType": "bytes32" }],
-      "name": "getMessageHash",
-      "inputs": [
-        { "type": "address", "name": "_to", "internalType": "address" },
-        { "type": "uint256", "name": "_amount", "internalType": "uint256" },
-        { "type": "uint256", "name": "_nonce", "internalType": "uint256" }
-      ]
-    },
-    {
-      "type": "function",
-      "stateMutability": "view",
-      "outputs": [
-        {
-          "type": "tuple",
-          "name": "",
-          "internalType": "struct IRewardUser.RewardUser",
-          "components": [
-            { "type": "uint256", "name": "balance", "internalType": "uint256" },
-            {
-              "type": "uint256",
-              "name": "timestamp",
-              "internalType": "uint256"
-            }
-          ]
-        }
-      ],
-      "name": "getRewardByUser",
-      "inputs": []
-    },
-    {
-      "type": "function",
-      "stateMutability": "view",
-      "outputs": [{ "type": "bool", "name": "", "internalType": "bool" }],
-      "name": "isUserStaking",
-      "inputs": [
-        { "type": "address", "name": "_address", "internalType": "address" }
-      ]
-    },
-    {
-      "type": "function",
-      "stateMutability": "view",
-      "outputs": [{ "type": "bool", "name": "", "internalType": "bool" }],
-      "name": "operators",
-      "inputs": [{ "type": "address", "name": "", "internalType": "address" }]
-    },
-    {
-      "type": "function",
-      "stateMutability": "view",
-      "outputs": [{ "type": "address", "name": "", "internalType": "address" }],
-      "name": "owner",
-      "inputs": []
-    },
-    {
-      "type": "function",
-      "stateMutability": "view",
-      "outputs": [{ "type": "address", "name": "", "internalType": "address" }],
-      "name": "receiveStakingPoolAddress",
-      "inputs": []
-    },
-    {
-      "type": "function",
-      "stateMutability": "pure",
-      "outputs": [{ "type": "address", "name": "", "internalType": "address" }],
-      "name": "recoverSigner",
-      "inputs": [
-        {
-          "type": "bytes32",
-          "name": "_ethSignedMessageHash",
-          "internalType": "bytes32"
-        },
-        { "type": "bytes", "name": "_signature", "internalType": "bytes" }
-      ]
-    },
-    {
-      "type": "function",
-      "stateMutability": "nonpayable",
-      "outputs": [],
-      "name": "removeOperator",
-      "inputs": [
-        { "type": "address", "name": "operator", "internalType": "address" }
-      ]
-    },
-    {
-      "type": "function",
-      "stateMutability": "nonpayable",
-      "outputs": [],
-      "name": "removeUserStaking",
-      "inputs": [
-        { "type": "address", "name": "_address", "internalType": "address" }
-      ]
-    },
-    {
-      "type": "function",
-      "stateMutability": "nonpayable",
-      "outputs": [],
-      "name": "renounceOwnership",
-      "inputs": []
-    },
-    {
-      "type": "function",
-      "stateMutability": "pure",
-      "outputs": [
-        { "type": "bytes32", "name": "r", "internalType": "bytes32" },
-        { "type": "bytes32", "name": "s", "internalType": "bytes32" },
-        { "type": "uint8", "name": "v", "internalType": "uint8" }
-      ],
-      "name": "splitSignature",
-      "inputs": [{ "type": "bytes", "name": "_sig", "internalType": "bytes" }]
-    },
-    {
-      "type": "function",
-      "stateMutability": "nonpayable",
-      "outputs": [],
-      "name": "transferOwnership",
-      "inputs": [
-        { "type": "address", "name": "newOwner", "internalType": "address" }
-      ]
-    },
-    {
-      "type": "function",
-      "stateMutability": "pure",
-      "outputs": [{ "type": "bool", "name": "", "internalType": "bool" }],
-      "name": "verifySignature",
-      "inputs": [
-        { "type": "address", "name": "_signer", "internalType": "address" },
-        { "type": "address", "name": "_to", "internalType": "address" },
-        { "type": "uint256", "name": "_amount", "internalType": "uint256" },
-        { "type": "uint256", "name": "_nonce", "internalType": "uint256" },
-        { "type": "bytes", "name": "_signature", "internalType": "bytes" }
-      ]
-    },
-    {
-      "type": "function",
-      "stateMutability": "nonpayable",
-      "outputs": [],
-      "name": "withdrawTokenERC20",
-      "inputs": [
-        { "type": "uint256", "name": "amount", "internalType": "uint256" }
-      ]
-    }
-  ]
+	"abi": [
+		{
+			"type": "constructor",
+			"stateMutability": "nonpayable",
+			"inputs": [
+				{
+					"type": "address",
+					"name": "_stakePoolReceiveAddress",
+					"internalType": "address"
+				},
+				{
+					"type": "address",
+					"name": "_erc20Address",
+					"internalType": "address"
+				}
+			]
+		},
+		{
+			"type": "event",
+			"name": "NotifyCalcRewardUsers",
+			"inputs": [
+				{
+					"type": "bool",
+					"name": "status",
+					"internalType": "bool",
+					"indexed": false
+				}
+			],
+			"anonymous": false
+		},
+		{
+			"type": "event",
+			"name": "NotifyClaimReward",
+			"inputs": [
+				{
+					"type": "address",
+					"name": "claimer",
+					"internalType": "address",
+					"indexed": false
+				},
+				{
+					"type": "uint256",
+					"name": "amount",
+					"internalType": "uint256",
+					"indexed": false
+				},
+				{
+					"type": "address",
+					"name": "tokenAddress",
+					"internalType": "address",
+					"indexed": false
+				}
+			],
+			"anonymous": false
+		},
+		{
+			"type": "event",
+			"name": "NotifyDeposit",
+			"inputs": [
+				{
+					"type": "address",
+					"name": "operator",
+					"internalType": "address",
+					"indexed": false
+				},
+				{
+					"type": "uint256",
+					"name": "amount",
+					"internalType": "uint256",
+					"indexed": false
+				}
+			],
+			"anonymous": false
+		},
+		{
+			"type": "event",
+			"name": "NotifyWithdraw",
+			"inputs": [
+				{
+					"type": "address",
+					"name": "operator",
+					"internalType": "address",
+					"indexed": false
+				},
+				{
+					"type": "uint256",
+					"name": "amount",
+					"internalType": "uint256",
+					"indexed": false
+				}
+			],
+			"anonymous": false
+		},
+		{
+			"type": "event",
+			"name": "OwnershipTransferred",
+			"inputs": [
+				{
+					"type": "address",
+					"name": "previousOwner",
+					"internalType": "address",
+					"indexed": true
+				},
+				{
+					"type": "address",
+					"name": "newOwner",
+					"internalType": "address",
+					"indexed": true
+				}
+			],
+			"anonymous": false
+		},
+		{
+			"type": "function",
+			"stateMutability": "nonpayable",
+			"outputs": [],
+			"name": "addOperator",
+			"inputs": [
+				{ "type": "address", "name": "operator", "internalType": "address" }
+			]
+		},
+		{
+			"type": "function",
+			"stateMutability": "nonpayable",
+			"outputs": [],
+			"name": "addUserStaking",
+			"inputs": [
+				{ "type": "address", "name": "_address", "internalType": "address" }
+			]
+		},
+		{
+			"type": "function",
+			"stateMutability": "nonpayable",
+			"outputs": [],
+			"name": "calcRewardUsers",
+			"inputs": []
+		},
+		{
+			"type": "function",
+			"stateMutability": "nonpayable",
+			"outputs": [],
+			"name": "claimReward",
+			"inputs": [
+				{ "type": "uint256", "name": "amount", "internalType": "uint256" }
+			]
+		},
+		{
+			"type": "function",
+			"stateMutability": "nonpayable",
+			"outputs": [],
+			"name": "depositTokenERC20",
+			"inputs": [
+				{ "type": "uint256", "name": "amount", "internalType": "uint256" }
+			]
+		},
+		{
+			"type": "function",
+			"stateMutability": "view",
+			"outputs": [{ "type": "address", "name": "", "internalType": "address" }],
+			"name": "erc20Address",
+			"inputs": []
+		},
+		{
+			"type": "function",
+			"stateMutability": "view",
+			"outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
+			"name": "getBalanceStakingPool",
+			"inputs": []
+		},
+		{
+			"type": "function",
+			"stateMutability": "pure",
+			"outputs": [{ "type": "bytes32", "name": "", "internalType": "bytes32" }],
+			"name": "getEthSignedMessageHash",
+			"inputs": [
+				{ "type": "bytes32", "name": "_messageHash", "internalType": "bytes32" }
+			]
+		},
+		{
+			"type": "function",
+			"stateMutability": "pure",
+			"outputs": [{ "type": "bytes32", "name": "", "internalType": "bytes32" }],
+			"name": "getMessageHash",
+			"inputs": [
+				{ "type": "address", "name": "_to", "internalType": "address" },
+				{ "type": "uint256", "name": "_amount", "internalType": "uint256" },
+				{ "type": "uint256", "name": "_nonce", "internalType": "uint256" }
+			]
+		},
+		{
+			"type": "function",
+			"stateMutability": "view",
+			"outputs": [
+				{
+					"type": "tuple",
+					"name": "",
+					"internalType": "struct IRewardUser.RewardUser",
+					"components": [
+						{ "type": "uint256", "name": "balance", "internalType": "uint256" },
+						{
+							"type": "uint256",
+							"name": "timestamp",
+							"internalType": "uint256"
+						}
+					]
+				}
+			],
+			"name": "getRewardByUser",
+			"inputs": []
+		},
+		{
+			"type": "function",
+			"stateMutability": "view",
+			"outputs": [{ "type": "bool", "name": "", "internalType": "bool" }],
+			"name": "isUserStaking",
+			"inputs": [
+				{ "type": "address", "name": "_address", "internalType": "address" }
+			]
+		},
+		{
+			"type": "function",
+			"stateMutability": "view",
+			"outputs": [{ "type": "bool", "name": "", "internalType": "bool" }],
+			"name": "operators",
+			"inputs": [{ "type": "address", "name": "", "internalType": "address" }]
+		},
+		{
+			"type": "function",
+			"stateMutability": "view",
+			"outputs": [{ "type": "address", "name": "", "internalType": "address" }],
+			"name": "owner",
+			"inputs": []
+		},
+		{
+			"type": "function",
+			"stateMutability": "view",
+			"outputs": [{ "type": "address", "name": "", "internalType": "address" }],
+			"name": "receiveStakingPoolAddress",
+			"inputs": []
+		},
+		{
+			"type": "function",
+			"stateMutability": "pure",
+			"outputs": [{ "type": "address", "name": "", "internalType": "address" }],
+			"name": "recoverSigner",
+			"inputs": [
+				{
+					"type": "bytes32",
+					"name": "_ethSignedMessageHash",
+					"internalType": "bytes32"
+				},
+				{ "type": "bytes", "name": "_signature", "internalType": "bytes" }
+			]
+		},
+		{
+			"type": "function",
+			"stateMutability": "nonpayable",
+			"outputs": [],
+			"name": "removeOperator",
+			"inputs": [
+				{ "type": "address", "name": "operator", "internalType": "address" }
+			]
+		},
+		{
+			"type": "function",
+			"stateMutability": "nonpayable",
+			"outputs": [],
+			"name": "removeUserStaking",
+			"inputs": [
+				{ "type": "address", "name": "_address", "internalType": "address" }
+			]
+		},
+		{
+			"type": "function",
+			"stateMutability": "nonpayable",
+			"outputs": [],
+			"name": "renounceOwnership",
+			"inputs": []
+		},
+		{
+			"type": "function",
+			"stateMutability": "pure",
+			"outputs": [
+				{ "type": "bytes32", "name": "r", "internalType": "bytes32" },
+				{ "type": "bytes32", "name": "s", "internalType": "bytes32" },
+				{ "type": "uint8", "name": "v", "internalType": "uint8" }
+			],
+			"name": "splitSignature",
+			"inputs": [{ "type": "bytes", "name": "_sig", "internalType": "bytes" }]
+		},
+		{
+			"type": "function",
+			"stateMutability": "nonpayable",
+			"outputs": [],
+			"name": "transferOwnership",
+			"inputs": [
+				{ "type": "address", "name": "newOwner", "internalType": "address" }
+			]
+		},
+		{
+			"type": "function",
+			"stateMutability": "pure",
+			"outputs": [{ "type": "bool", "name": "", "internalType": "bool" }],
+			"name": "verifySignature",
+			"inputs": [
+				{ "type": "address", "name": "_signer", "internalType": "address" },
+				{ "type": "address", "name": "_to", "internalType": "address" },
+				{ "type": "uint256", "name": "_amount", "internalType": "uint256" },
+				{ "type": "uint256", "name": "_nonce", "internalType": "uint256" },
+				{ "type": "bytes", "name": "_signature", "internalType": "bytes" }
+			]
+		},
+		{
+			"type": "function",
+			"stateMutability": "nonpayable",
+			"outputs": [],
+			"name": "withdrawTokenERC20",
+			"inputs": [
+				{ "type": "uint256", "name": "amount", "internalType": "uint256" }
+			]
+		}
+	]
 }

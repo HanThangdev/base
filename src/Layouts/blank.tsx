@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-const Wrapper = styled.div`
-`
+const Wrapper = styled.div``;
 
-const BlankLayout = ({ children }: any) => (<Wrapper>{children}</Wrapper>)
+function BlankLayout({ children }: any) {
+	return <Wrapper>{children}</Wrapper>;
+}
 
-export default BlankLayout
+export default BlankLayout;

@@ -1,2 +1,2 @@
-export * from './store'
-export { default as http } from './http'
+export * from './store';
+export { default as http } from './http';

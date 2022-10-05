@@ -1,21 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useAuth } from '@hooks'
-import { Loading } from '@components/common'
-import Approutes from './Routes'
-import { useEffect } from 'react'
+import { useAuth } from '@hooks';
+import { Loading } from '@components/common';
+import { useEffect } from 'react';
+import Approutes from './Routes';
 
 function App() {
-  const { isLoading, loadProfileAction } = useAuth()
+	const { isLoading, loadProfileAction } = useAuth();
 
-  useEffect(() => {
-    loadProfileAction()
-  }, [])
+	useEffect(() => {
+		loadProfileAction();
+	}, []);
 
-  return isLoading ? (
-    <Loading />
-  ) : (
-    <Approutes />
-  )
+	return isLoading ? <Loading /> : <Approutes />;
 }
 
-export default App
+export default App;
