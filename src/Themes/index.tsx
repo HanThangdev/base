@@ -74,7 +74,7 @@ export const ThemedGlobalStyle = createGlobalStyle`
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", 
     "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", 
     "Segoe UI Symbol", "Noto Color Emoji";
-    background-color: ${({ t }: any) => t.white};
+    background-color: ${({ theme: t }: any) => t.white};
     min-height: 100vh;
     height: 100%;
     margin: 0;
