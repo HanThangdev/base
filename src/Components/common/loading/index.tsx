@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Spin } from 'antd';
 
@@ -13,6 +12,7 @@ function Loading() {
 	return (
 		<Wrapper>
 			<Spin size="large" />
+			sd
 		</Wrapper>
 	);
 }
