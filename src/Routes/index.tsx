@@ -1,26 +1,26 @@
 import { Suspense } from 'react'
 import { Switch } from 'react-router-dom'
 
-import { PrivateRoute } from '@components'
+import { CustomRoute } from '@components'
 import { Loading } from '@components/common'
 
 import AuthRoutes from '@modules/auth/routes'
 import CourseRoutes from '@modules/course/routes'
-import { ROUTES } from './constant'
+import { ROUTES } from './navigation'
 
 export default function AppRoutes() {
   return (
     <Suspense fallback={<Loading />}>
       <Switch>
         {ROUTES.map((routeConfig, index) => (
-          <PrivateRoute
+          <CustomRoute
             key={index}
             {...routeConfig}
           />
         ))}
       </Switch>
-      <CourseRoutes />
       <AuthRoutes />
+      <CourseRoutes />
     </Suspense>
   )
 }

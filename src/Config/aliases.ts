@@ -10,8 +10,8 @@ export const alias = (prefix = `src`) => ({
     '@layouts': `${prefix}/Layouts`,
     '@modules': `${prefix}/Modules`,
     '@routes': `${prefix}/Routes`,
-    '@stores': `${prefix}/Stores`,
     '@themes': `${prefix}/Themes`,
     '@type': `${prefix}/Type`,
     '@utils': `${prefix}/Utils`,
+    '@web3': `${prefix}/Web3`,
 });

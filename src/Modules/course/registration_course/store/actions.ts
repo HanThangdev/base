@@ -1,4 +1,4 @@
-import { REQUEST } from '@stores'
+import { REQUEST } from '@utils/redux'
 import { Payload } from '@type/Store'
 import {
   LOAD_COURSES,

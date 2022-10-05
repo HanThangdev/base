@@ -51,6 +51,8 @@
       "@type/*": ["src/Types/*"],
       "@utils": ["src/Utils"],
       "@utils/*": ["src/Utils/*"],
+      "@web3": ["src/Web3"],
+      "@web3/*": ["src/Web3/*"],
     }
   },
   "include": [

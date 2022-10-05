@@ -11,7 +11,7 @@ import {
   FormPassword,
   FormLabel
 } from '@components'
-import { useUpdateCourse } from '@hooks/course'
+import { useUpdateCourse } from '@hooks'
 import { Wrapper, Divider, Right, Row } from './styled'
 import EditCourseScheme from './scheme'
 

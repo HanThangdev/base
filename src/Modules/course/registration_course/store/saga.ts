@@ -5,7 +5,7 @@ import { push } from 'connected-react-router'
 import { notification } from 'antd'
 import i18next from '@i18n'
 
-import { REQUEST, SUCCESS, FAILURE } from '@stores'
+import { REQUEST, SUCCESS, FAILURE } from '@utils/redux'
 import {
   getCourses,
   createCourse,
@@ -14,7 +14,7 @@ import {
   deleteCourse
 } from '@apis'
 
-import { RoutesName } from '@modules/course/routes'
+import NAVIGATION from '@routes/navigation'
 import {
   LOAD_COURSES,
   LOAD_COURSE,
@@ -64,7 +64,7 @@ export function* createCourseAction({ payload }: Action) {
       description: i18next.t('common:message.create_success') as String,
       duration: 2
     })
-    yield put(push(RoutesName.REGISTRATION_COURSE))
+    yield put(push(NAVIGATION.REGISTRATION_COURSE))
   } catch (error) {
     yield put({
       type: FAILURE(CREATE_COURSE),
@@ -90,7 +90,7 @@ export function* editCourseAction({ payload }: Action) {
       description: i18next.t('common:message.update_success') as String,
       duration: 2
     })
-    yield put(push(RoutesName.REGISTRATION_COURSE))
+    yield put(push(NAVIGATION.REGISTRATION_COURSE))
   } catch (error) {
     yield put({
       type: FAILURE(EDIT_COURSE),

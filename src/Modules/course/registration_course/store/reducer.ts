@@ -1,6 +1,6 @@
 import { LOCATION_CHANGE } from 'connected-react-router'
 
-import { createReducer, updateObject, REQUEST, SUCCESS, FAILURE } from '@stores'
+import { createReducer, updateObject, REQUEST, SUCCESS, FAILURE } from '@utils/redux'
 import {
   LOAD_COURSES,
   CREATE_COURSE,

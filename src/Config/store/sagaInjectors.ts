@@ -4,7 +4,7 @@ import {
 } from 'lodash'
 
 import checkStore from './checkStore'
-import { DAEMON, ONCE_TILL_UNMOUNT, RESTART_ON_REMOUNT } from './constants'
+import { DAEMON, ONCE_TILL_UNMOUNT, RESTART_ON_REMOUNT } from '@constants/store'
 
 const allowedModes = [RESTART_ON_REMOUNT, DAEMON, ONCE_TILL_UNMOUNT]
 

@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-import React from 'react'
 import styled from 'styled-components'
 import { Header, Sidebar, Footer } from '@components'
 import { useRoot } from '@hooks'

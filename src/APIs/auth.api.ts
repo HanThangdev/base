@@ -1,13 +1,13 @@
-import AxiosClient from './api'
-import END_POINT from './constants'
+import { http } from '@config'
+import { END_POINT } from '@constants'
 
 function login(data: any) {
-  return AxiosClient.post(END_POINT.LOGIN, data)
+  return http.post(END_POINT.LOGIN, data)
     .then((res) => res)
 }
 
 function getProfile({ userId }: any) {
-  return AxiosClient.get(`${END_POINT.PROFILE_USER}?userId=${userId}`)
+  return http.get(`${END_POINT.PROFILE_USER}?userId=${userId}`)
     .then((res) => res)
 }
 

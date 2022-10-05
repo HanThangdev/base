@@ -26,7 +26,7 @@ import {
   ICON_SETTING_MENU,
   ICON_GROUP_MENU,
 } from '@assets'
-import { USER_ROLE } from '@constants/auth'
+import { USER_ROLE } from '@modules/auth/constant'
 
 const RoutesName = {
   HOME: '/',

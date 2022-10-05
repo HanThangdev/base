@@ -7,7 +7,7 @@
  * @param  {state} login state
  * @param  {action} login action
  */
-import { createReducer, updateObject } from '@stores'
+import { createReducer, updateObject } from '@utils/redux'
 import { GlobalState } from '@type/Store/global'
 import { TOGGLE_SIDEBAR, HOVER_SIDEBAR } from './constants'
 

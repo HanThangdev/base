@@ -13,7 +13,7 @@ import {
   editCourse,
   deleteCourses
 } from '@modules/course/registration_course/store/actions'
-import { useInjectSaga, useInjectReducer } from '@stores'
+import { useInjectSaga, useInjectReducer } from '@config/store'
 
 export const useRegistrationCourses = () => {
   useInjectSaga({ key: 'registrationCourses', saga })

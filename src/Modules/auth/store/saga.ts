@@ -1,9 +1,9 @@
 import { put, takeLatest } from 'redux-saga/effects'
 
-import { REQUEST, SUCCESS, FAILURE } from '@stores'
+import { REQUEST, SUCCESS, FAILURE } from '@utils/redux'
 import { login } from '@apis'
 import { LOAD_PROFILE, LOGIN } from './constants'
-import { getLocalStorage, setLocalStorage, STORAGE } from '@utils'
+import { getLocalStorage, setLocalStorage, STORAGE } from 'src/Utils'
 import { Action } from '@type/Store'
 
 export function* loginSaga({ payload }: Action) {

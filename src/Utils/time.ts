@@ -19,6 +19,18 @@ const combineDateAndTimeV2 = (date: any, time: any) => {
   return moment(date).startOf('day')
 }
 
+export const convertNumberToTime = (time: any) => {
+  if (!time) return '00:00:00'
+  const h = Math.floor(time / 3600)
+  const m = Math.floor(time / 60)
+  const s = Math.round(time % 60)
+  const hours = h >= 10 ? h : `0${h}`
+  const seconds = s >= 10 ? s : `0${s}`
+  const minutes = m >= 10 ? m : `0${m}`
+
+  return `${hours}:${minutes}:${seconds}`
+}
+
 export {
   formatDate,
   combineDateAndTime,

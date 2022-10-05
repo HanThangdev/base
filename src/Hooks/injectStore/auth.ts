@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import saga from '@modules/auth/store/saga'
 import reducer from '@modules/auth/store/reducer'
 import { login, loadProfile } from '@modules/auth/store/actions'
-import { useInjectSaga, useInjectReducer } from '@stores'
-import { USER_ROLE } from '@constants/auth'
+import { useInjectSaga, useInjectReducer } from '@config/store'
+import { USER_ROLE } from '@modules/auth/constant'
 import { makeSelectAuthentication } from '@modules/auth/store/selectors'
 
 export const useAuth = () => {

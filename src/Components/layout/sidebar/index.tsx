@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { useNavigate, useAuth, useRoot } from '@hooks'
 import { Dropdown, Menu } from 'antd'
 import {
   HomeOutlined
@@ -9,15 +10,14 @@ import {
 
 import { removeLocalStorage, STORAGE } from '@utils'
 import { USER_URL, SIGNAL_TYPE } from '@constants'
-import { USER_ROLE } from '@constants/auth'
-import { useAuth, useRoot } from '@hooks'
+import { USER_ROLE } from '@modules/auth/constant'
 import { Wrapper, Ul, Li } from './styled'
 import { MenuList } from './constant'
 
 const SiderBar = () => {
   const { profile } = useAuth()
   const role = USER_ROLE.ADMIN
-  const history = useHistory()
+  const navigate = useNavigate()
   const location = useLocation()
   const { t } = useTranslation(['menu', 'courseResult'])
   const [itemActive, setItemActive] = useState(['home'])
@@ -114,10 +114,10 @@ const SiderBar = () => {
                   onClick={() => {
                     setItemActive([key])
                     if (pathName === '/') {
-                      history.push('/')
+                      navigate('/')
                     }
                     if (pathName && !location.pathname.includes(pathName)) {
-                      history.push(pathName)
+                      navigate(pathName)
                     }
                     if (children) {
                       const itemIndex = itemToggle.indexOf(key)
@@ -160,7 +160,7 @@ const SiderBar = () => {
                           e.stopPropagation()
                           if (childItem.pathName && !location.pathname.includes(childItem.pathName)) {
                             setItemActive([key, childItem.key])
-                            history.push(childItem.pathName)
+                            navigate(childItem.pathName)
                           }
                         }}
                       >

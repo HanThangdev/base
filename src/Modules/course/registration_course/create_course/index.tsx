@@ -10,9 +10,9 @@ import {
   FormRadio,
   FormLabel
 } from '@components'
-import { ROLES_OPTION } from '@constants/course'
-import { useCreateCourse } from '@hooks/course'
-import { Wrapper, Divider, Right } from '@themes/facit'
+import { ROLES_OPTION } from '@modules/course/constant'
+import { useCreateCourse } from '@hooks'
+import { Wrapper, Divider, Right } from '@themes/goemon'
 import { Row } from './styled'
 import CreateCourseScheme from './scheme'
 

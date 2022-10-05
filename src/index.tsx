@@ -1,17 +1,20 @@
 import React from 'react'
 import * as ReactDOMClient from 'react-dom/client';
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'connected-react-router/immutable'
+import { ConnectedRouter } from 'connected-react-router'
 import styled from 'styled-components'
 
 import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
-import configureStore from './Stores/configureStore'
-import { history } from './Stores/reducers'
+import { configureStore } from '@config/store'
+import { history } from '@config/store'
 import ThemeProvider, { ThemedGlobalStyle } from './Themes'
 import './types.d.ts'
 // import '@config/firebase'
+// import Web3Provider from '@utils/web3'
+// const { web3 } = Web3Provider.getWeb3Instance()
+// web3.currentProvider.enable()
 
 const VerticalBox = styled.div`
   display: flex;

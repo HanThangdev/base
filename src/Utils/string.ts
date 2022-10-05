@@ -44,3 +44,9 @@ export function camel2Text(key: any) {
   const finalResult = result.charAt(0).toUpperCase() + result.slice(1)
   return finalResult
 }
+
+export const decodePath = (path: any) => {
+  const arr = path.split('/');
+  arr.shift();
+  return arr;
+};

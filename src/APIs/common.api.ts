@@ -1,15 +1,13 @@
-import { BASE_API_URL } from '@constants'
-import AxiosClient from './api'
-
-import ENDPOINT from './constants'
+import { BASE_API_URL, END_POINT } from '@constants'
+import { http } from '@config'
 
 function checkExistFile({ folderId = 0, params }: any) {
-  return AxiosClient.get(ENDPOINT.UPLOAD_FILE.CHECK_EXIST_FILE, folderId, { params })
+  return http.get(END_POINT.UPLOAD_FILE.CHECK_EXIST_FILE, folderId, { params })
     .then(({ data }) => data)
 }
 
 function getS3PresinedUrl({ fileList }: any) {
-  return AxiosClient.post(`${BASE_API_URL}${ENDPOINT.PRESIGNED}`, fileList)
+  return http.post(`${BASE_API_URL}${END_POINT.PRESIGNED}`, fileList)
     .then(({ data }) => data)
 }
 

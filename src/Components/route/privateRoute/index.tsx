@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 
 import HomeLayout from '@layouts/home'
-import { USER_ROLE } from '@constants/auth'
+import { USER_ROLE } from '@modules/auth/constant'
 import { useAuth } from '@hooks'
 import { isNil } from 'lodash'
 

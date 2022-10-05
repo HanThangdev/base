@@ -9,7 +9,7 @@ import { EN_ICON, VI_ICON, JP_ICON, E_LEARNING_LOGO } from '@assets'
 import { removeLocalStorage, STORAGE } from '@utils'
 import { useAuth } from '@hooks'
 import { USER_URL, SIGNAL_TYPE } from '@constants'
-import { USER_ROLE } from '@constants/auth'
+import { USER_ROLE } from '@modules/auth/constant'
 
 const Wrapper = styled.header`
   margin: .7rem 1rem;

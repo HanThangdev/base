@@ -15,7 +15,7 @@ export const history = createBrowserHistory()
 
 export default function createReducer(injectedReducers = {}) {
   const rootReducer = combineReducers({
-    router: connectRouter(history),
+    router: connectRouter(history) || {},
     global: globalReducer,
     ...injectedReducers
   })

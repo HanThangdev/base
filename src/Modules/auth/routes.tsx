@@ -6,13 +6,13 @@ import LoginScreen from '@modules/auth/login'
 
 import AuthLayout from '@layouts/auth'
 
-export const RoutesName = {
+export const navigator = {
   LOGIN: '/login'
 }
 
 export const ROUTES = [
   {
-    path: RoutesName.LOGIN,
+    path: navigator.LOGIN,
     component: LoginScreen,
     layout: AuthLayout,
   },

@@ -1,9 +1,9 @@
 import { EditOutlined } from '@ant-design/icons'
 import { Tooltip, Button } from 'antd'
 
-import { USER_ROLE } from '@constants/auth'
-import { Action } from '@themes/facit'
-import { RoutesName } from '../routes'
+import { USER_ROLE } from '@modules/auth/constant'
+import { Action } from '@themes/goemon'
+import NAVIGATION from '@routes/navigation'
 
 const column = ({ t, history, pagination }: any) => [
   {
@@ -44,7 +44,7 @@ const column = ({ t, history, pagination }: any) => [
           <Button
             className="action-button"
             icon={<EditOutlined />}
-            onClick={() => history.push(`${RoutesName.EDIT_COURSE}/${record.id}`)}
+            onClick={() => history.push(`${NAVIGATION.EDIT_COURSE}/${record.id}`)}
           />
         </Tooltip>
       </Action>

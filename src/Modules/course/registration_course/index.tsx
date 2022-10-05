@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useHistory } from 'react-router-dom'
+import useNavigate from '@hooks/useNavigate'
 
 import { Table } from '@components'
 import { useAuth, useRegistrationCourses } from '@hooks'
-import { Wrapper } from '@themes/facit'
+import { Wrapper } from '@themes/goemon'
 import tableColumns from './column'
 import ConfirmDeleteModal from './components/ConfirmDeleteModal'
-import { RoutesName } from '../routes'
+import NAVIGATION from '@routes/navigation'
 
 const RegistrationCourseScreen = () => {
   const { t } = useTranslation(['course'])
-  const history = useHistory()
+  const navigate = useNavigate()
   const {
     courses,
     pagination,
@@ -68,8 +68,8 @@ const RegistrationCourseScreen = () => {
   }
 
   const columns = useMemo(
-    () => tableColumns({ t, history, pagination }).filter((col) => col.rules.includes(role)),
-    [t, history, pagination, role]
+    () => tableColumns({ t, navigate, pagination }).filter((col) => col.rules.includes(role)),
+    [t, navigate, pagination, role]
   )
 
   useEffect(() => {
@@ -94,7 +94,7 @@ const RegistrationCourseScreen = () => {
         selected={rowSelected.selectedRowKeys.length}
         createText={t('registration_course.management.create_button')}
         onChange={handleTableChange}
-        onCreate={() => history.push(RoutesName.CREATE_COURSE)}
+        onCreate={() => navigate(NAVIGATION.CREATE_COURSE)}
         onDelete={() => setVisibleConfirmDelete(true)}
         loading={isLoading}
       />

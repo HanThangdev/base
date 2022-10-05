@@ -10,7 +10,7 @@ import {
   FormLabel
 } from '@components'
 import { useAuth } from '@hooks'
-import { Wrapper, Right } from '@themes/facit'
+import { Wrapper, Right } from '@themes/goemon'
 import LoginScheme from './scheme'
 import { Row } from './styled'
 import LoginForm from '@type/Form/LoginForm'

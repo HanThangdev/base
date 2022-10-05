@@ -1,4 +1,4 @@
-import { createReducer, updateObject, REQUEST, SUCCESS, FAILURE } from '@stores'
+import { createReducer, updateObject, REQUEST, SUCCESS, FAILURE } from '@utils/redux'
 import { Action } from '@type/Store'
 import { AuthState } from '@type/Store/auth'
 import { LOAD_PROFILE, LOGIN } from './constants'
