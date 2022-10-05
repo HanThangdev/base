@@ -12,7 +12,6 @@ function Loading() {
 	return (
 		<Wrapper>
 			<Spin size="large" />
-			sd
 		</Wrapper>
 	);
 }
