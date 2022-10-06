@@ -87,6 +87,13 @@ Goemon
   - `Types/` Declare types for typescript objects used in code
   - `Utils/` Declare helper functions
   - `Web3/` Declare helper functions to interact with web3
+  - `App.tsx` File app root project application react
+  - `index.tsx` Application entrypoint file
+  - `react-app-env.d.ts` This file supports typescript in create-react-app, not deleted
+  - `reportWebVitals.ts` This file uses web-vital tools to report performance status, code quality, security, errors, bundle size of the project, etc.
+  - `service-worker.ts` This file along with `serviceWorkerRegistration.ts` declares, registers background features using serviceworker and library `workbox`, supports background tasks like FCM, interacts with extensions, caches , offline, etc.
+  - `setupTests.ts` This file is for declaring, importing, and setting up unit tests
+  - `types.d.ts` This file is used to declare types for some modules, objects of 3rd party libraries in the application that are not supported to declare on the npm registry.
 - `.commitlintrc.js` Config file used for husky define rules for commit message
 - `editorconfig` This file creates consistency for the code when using . Create synchronization when code on different ide, editor (avoid unnecessary changes on git)
 - `.env.example` The sample file declares environment variables for the devops to rely on to deploy. Change the filename to `.env` or `.env.local` and update the values ​​to code, same for staging, development, production, etc environments. Note that the information in this is confidential (for reactjs, it is not 100% secure, so don't save the most important information here, save it on the server side.
