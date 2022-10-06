@@ -11,3 +11,7 @@ export const convertTimeToNumber = (time = '00:00:00') => {
 	const [hour, minutes, seconds] = arrTime;
 	return hour * 3600 + minutes * 60 + seconds;
 };
+
+export function sum(a: number, b: number) {
+	return a + b;
+}

@@ -51,5 +51,5 @@
 			"@web3/*": ["src/Web3/*"]
 		}
 	},
-	"include": ["src", "craco.config.ts"]
+	"include": ["src", "craco.config.ts", "jest.config.js"]
 }

@@ -1,13 +1,14 @@
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import { PublicRoute } from '@components';
 
 import LoginScreen from '@modules/auth/login';
+import NotFoundScreen from '@modules/other/404';
 
 import AuthLayout from '@layouts/auth';
 
 export const navigator = {
-	LOGIN: '/login',
+	LOGIN: '/auth',
 };
 
 export const ROUTES = [
@@ -15,6 +16,7 @@ export const ROUTES = [
 		path: navigator.LOGIN,
 		component: LoginScreen,
 		layout: AuthLayout,
+		exact: true,
 	},
 ];
 
@@ -24,6 +26,7 @@ export default function AuthRoutes() {
 			{ROUTES.map((routeConfig) => (
 				<PublicRoute key={routeConfig.path} {...routeConfig} />
 			))}
+			<Route path="*" component={NotFoundScreen} />
 		</Switch>
 	);
 }

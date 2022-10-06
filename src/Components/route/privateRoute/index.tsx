@@ -33,7 +33,7 @@ function PrivateRoute({
 						<Component {...props} />
 					</Layout>
 				) : (
-					<Redirect to={{ pathname: '/login', state: {} }} />
+					<Redirect to={{ pathname: '/auth', state: {} }} />
 				)
 			}
 		/>

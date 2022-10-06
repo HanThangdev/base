@@ -1,12 +1,15 @@
-import { Suspense } from 'react';
-import { Switch } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 import { CustomRoute } from '@components';
 import { Loading } from '@components/common';
 
-import AuthRoutes from '@modules/auth/routes';
-import CourseRoutes from '@modules/course/routes';
+import NotFoundScreen from '@modules/other/404';
+
 import { ROUTES } from './navigation';
+
+const AuthRoutes = lazy(() => import('@modules/auth/routes'));
+const CourseRoutes = lazy(() => import('@modules/course/routes'));
 
 export default function AppRoutes() {
 	return (
@@ -15,9 +18,10 @@ export default function AppRoutes() {
 				{ROUTES.map((routeConfig) => (
 					<CustomRoute key={routeConfig.path} {...routeConfig} />
 				))}
+				<Route path="/auth" component={AuthRoutes} />
+				<Route path="/course" component={CourseRoutes} />
+				<Route path="*" component={NotFoundScreen} />
 			</Switch>
-			<AuthRoutes />
-			<CourseRoutes />
 		</Suspense>
 	);
 }

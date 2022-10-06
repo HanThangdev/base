@@ -1,16 +1,17 @@
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import { PrivateRoute } from '@components';
 
 import { USER_ROLE } from '@modules/auth/constant';
+import NotFoundScreen from '@modules/other/404';
 import RegistrationCourseScreen from './registration_course';
 import CreateCourseScreen from './registration_course/create_course';
 import EditCourseScreen from './registration_course/edit_course';
 
 export const navigator = {
-	REGISTRATION_COURSE: '/course-management/lesson',
-	CREATE_COURSE: '/course-management/lesson/create',
-	EDIT_COURSE: '/course-management/lesson/edit',
+	REGISTRATION_COURSE: '/course',
+	CREATE_COURSE: '/course/create',
+	EDIT_COURSE: '/course/edit',
 };
 
 export const ROUTES = [
@@ -22,6 +23,7 @@ export const ROUTES = [
 			USER_ROLE.NISSHOKEN_ADMIN,
 			USER_ROLE.COMPANY_ADMIN,
 		],
+		exact: true,
 	},
 	{
 		path: navigator.CREATE_COURSE,
@@ -49,6 +51,7 @@ export default function CourseRoutes() {
 			{ROUTES.map((routeConfig) => (
 				<PrivateRoute key={routeConfig.path} {...routeConfig} />
 			))}
+			<Route path="*" component={NotFoundScreen} />
 		</Switch>
 	);
 }
