@@ -4,6 +4,9 @@ import {
 	css,
 } from 'styled-components';
 import 'antd/dist/antd.min.css';
+import '@assets/template/css/nucleo-icons.css';
+import '@assets/template/css/nucleo-svg.css';
+import '@assets/template/css/soft-design-system-pro.css';
 
 import colors from './colors';
 import { fontSize, fontWeight } from './fonts';
@@ -64,24 +67,5 @@ export default function ThemeProvider({ children }: any) {
 }
 
 export const ThemedGlobalStyle = createGlobalStyle`
-  html, body {
-    width: 100%;
-    height: 100%;
-  }
-
-  body {
-    font-family: 'Poppins', system-ui, -apple-system, 
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", 
-    "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", 
-    "Segoe UI Symbol", "Noto Color Emoji";
-    background-color: ${({ theme: t }: any) => t.white};
-    min-height: 100vh;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    #root {
-      width: 100%;
-      height: 100%;
-    }
-  }
+  
 `;

@@ -1,7 +1,7 @@
 import { USER_ROLE } from '@modules/auth/constant';
 import HomeLayout from '@layouts/home';
 
-import HomeScreen from '@modules/course/home';
+import HomeScreen from '@modules/home';
 import { navigator as courseNavigator } from '@modules/course/routes';
 import { navigator as authNavigator } from '@modules/auth/routes';
 
