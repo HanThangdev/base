@@ -1,7 +1,7 @@
 import { put, takeLatest, select } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 import { notification } from 'antd';
-import i18next from '@i18n';
+import { i18next } from '@config';
 
 import { REQUEST, SUCCESS, FAILURE } from '@utils/redux';
 import {

@@ -1,6 +1,6 @@
 import { useMemo, useCallback } from 'react';
 import styled from 'styled-components';
-import i18next from '@i18n';
+import { i18next } from '@config';
 import { Dropdown, Menu } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { HomeOutlined } from '@ant-design/icons';
