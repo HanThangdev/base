@@ -1,246 +1,109 @@
-import { useMemo, useCallback } from 'react';
-import styled from 'styled-components';
-import { i18next } from '@config';
-import { Dropdown, Menu } from 'antd';
-import { useTranslation } from 'react-i18next';
-import { HomeOutlined } from '@ant-design/icons';
-
-import { EN_ICON, VI_ICON, JP_ICON, E_LEARNING_LOGO } from '@assets';
-import { removeLocalStorage, STORAGE } from '@utils';
-import { useAuth } from '@hooks';
-import { USER_URL, SIGNAL_TYPE } from '@constants';
-import { USER_ROLE } from '@modules/auth/constant';
-
-const Wrapper = styled.header`
-	margin: 0.7rem 1rem;
-	padding: 0 0.75rem;
-	position: sticky;
-	z-index: 999;
-	top: 0;
-	display: flex;
-	height: 4rem;
-	align-items: center;
-	border-bottom: 0 solid #f8f9fa;
-	border-radius: 1rem;
-	box-shadow: 0 1.6rem 3rem rgb(0 0 0 / 10%);
-	background-color: ${({ theme }) => theme.bg_light_transparent};
-	backdrop-filter: blur(0.5rem);
-	will-change: backdrop-filter;
-
-	.container {
-		padding: 0 0.75rem;
-		width: 100%;
-		.row {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-			.header-left {
-				flex: 1 0;
-				.search {
-					display: flex;
-					align-items: center;
-					label.cursor-pointer {
-						cursor: pointer;
-						svg.svg-icon--material {
-							font-size: 1.5rem;
-							fill: #6c5ed3;
-						}
-					}
-					input.search-input {
-						border: none;
-						background-color: transparent;
-						width: 100%;
-						font-weight: 500;
-						padding: 0.3rem 0.75rem;
-
-						&:focus-visible {
-							outline: none;
-						}
-					}
-				}
-				.logo {
-					width: 150px;
-				}
-			}
-			.header-right {
-				flex: 0 0 auto;
-				width: auto;
-				.row {
-					flex-wrap: wrap;
-
-					.col-auto {
-						margin: 0.5rem;
-						button {
-							cursor: pointer;
-						}
-					}
-
-					.btn-action {
-						padding: 0.625rem;
-						width: calc(28px + 1.25rem);
-						height: calc(28px + 1.25rem);
-						background-color: transparent;
-						border: none;
-						border-radius: 1.25rem;
-						&:hover,
-						&:active {
-							background-color: #e7eef8;
-							border-color: #e7eef8;
-						}
-					}
-
-					.user-info {
-						cursor: pointer;
-						display: flex;
-						align-items: center;
-
-						.text-end {
-							text-align: end;
-							margin-right: 0.7rem;
-							.name {
-								font-weight: 600;
-								font-size: 0.75rem;
-								color: #808191;
-							}
-
-							.title {
-								font-weight: 300;
-								font-size: 0.75rem;
-								color: #6c757d;
-							}
-						}
-
-						.avatar {
-							background-color: #fff3d4;
-							border-radius: 50%;
-						}
-					}
-				}
-			}
-		}
-	}
-`;
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import { Wrapper } from './styled';
 
 function Header() {
-	const {
-		i18n: { language },
-	} = useTranslation();
-	const { profile } = useAuth();
-	const role = profile?.role;
-
-	const handleLogout = useCallback(() => {
-		removeLocalStorage(STORAGE.USER_TOKEN);
-
-		window.location.replace(`${USER_URL}?signal=${SIGNAL_TYPE.LOGOUT}`);
-	}, []);
-
-	const languageIcon = useMemo(() => {
-		switch (language) {
-			case 'en':
-				return <EN_ICON />;
-			case 'jp':
-				return <JP_ICON />;
-			case 'vi':
-				return <VI_ICON />;
-			default:
-				return null;
-		}
-	}, [language]);
-
-	const menu = (
-		<Menu>
-			<Menu.Item key="0" onClick={() => i18next.changeLanguage('en')}>
-				<EN_ICON />
-				<span>&nbsp;English</span>
-			</Menu.Item>
-			<Menu.Item key="1" onClick={() => i18next.changeLanguage('jp')}>
-				<JP_ICON />
-				<span>&nbsp;日本語</span>
-			</Menu.Item>
-			<Menu.Item key="2" onClick={() => i18next.changeLanguage('vi')}>
-				<VI_ICON />
-				<span>&nbsp;Tiếng Việt</span>
-			</Menu.Item>
-		</Menu>
-	);
-
-	const dropdownMenu = (
-		<Menu>
-			{role === USER_ROLE.COMPANY_ADMIN && (
-				<>
-					<Menu.Item key="0" onClick={() => window.location.replace(USER_URL)}>
-						<HomeOutlined />
-						<span>&nbsp;User page</span>
-					</Menu.Item>
-					<Menu.Divider />
-				</>
-			)}
-			<Menu.Item key="1" onClick={handleLogout}>
-				<span>&nbsp;Logout</span>
-			</Menu.Item>
-		</Menu>
-	);
-
 	return (
 		<Wrapper>
-			<div className="container">
-				<div className="row">
-					<div className="header-left">
-						{/* <div className="search" data-tour="search">
-              <label className="border-0 bg-transparent cursor-pointer" htmlFor="searchInput"><SEARCH_ICON /></label>
-              <input id="searchInput" name="searchInput" type="search" className="search-input" placeholder="Search..." autoComplete="off" value="" />
-            </div> */}
-						<img className="logo" src={E_LEARNING_LOGO} alt="logo" />
-					</div>
-					<div className="header-right">
-						<div className="row g-3">
-							<div className="col-auto">
-								<Dropdown overlay={menu} trigger={['click']}>
-									<button
-										type="button"
-										className="btn-action"
-										aria-label="Change language"
-										data-tour="lang-selector"
-										aria-expanded="false"
-									>
-										{languageIcon}
-									</button>
-								</Dropdown>
-							</div>
-							<div className="col user-info" role="presentation">
-								<Dropdown overlay={dropdownMenu} trigger={['click']}>
-									<a
-										href="true"
-										className="ant-dropdown-link"
-										style={{ display: 'flex', alignItems: 'center' }}
-										onClick={(e) => e.preventDefault()}
-									>
-										<div className="me-3">
-											<div className="text-end">
-												<div className="name">
-													{profile?.nameKatakana || 'カタカナ ナハマ'}
-												</div>
-												<div className="title">
-													<small>CEO, Founder</small>
-												</div>
-											</div>
-										</div>
-										<div className="position-relative">
-											<img
-												className="avatar rounded-circle bg-lo25-warning"
-												src={
-													profile?.avatar ||
-													'https://facit-modern.omtanke.studio/static/media/wanna6.33be1958d20715345cc6.webp'
-												}
-												alt="Avatar"
-												width="48"
-												height="48"
-											/>
-										</div>
-									</a>
-								</Dropdown>
-							</div>
+			<div className="page-header min-vh-50">
+				<div className="container">
+					<div className="row">
+						<div className="col-lg-6 text-white">
+							<p className="text-white fs-2 font-weight-bolder mb-minus1 fadeIn2 fadeInBottom">
+								Invest in
+							</p>
+							<h2 className="text-white fs-1 fadeIn2 fadeInBottom">
+								Crypto Rolling Fund
+							</h2>
+							<p className="lead opacity-9 fadeIn2 fadeInBottom">
+								Browse Rolling Funds to find the right fit for you. Subscribe
+								quarterly, invest alongside top VCs, and adjust your investment
+								size as your goals evolve.
+							</p>
+							<button type="button" className="btn btn-outline-light my-4">
+								Calculate Fund Returns
+							</button>
 						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="position-relative overflow-hidden"
+				style={{ height: 36, marginTop: -33 }}
+			>
+				<div
+					className="w-full absolute bottom-0 start-0 end-0"
+					style={{
+						transform: 'scale(2)',
+						transformOrigin: 'top center',
+						color: '#fff',
+					}}
+				>
+					<svg
+						viewBox="0 0 2880 48"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</div>
+			</div>
+			<div className="container">
+				<div className="row bg-white shadow-lg mt-n6 border-radius-md pb-4 p-3 mx-sm-0 mx-1 position-relative">
+					<div className="col-lg-3 mt-lg-n2 mt-2">
+						<label className="">Filter by: </label>
+						<select
+							className="form-control"
+							name="choices-button"
+							id="choices-button"
+						>
+							<option value="allfunds" selected>
+								All Funds
+							</option>
+							<option value="featured">Featured</option>
+							<option value="notwhitelist">Not Whitelist</option>
+						</select>
+					</div>
+					<div className="col-lg-3 mt-lg-n2 mt-2">
+						<label className="">Sort by: </label>
+						<select
+							className="form-control"
+							name="choices-remove-button"
+							id="choices-remove-button"
+						>
+							<option value="mostfollower" selected>
+								Most Follower
+							</option>
+							<option value="hiestfundsize">Hiest Fund size</option>
+							<option value="newest">Newest</option>
+							<option value="oldest">Oldest</option>
+							<option value="mininvest_low">Min Invest: Low to High</option>
+							<option value="mininvest_high">Min Invest: high to Low</option>
+						</select>
+					</div>
+					<div className="col-lg-3 mt-lg-n2 mt-2">
+						<label className="">Search: </label>
+						<div className="input-group">
+							<span className="input-group-text">
+								<i className="fas fa-search" aria-hidden="true" />
+							</span>
+							<input
+								type="text"
+								className="form-control"
+								inputMode="text"
+								placeholder="Fund name etc..."
+								// onFocus="focused(this)"
+								// onfocusout="defocused(this)"
+							/>
+						</div>
+					</div>
+					<div className="col-lg-3 mt-lg-n2 mt-2">
+						<label className="">&nbsp;</label>
+						<button type="button" className="btn bg-gradient-dark w-100 mb-0">
+							Search
+						</button>
 					</div>
 				</div>
 			</div>
