@@ -2,7 +2,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 import { REQUEST, SUCCESS, FAILURE } from '@utils/redux';
 import { login } from '@apis';
-import { getLocalStorage, setLocalStorage, STORAGE } from 'src/Utils';
+import { getLocalStorage, setLocalStorage, STORAGE } from '@utils';
 import { Action } from '@type/Store';
 import { LOAD_PROFILE, LOGIN } from './constants';
 
