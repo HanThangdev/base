@@ -5,7 +5,7 @@ import WalletConnectProvider from '@walletconnect/web3-provider';
 import WalletConnectQRCodeModal from '@walletconnect/qrcode-modal';
 import Web3 from 'web3';
 
-import Misc from 'src/Utils/misc';
+import Misc from '@utils/misc';
 import web3Json from '@web3/web3.json';
 import {
 	ethAbi,
@@ -25,7 +25,7 @@ import {
 	icoLockAbi,
 	icoReceiveAbi,
 } from '@web3/contract-abi';
-import { roundDown } from 'src/Utils/number';
+import { roundDown } from '@utils/number';
 import { COIN_SYMBOL } from '@constants';
 
 const web3Info: any = web3Json.METAMASK;

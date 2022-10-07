@@ -1,4 +1,5 @@
 export const alias = (prefix = 'src') => ({
+	'@tests': `${prefix}/__tests__`,
 	'@adapters': `${prefix}/Adapters`,
 	'@apis': `${prefix}/APIs`,
 	'@assets': `${prefix}/Assets`,
