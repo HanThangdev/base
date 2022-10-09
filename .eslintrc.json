@@ -11,6 +11,7 @@
 		"airbnb",
 		"airbnb-typescript",
 		"plugin:import/typescript",
+		"plugin:jsdoc/recommended",
 		"prettier"
 	],
 	"parser": "@typescript-eslint/parser",
@@ -22,7 +23,7 @@
 		"sourceType": "module",
 		"project": "./tsconfig.json"
 	},
-	"plugins": ["react", "@typescript-eslint"],
+	"plugins": ["react", "@typescript-eslint", "jsdoc"],
 	"rules": {
 		"max-lines": ["error", 1000],
 		"react/react-in-jsx-scope": "off",
