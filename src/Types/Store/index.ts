@@ -1,5 +1,6 @@
 import { AuthState } from './auth';
 import { CourseState } from './course';
+import { FaqState } from './faq';
 import { GlobalState } from './global';
 
 export type ActionCallback = {
@@ -24,4 +25,5 @@ export type Store = {
 	global: GlobalState;
 	registrationCourses: CourseState;
 	auth: AuthState;
+	faq: FaqState;
 };

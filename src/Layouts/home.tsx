@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Header, Navbar, Footer } from '@components';
+import { Navbar, Footer, Header } from '@components';
 
 const Wrapper: any = styled.div``;
 

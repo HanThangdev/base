@@ -6,6 +6,7 @@ import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import globalReducer from '@modules/store/reducer';
+import faqReducer from '@modules/faq/store/reducer';
 
 export const history = createBrowserHistory();
 
@@ -17,6 +18,7 @@ export default function createReducer(injectedReducers = {}) {
 	const rootReducer = combineReducers({
 		router: connectRouter(history) || {},
 		global: globalReducer,
+		faq: faqReducer,
 		...injectedReducers,
 	});
 

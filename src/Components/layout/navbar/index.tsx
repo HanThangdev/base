@@ -7,7 +7,7 @@ import { Wrapper } from './styled';
 
 function Navbar() {
 	return (
-		<Wrapper className="container position-sticky z-index-sticky top-0">
+		<Wrapper className="container position-relative z-index-sticky top-0">
 			<div className="row">
 				<div className="col-12">
 					<nav className="navbar navbar-expand-lg blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-1 nav_header_menu">
