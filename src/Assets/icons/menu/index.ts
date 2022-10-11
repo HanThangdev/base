@@ -11,3 +11,4 @@ export { ReactComponent as ICON_SEND } from './send.svg';
 export { ReactComponent as ICON_SETTING_MENU } from './setting-menu.svg';
 export { ReactComponent as ICON_GROUP_MENU } from './group.svg';
 export { ReactComponent as ICON_ATTRIBUTE_MENU } from './attribute.svg';
+export { ReactComponent as ICON_WAVES } from './wave.svg';
