@@ -1,20 +1,28 @@
 /* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// import { Logo } from '@assets/template/img';
+import navigator from '@routes/navigation';
 import { Wrapper } from './styled';
 
-interface CardProps {
+interface ICardProps {
 	avatar: string;
 	description: string;
 	isWhiteList: boolean;
 	followCount: number;
 	backgroundImage: string;
+	navigate?: (path: string) => void;
 }
 
-function Card(props: CardProps) {
-	const { avatar, description, isWhiteList, followCount, backgroundImage } =
-		props;
+function Card({
+	avatar,
+	description,
+	isWhiteList,
+	followCount,
+	backgroundImage,
+	navigate = () => { }
+}: ICardProps) {
+
 	return (
 		<Wrapper className="col-lg-4 col-sm-6 mb-4 hover-effect">
 			<div className="card shadow-md mt-md-0 mt-5 funds-card">
@@ -65,9 +73,8 @@ function Card(props: CardProps) {
 							</span>
 						</div>
 						<div className="col-lg-12 fs-7 description">{description}</div>
-						<div className="col-lg-12 d-flex justify-content-center">
+						<button type="button" className="btn col-lg-12 d-flex justify-content-center" onClick={() => navigate(navigator.FUND_DETAIL)}>
 							<a
-								href="./fund_detail"
 								className="btn bg-gradient-primary w-100 my-3 active"
 								role="button"
 								aria-pressed="true"
@@ -79,7 +86,7 @@ function Card(props: CardProps) {
 									</span>
 								)}
 							</a>
-						</div>
+						</button>
 					</div>
 					<div className="row">
 						<hr className="horizontal dark" />
