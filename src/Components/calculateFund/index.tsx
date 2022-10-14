@@ -1,18 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-script-url */
-/* eslint-disable react/jsx-no-script-url */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable jsx-a11y/alt-text */
 import { WavesWhite } from '@assets/template/img';
-// import styled from 'styled-components';
-
-// const Wrapper = styled.div`
-// 	display: flex;
-// 	align-items: center;
-// 	justify-content: center;
-// 	height: 100vh;
-// `;
 
 function CalculateFund() {
 	return (
@@ -22,7 +9,6 @@ function CalculateFund() {
 				alt="pattern-lines"
 				className="position-absolute start-0 top-0 h-100 z-index-1 opacity-6"
 			/>
-
 			<div className="container position-relative z-index-1">
 				<div className="row">
 					<div className="col-lg-6 col-md-12 d-flex justify-content-top flex-column">

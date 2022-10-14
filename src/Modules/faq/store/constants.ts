@@ -1,0 +1,1 @@
+export const TOGGLE_TAB_FAQ = '@FAQ/TOGGLE_TAB_FAQ';

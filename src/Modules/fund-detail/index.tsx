@@ -19,14 +19,13 @@ import {
 import { useNavigate } from '@hooks';
 // import { useTranslation } from 'react-i18next';
 import navigator from '@routes/navigation';
-import CalculateFund from '@components/calculate-fund-detail';
+import CalculateFund from '@components/calculateFund';
 import Card from '@components/card';
-import Diccussion from '@components/disscussion';
-import SideCard from '@modules/fund-detail/SideCard';
+import Diccussion from '@components/diccussion';
+import SideCard from '@components/sideCard';
 import { Wrapper } from './styled';
 
 function FundDetail() {
-
 	const navigate = useNavigate();
 	// const { t } = useTranslation();
 
@@ -57,7 +56,7 @@ function FundDetail() {
 		},
 	];
 	return (
-		<Wrapper >
+		<Wrapper>
 			{/* Detail of Fund */}
 			<section className="pb-7">
 				<div className="container">
@@ -326,10 +325,8 @@ function FundDetail() {
 										</span>{' '}
 										below.
 									</p>
-									<div
-										className="img-fluid"
-									>
-										<Diccussion/>
+									<div className="img-fluid">
+										<Diccussion idFund="id1"/>
 									</div>
 								</div>
 								<div id="updates" className="pt-6 mb-6">

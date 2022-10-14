@@ -11,7 +11,7 @@ interface ICardProps {
 	isWhiteList: boolean;
 	followCount: number;
 	backgroundImage: string;
-	navigate?: (path: string) => void;
+	navigate?: any;
 }
 
 function Card({
@@ -20,9 +20,8 @@ function Card({
 	isWhiteList,
 	followCount,
 	backgroundImage,
-	navigate = () => { }
+	navigate,
 }: ICardProps) {
-
 	return (
 		<Wrapper className="col-lg-4 col-sm-6 mb-4 hover-effect">
 			<div className="card shadow-md mt-md-0 mt-5 funds-card">
@@ -73,7 +72,11 @@ function Card({
 							</span>
 						</div>
 						<div className="col-lg-12 fs-7 description">{description}</div>
-						<button type="button" className="btn col-lg-12 d-flex justify-content-center" onClick={() => navigate(navigator.FUND_DETAIL)}>
+						<button
+							type="button"
+							className="btn col-lg-12 d-flex justify-content-center"
+							onClick={() => navigate(navigator.FUND_DETAIL)}
+						>
 							<a
 								className="btn bg-gradient-primary w-100 my-3 active"
 								role="button"
