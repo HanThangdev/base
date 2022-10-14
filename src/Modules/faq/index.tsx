@@ -35,15 +35,15 @@ function FaqPage() {
 										? trans(FAQ_TABNAME.INVESTOR)
 										: trans(FAQ_TABNAME.FUND_MANAGER)}
 								</h4>
-								{listCurrentFaq.map((it) => (
+								{listCurrentFaq?.map((it: any) => (
 									<li className="nav-item">
 										<a
 											className="nav-link text-dark"
 											data-scroll
-											href={`#${formatIdEle(it.name)}`}
+											href={`#${formatIdEle(it?.name)}`}
 										>
 											<i className="fa-solid fa-angle-right me-2" />
-											{it.name}
+											{it?.name}
 										</a>
 									</li>
 								))}
@@ -51,12 +51,12 @@ function FaqPage() {
 						</div>
 						<div className="col-lg-9">
 							<div className="accordion" id="Faq_investor">
-								{listCurrentFaq.map((item) => (
+								{listCurrentFaq?.map((item: any) => (
 									<Wrapper>
-										<h4 className="pt-7 mb-4 ps-3" id={formatIdEle(item.name)}>
-											{trans(item.name)}
+										<h4 className="pt-7 mb-4 ps-3" id={formatIdEle(item?.name)}>
+											{trans(item?.name)}
 										</h4>
-										{item.children.map((it) => (
+										{item?.children?.map((it: any) => (
 											<div className="accordion-item mb-3">
 												<h6 className="accordion-header" id="faqcat2-1">
 													<button
@@ -67,7 +67,7 @@ function FaqPage() {
 														aria-expanded="false"
 														aria-controls="collapse2-1"
 													>
-														{trans(it.name)}
+														{trans(it?.name)}
 														<i className="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3" />
 														<i className="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" />
 													</button>
@@ -79,7 +79,7 @@ function FaqPage() {
 													data-bs-parent="#Faq_investor"
 												>
 													<div className="accordion-body text-m opacity-8">
-														{trans(it.description)}
+														{trans(it?.description)}
 													</div>
 												</div>
 											</div>
