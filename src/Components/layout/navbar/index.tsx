@@ -5,7 +5,9 @@
 import { GOEMON_LOGO, DownArrowDark } from '@assets/template/img';
 import { Wrapper } from './styled';
 
+
 function Navbar() {
+	
 	return (
 		<Wrapper className="container position-relative z-index-sticky top-0">
 			<div className="row">
