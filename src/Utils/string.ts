@@ -53,3 +53,7 @@ export const decodePath = (path: any) => {
 	arr.shift();
 	return arr;
 };
+
+export function formatIdEle(text: string) {
+	return text.toLocaleLowerCase().replaceAll(' ', '');
+}

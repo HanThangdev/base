@@ -25,6 +25,11 @@ export const ANTD_ORDER_TO_API_FIELD = {
 	ascend: 'ASC',
 };
 
+export const FAQ_TABNAME = {
+	INVESTOR: 'Investor FAQ',
+	FUND_MANAGER: 'Fund Manager FAQ',
+};
+
 export const FORMAT_TIME = {
 	YEAR_MONTH_DATE: 'YYYY/MM/DD',
 	DATE_HOUR_MINUTES: 'YYYY/MM/DD HH:mm',
