@@ -1,7 +1,11 @@
 /* eslint-disable react/jsx-boolean-value */
-import { useEffect, useRef, useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { getReplyCommentByComment, replyCommentByComment } from '@apis/firesbaseApi';
+import { useEffect, useState } from 'react';
+import {
+	getReplyCommentByComment,
+	replyCommentByComment,
+} from '@apis/firesbaseApi';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { FundLogo4, FundLogo5 } from '@assets/template/img';
 import {
@@ -13,22 +17,21 @@ import {
 	ImageDiccussion,
 } from '../styled';
 
-// interface IProps {
-// 	id: string;
-// }
+
+const validationSchema = Yup.object().shape({
+	content: Yup.string().required('Required'),
+});
+
+type FormData = {
+  content: string;
+};
 
 function CommentItem({ idFund, diccussionData, commentData }: any) {
-	const CommentItemRef = useRef();
+	const  { register, handleSubmit } = useForm<FormData>({
+		resolver: yupResolver(validationSchema),
+	});
 	const [replying, setReplying] = useState<boolean>(false);
 	const [listReplyComment, setListReplyComment] = useState([]);
-
-	const initialValues = {
-		content: '',
-	};
-
-	const validationSchema = Yup.object().shape({
-		content: Yup.string().required('Required'),
-	});
 
 	const onReplyComment = () => {
 		setReplying(!replying);
@@ -36,24 +39,35 @@ function CommentItem({ idFund, diccussionData, commentData }: any) {
 
 	const onSubmit = async (values: any) => {
 		const { content } = values;
-		await replyCommentByComment({ content }, idFund, diccussionData.id, commentData?.id);
-		const arr = await getReplyCommentByComment(idFund, diccussionData?.id, commentData?.id);
+		await replyCommentByComment(
+			{ content },
+			idFund,
+			diccussionData.id,
+			commentData?.id
+		);
+		const arr = await getReplyCommentByComment(
+			idFund,
+			diccussionData?.id,
+			commentData?.id
+		);
 		if (arr.length) {
 			setListReplyComment(arr);
 		}
 	};
 
-
 	useEffect(() => {
 		async function fetchData() {
-			const arr = await getReplyCommentByComment(idFund, diccussionData?.id, commentData?.id);
+			const arr = await getReplyCommentByComment(
+				idFund,
+				diccussionData?.id,
+				commentData?.id
+			);
 			if (arr.length) {
 				setListReplyComment(arr);
 			}
 		}
 		fetchData();
 	}, [idFund, diccussionData, commentData]);
-
 
 	return (
 		<Wrapper className="py-3">
@@ -103,41 +117,32 @@ function CommentItem({ idFund, diccussionData, commentData }: any) {
 					</div>
 				))}
 			{replying && (
-				<Formik
-					initialValues={initialValues}
-					onSubmit={onSubmit}
-					validationSchema={validationSchema}
-					ref={CommentItemRef}
-				>
-					<Form>
-						<div className="row">
-							<div className="col-1">
-								<ImageDiccussion
-									src={FundLogo5}
-									alt="Dubai Real Estate Investment Fund"
-								/>
-							</div>
-							<div className="col-11">
-								<Field
-									className="form-control"
-									name="content"
-									required
-									placeholder="Post a new question or comment"
-									type="text"
-									helperText={<ErrorMessage name="content" />}
-								/>
-							</div>
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<div className="row">
+						<div className="col-1">
+							<ImageDiccussion
+								src={FundLogo5}
+								alt="Dubai Real Estate Investment Fund"
+							/>
 						</div>
-						<div className="col-12 text-end mt-2">
-							<button
-								type="submit"
-								className="btn w-15 bg-gradient-primary text-center"
-							>
-								Reply
-							</button>
+						<div className="col-11">
+							<input
+								className="form-control"
+								{...register("content", { required: true })} 
+								placeholder="Post a new question or comment"
+								type="text"
+							/>
 						</div>
-					</Form>
-				</Formik>
+					</div>
+					<div className="col-12 text-end mt-2">
+						<button
+							type="submit"
+							className="btn w-15 bg-gradient-primary text-center"
+						>
+							Reply
+						</button>
+					</div>
+				</form>
 			)}
 		</Wrapper>
 	);
