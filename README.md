@@ -40,7 +40,7 @@
 > npm run build
 > npm install -g serve & serve -s build (able to use another server like nginx, apache or nodejs,...)
 
-### Theo chuẩn Angular (chuẩn mà ta sử dụng ở bài này), 1 commit message sẽ theo cấu trúc như sau:
+### 1 commit message sẽ theo cấu trúc như sau:
 
 ```
 > type(scope?): subject

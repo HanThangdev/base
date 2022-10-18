@@ -3,7 +3,9 @@ import styled from 'styled-components';
 
 const Wrapper = styled.section``;
 
-function FormAsked() {
+function FormContact() {
+
+
 	return (
 		<Wrapper className="py-sm-7 ">
 			<div className="container">
@@ -75,4 +77,4 @@ function FormAsked() {
 	);
 }
 
-export default FormAsked;
+export default FormContact;

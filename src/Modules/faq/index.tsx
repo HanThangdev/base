@@ -8,7 +8,7 @@ import { listFaq } from '@config';
 import { useFaq } from '@hooks';
 import { useTranslation } from 'react-i18next';
 import { formatIdEle } from '@utils/string';
-import FormAsked from '@components/form/FormAsked';
+import FormContact from '@components/form/FormContact';
 import { FAQ_TABNAME } from '@constants';
 import { Wrapper } from './styled';
 
@@ -92,7 +92,7 @@ function FaqPage() {
 				</div>
 			</section>
 			{/* Inauery Form */}
-			<FormAsked />
+			<FormContact />
 		</Wrapper>
 	);
 }

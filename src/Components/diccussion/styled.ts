@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div``;
 
-export const ImageDisscussion = styled.img`
+export const ImageDiccussion = styled.img`
 	width: 40px;
 	height: 40px;
 	padding: 3px;

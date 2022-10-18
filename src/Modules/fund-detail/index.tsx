@@ -21,7 +21,7 @@ import { useNavigate } from '@hooks';
 import navigator from '@routes/navigation';
 import CalculateFund from '@components/calculateFund';
 import Card from '@components/card';
-import Diccussion from '@components/disscussion';
+import Diccussion from '@components/diccussion';
 import SideCard from '@components/sideCard';
 import { Wrapper } from './styled';
 
@@ -326,7 +326,7 @@ function FundDetail() {
 										below.
 									</p>
 									<div className="img-fluid">
-										<Diccussion />
+										<Diccussion idFund="id1"/>
 									</div>
 								</div>
 								<div id="updates" className="pt-6 mb-6">
