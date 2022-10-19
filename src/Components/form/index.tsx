@@ -12,3 +12,4 @@ export { default as FormInputNumber } from './FormInputNumber';
 export { default as FormUploadImage } from './FormUploadImage';
 export { default as FormLabel } from './FormLabel';
 export { default as FormPassword } from './FormPassword';
+export { default as FormTextContact } from './FormTextContact';

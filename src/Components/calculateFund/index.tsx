@@ -41,7 +41,6 @@ function CalculateFund() {
 													className="form-control"
 													inputMode="numeric"
 													placeholder=""
-													value="5,000"
 													// onFocus="focused(this)" onfocusout="defocused(this)"
 												/>
 											</div>
@@ -54,7 +53,6 @@ function CalculateFund() {
 													className="form-control"
 													inputMode="numeric"
 													placeholder=""
-													value="4"
 													// onFocus="focused(this)"
 													// onfocusout="defocused(this)"
 												/>
@@ -71,7 +69,6 @@ function CalculateFund() {
 													className="form-control"
 													inputMode="numeric"
 													placeholder=""
-													value="2"
 													// onFocus="focused(this)" onfocusout="defocused(this)"
 												/>
 												<span className="input-group-text input-right-text">
@@ -87,7 +84,6 @@ function CalculateFund() {
 													className="form-control"
 													inputMode="numeric"
 													placeholder=""
-													value="20"
 													// onFocus="focused(this)" onfocusout="defocused(this)"
 												/>
 												<span className="input-group-text input-right-text">
@@ -103,7 +99,6 @@ function CalculateFund() {
 													className="form-control"
 													inputMode="numeric"
 													placeholder=""
-													value="3"
 													// onFocus="focused(this)" onfocusout="defocused(this)"
 												/>
 												<span className="input-group-text input-right-text">

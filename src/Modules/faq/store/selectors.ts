@@ -1,6 +1,3 @@
-/* eslint-disable arrow-parens */
-/* eslint-disable implicit-arrow-linebreak */
-
 /**
  * The faq state selectors
  */
