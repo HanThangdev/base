@@ -2,7 +2,7 @@ import { Payload } from '@type/Store';
 import { REQUEST } from '@utils/redux';
 import { SEND_CONTACT, TOGGLE_TAB_FAQ } from './constants';
 
-export function toggleTabFaq(payload: boolean) {
+export function toggleTabFaq(payload: Payload) {
 	return {
 		type: TOGGLE_TAB_FAQ,
 		payload,

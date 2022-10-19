@@ -4,13 +4,14 @@
 import { useCallback, useMemo } from 'react';
 import { ICON_WAVES } from '@assets';
 import { useFaq } from '@hooks';
+import { Payload } from '@type/Store';
 import { Link, Wrapper } from './styled';
 
 function HeaderFaq() {
 	const { typeTab, toggleTabFaqAction } = useFaq();
 
 	const handleToggleTab = useCallback(
-		(isInvestorFaqTab: boolean) => {
+		(isInvestorFaqTab: Payload) => {
 			toggleTabFaqAction(isInvestorFaqTab);
 		},
 		[toggleTabFaqAction, typeTab]
@@ -71,7 +72,7 @@ function HeaderFaq() {
 							<ul className="nav nav-pills nav-fill p-1" role="tablist">
 								<li
 									className="nav-item moving-tab"
-									onClick={() => handleToggleTab(true)}
+									onClick={() => handleToggleTab({data:{typeTab: true}})}
 								>
 									<Link
 										className={`nav-link mb-0 px-0 py-1 ${isInvestorActive}`}
@@ -85,7 +86,7 @@ function HeaderFaq() {
 								</li>
 								<li
 									className="nav-item moving-tab"
-									onClick={() => handleToggleTab(false)}
+									onClick={() => handleToggleTab({data:{typeTab: false}})}
 								>
 									<Link
 										className={`nav-link mb-0 px-0 py-1 ${isFundManager}`}

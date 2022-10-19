@@ -20,7 +20,7 @@ export const initialState: FaqState = {
 
 function toggleTabFaq(state: FaqState, { payload }: Action) {
 	return updateObject(state, {
-		typeTab: payload,
+		typeTab: payload.typeTab,
 	});
 }
 

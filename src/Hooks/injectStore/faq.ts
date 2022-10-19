@@ -5,6 +5,8 @@ import { sendContact, toggleTabFaq } from '@modules/faq/store/actions';
 import { useInjectReducer, useInjectSaga } from '@config/store';
 import reducer from '@modules/faq/store/reducer';
 import saga from '@modules/faq/store/saga';
+import { Payload } from '@type/Store';
+import { FaqState } from '@type/Store/faq';
 
 
 
@@ -13,14 +15,14 @@ export const useFaq = () => {
 	useInjectSaga({ key: 'faq', saga });
 	const dispatch = useDispatch();
 
-	const { typeTab }: any = useSelector(makeSelectFaq());
+	const { typeTab }: FaqState  = useSelector(makeSelectFaq());
 
-	const toggleTabFaqAction = (isInvestorFaqTab: boolean) => {
-		dispatch(toggleTabFaq(isInvestorFaqTab));
+	const toggleTabFaqAction = (payload: Payload) => {
+		dispatch(toggleTabFaq(payload?.data));
 	};
 
-	const sendContactAction = (payload?: any) =>
-		dispatch(sendContact(payload));
+	const sendContactAction = (payload?: Payload) =>
+		dispatch(sendContact(payload?.data));
 
 	return {
 		typeTab,
