@@ -14,6 +14,9 @@ const END_POINT: any = {
 
 	// common
 	PRESIGNED: '/api/v1/file/pre-signed',
+
+	// faq 
+	SEND_CONTACT: '/api/v1/public/contact',
 };
 
 export default END_POINT;
