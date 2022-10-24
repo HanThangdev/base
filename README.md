@@ -2,9 +2,9 @@
 ## BAP IT CO., JSC
 
 ### Environment requirement
-> NodeJS: `v14.15.4`
+> NodeJS: `v16.18.0`
 >
-> NPM: `v6.14.10`
+> NPM: `v8.19.2`
 
 ### Install Dependencies
 > Install project dependencies: `npm install` or `npm install -f` (if have error)
