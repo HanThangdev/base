@@ -11,6 +11,7 @@
 		"airbnb",
 		"airbnb-typescript",
 		"plugin:import/typescript",
+		"plugin:jsdoc/recommended",
 		"prettier"
 	],
 	"parser": "@typescript-eslint/parser",

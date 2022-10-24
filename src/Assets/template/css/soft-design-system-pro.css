@@ -2490,7 +2490,7 @@ progress {
 }
 
 .table-group-divider {
-  /* border-top: calc(2 * $table-border-width) solid currentColor; */
+  border-top: calc(2 * $table-border-width) solid currentColor;
 }
 
 .caption-top {
@@ -3425,7 +3425,7 @@ textarea.form-control.is-valid {
 
 .was-validated .form-control-color:valid,
 .form-control-color.is-valid {
-  /* width: calc(3rem + unset); */
+  width: calc(3rem + unset);
 }
 
 .was-validated .form-check-input:valid,
@@ -3540,7 +3540,7 @@ textarea.form-control.is-invalid {
 
 .was-validated .form-control-color:invalid,
 .form-control-color.is-invalid {
-  /* width: calc(3rem + unset); */
+  width: calc(3rem + unset);
 }
 
 .was-validated .form-check-input:invalid,
@@ -5592,7 +5592,7 @@ fieldset:disabled .btn {
 }
 
 .page-item:not(:first-child) .page-link {
-  /* margin-left: calc($pagination-border-width * -1); */
+  margin-left: calc($pagination-border-width * -1);
 }
 
 .page-item:first-child .page-link {
