@@ -6,6 +6,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { useState } from 'react';
 import {
 	// FundLogo1,
 	// FundLogo2,
@@ -23,12 +25,13 @@ import CalculateFund from '@components/calculateFund';
 import Card from '@components/card';
 import Diccussion from '@components/diccussion';
 import SideCard from '@components/sideCard';
-import { Wrapper } from './styled';
+import { Link, Wrapper } from './styled';
+import { listNav } from './constant';
 
 function FundDetail() {
 	const navigate = useNavigate();
 	// const { t } = useTranslation();
-
+	const [itemActive, setItemActive] = useState(['pitch']);
 	const LIST_CARD = [
 		{
 			avatar: FundLogo5,
@@ -109,67 +112,39 @@ function FundDetail() {
 									alt="Dubai Real Estate Investment Fund"
 								/>
 							</div>
-							<section className="position-sticky top-1 z-index-999 tab-menu">
+							<section className="position-sticky top-100px z-index-999 tab-menu">
 								<div className="container px-0">
 									<div className="row">
 										<div className="col-12 mx-auto mb-5">
 											<div className="nav-wrapper position-relative end-0">
 												<ul
-													className="nav nav-pills nav-fill p-1"
+													className="nav nav-pills nav-fill p-1 "
 													role="tablist"
 												>
-													<li className="nav-item now">
-														<a
-															className="nav-link fs-7 mb-0 px-0 py-2 active"
-															href="#pitch"
-														>
-															Pitch
-														</a>
-													</li>
-													<li className="nav-item">
-														<a
-															className="nav-link fs-7 mb-0 px-0 py-2"
-															href="#diccussion"
-														>
-															Diccussion
-															<span className="badge bg-gradient-secondary font-weight-normal ms-2">
-																198
-															</span>
-														</a>
-													</li>
-													<li className="nav-item">
-														<a
-															className="nav-link fs-7 mb-0 px-0 py-2"
-															href="#updates"
-														>
-															Updates
-															<span className="badge bg-gradient-secondary font-weight-normal ms-2">
-																2
-															</span>
-														</a>
-													</li>
-													<li className="nav-item">
-														<a
-															className="nav-link fs-7 mb-0 px-0 py-2"
-															href="#review"
-														>
-															Review
-															<span className="badge bg-gradient-secondary font-weight-normal ms-2">
-																59
-															</span>
-														</a>
-													</li>
-													<li className="nav-item">
-														<a
-															className="nav-link fs-7 mb-0 px-0 py-2"
-															href="#sharenfts"
-														>
-															Share NFTs
-															<span className="badge bg-gradient-secondary font-weight-normal ms-2">
-																259
-															</span>
-														</a>
-													</li>
+													{listNav.map((item) => {
+														const { title, key, ref, totalNoti } = item;
+														return (
+															<li
+																className="nav-item moving-tab"
+																key={key}
+																onClick={() => setItemActive([key])}
+															>
+																<Link
+																	className={`nav-link fs-7 mb-0 px-0 py-2 ${
+																		itemActive.includes(key) ? 'active now' : ''
+																	}`}
+																	href={ref}
+																>
+																	{title}
+																	{!!totalNoti && (
+																		<span className="badge bg-gradient-secondary font-weight-normal ms-2">
+																			{totalNoti}
+																		</span>
+																	)}
+																</Link>
+															</li>
+														);
+													})}
 												</ul>
 											</div>
 										</div>
@@ -326,7 +301,7 @@ function FundDetail() {
 										below.
 									</p>
 									<div className="img-fluid">
-										<Diccussion idFund="id1"/>
+										<Diccussion idFund="id1" />
 									</div>
 								</div>
 								<div id="updates" className="pt-6 mb-6">

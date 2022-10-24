@@ -1,3 +1,12 @@
 export { default as E_LEARNING_LOGO } from './logo-e-learning.png';
 export { default as NISSOKEN_LOGO } from './logo_nissoken.png';
 export { default as CLOSE } from './close.png';
+export { default as LOGO_ETH } from './logo_ethereum.png';
+export { default as LOGO_USDC } from './logo_usdc.png';
+export { default as LOGO_USDT } from './logo_usdt.png';
+export { default as LOGO_BUSD } from './logo_busd.png';
+export { default as LOGO_FACEBOOK } from './logo-facebook.png';
+export { default as LOGO_LINE } from './logo-line.png';
+export { default as LOGO_TWITTER } from './logo-twitter.png';
+export { default as LOGO_GOOGLE } from './logo-google.png';
+export { default as LOGO_DISCORD } from './logo-discord.png';
