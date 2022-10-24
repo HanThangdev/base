@@ -2,12 +2,31 @@ stages:
   - deploy
 
 cache:
-  paths:
-    - ./node_modules
-  key: ${CI_COMMIT_REF_SLUG}
-  policy: pull
+  key: &global_cache_node_mods
+    files:
+      - package-lock.json
+    paths:
+      - node_modules/
+    policy: pull
 
 include:
-  - project: 'BAPSoftware/outsource/bapsw.s0142.goemon/goemon-devops'
+  - project: "BAPSoftware/outsource/bapsw.s0142.goemon/goemon-devops"
     ref: main
-    file: 'gitlab-templates/goemon-web-user/dev.gitlab-ci.yml'
+    file: "gitlab-templates/goemon-web-user/dev.gitlab-ci.yml"
+
+install:
+  image: ...
+  stage: .pre
+  cache:
+    - key: ${CI_JOB_NAME}
+      paths:
+        - .npm/
+      when: on_success
+      policy: pull-push
+    - key:
+      files:
+        - package-lock.json
+      paths:
+        - node_modules/
+      when: on_success
+      policy: pull-push
