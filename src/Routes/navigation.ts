@@ -6,7 +6,7 @@ import FundDetail from '@modules/fund-detail';
 import FaqPage from '@modules/faq';
 import { navigator as courseNavigator } from '@modules/course/routes';
 import { navigator as authNavigator } from '@modules/auth/routes';
-import { FaqLayout, FundDetailLayout } from '@layouts';
+
 
 const navigator = {
 	HOME: '/',
@@ -28,14 +28,14 @@ export const ROUTES = [
 	{
 		path: navigator.FUND_DETAIL,
 		component: FundDetail,
-		layout: FundDetailLayout,
+		layout: HomeLayout,
 		rules: [USER_ROLE.ADMIN],
 		exact: true,
 	},
 	{
 		path: navigator.FAQ,
 		component: FaqPage,
-		layout: FaqLayout,
+		layout: HomeLayout,
 		rules: [USER_ROLE.ADMIN],
 		exact: true,
 	},

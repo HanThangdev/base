@@ -1,15 +1,25 @@
-/* eslint-disable no-script-url */
-/* eslint-disable react/jsx-no-script-url */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { useState } from 'react';
 import { GOEMON_LOGO, DownArrowDark } from '@assets/template/img';
+import { ModalLogin } from '@components/modal';
+import SiderBar from '../sidebar';
 import { Wrapper } from './styled';
 
-
 function Navbar() {
-	
+
+	const [visibleSideBar, setVisibleSideBar] = useState(false)
+	const [visibleModalLogin, setVisibleModalLogin] = useState(false)
+
+	const onResetVissble = () => {
+		setVisibleSideBar(false);
+		setVisibleModalLogin(false);
+	}
+
 	return (
-		<Wrapper className="container position-relative z-index-sticky top-0">
+		<Wrapper className="container position-sticky z-index-sticky top-0">
 			<div className="row">
 				<div className="col-12">
 					<nav className="navbar navbar-expand-lg blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-1 nav_header_menu">
@@ -21,7 +31,7 @@ function Navbar() {
 								data-placement="bottom"
 								target="_blank"
 							>
-								<img src={GOEMON_LOGO} width="150" />
+								<img src={GOEMON_LOGO} width="150" alt="logo goemon"/>
 							</a>
 							<button
 								className="navbar-toggler shadow-none ms-md-2"
@@ -43,7 +53,7 @@ function Navbar() {
 								id="navigation"
 							>
 								<a
-									href=""
+									href="/"
 									className="btn btn-sm  bg-gradient-primary btn-round my-3 ms-auto d-lg-none d-block"
 								>
 									SIGN IN
@@ -56,6 +66,7 @@ function Navbar() {
 											id="dropdownMenuBlocks"
 											data-bs-toggle="dropdown"
 											aria-expanded="false"
+											href='/'
 										>
 											<span>Admin Panel</span>
 											<img
@@ -81,31 +92,31 @@ function Navbar() {
 																Dashbord
 															</div>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Overview</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Fundraising</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Investing</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Post</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Message</span>
@@ -119,7 +130,7 @@ function Navbar() {
 																Create Fund
 															</div>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Apply</span>
@@ -136,31 +147,31 @@ function Navbar() {
 																Setting
 															</div>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Account</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Security</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Connected Address</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Privacy and safety</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Notifications</span>
@@ -177,31 +188,31 @@ function Navbar() {
 																Setting
 															</div>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Account</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Security</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Connected Address</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Privacy and safety</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span className="ps-3">Notifications</span>
@@ -220,19 +231,19 @@ function Navbar() {
 													</div>
 													Dashbord
 												</div>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Overview</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Fundraising</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Investing</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Post</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Message</span>
 												</a>
 												<div className="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-0 mt-3">
@@ -243,7 +254,7 @@ function Navbar() {
 													</div>
 													Create Fund
 												</div>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Apply</span>
 												</a>
 												<div className="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-0 mt-3">
@@ -254,19 +265,19 @@ function Navbar() {
 													</div>
 													Setting
 												</div>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Account</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Security</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Connected Address</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Privacy and safety</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Notifications</span>
 												</a>
 											</div>
@@ -279,6 +290,7 @@ function Navbar() {
 											id="dropdownMenuDocs"
 											data-bs-toggle="dropdown"
 											aria-expanded="false"
+											href='/'
 										>
 											Funds
 											<img
@@ -296,7 +308,7 @@ function Navbar() {
 													<li className="nav-item list-group-item border-0 p-0">
 														<a
 															className="dropdown-item py-2 ps-3 border-radius-md"
-															href=""
+															href="/"
 														>
 															<div className="d-flex">
 																<div className="icon h-10 me-3 d-flex mt-1">
@@ -317,7 +329,7 @@ function Navbar() {
 													<li className="nav-item list-group-item border-0 p-0">
 														<a
 															className="dropdown-item py-2 ps-3 border-radius-md"
-															href=""
+															href="/"
 														>
 															<div className="d-flex">
 																<div className="icon h-10 me-3 d-flex mt-1">
@@ -337,7 +349,7 @@ function Navbar() {
 													<li className="nav-item list-group-item border-0 p-0">
 														<a
 															className="dropdown-item py-2 ps-3 border-radius-md"
-															href=""
+															href="/"
 														>
 															<div className="d-flex">
 																<div className="icon h-10 me-3 d-flex mt-1">
@@ -360,7 +372,7 @@ function Navbar() {
 												<div className="col-md-12 g-0">
 													<a
 														className="dropdown-item py-2 ps-3 border-radius-md"
-														href=""
+														href="/"
 													>
 														<div className="d-flex">
 															<div className="icon h-10 me-3 d-flex mt-1">
@@ -378,7 +390,7 @@ function Navbar() {
 													</a>
 													<a
 														className="dropdown-item py-2 ps-3 border-radius-md"
-														href=""
+														href="/"
 													>
 														<div className="d-flex">
 															<div className="icon h-10 me-3 d-flex mt-1">
@@ -396,7 +408,7 @@ function Navbar() {
 													</a>
 													<a
 														className="dropdown-item py-2 ps-3 border-radius-md"
-														href=""
+														href="/"
 													>
 														<div className="d-flex">
 															<div className="icon h-10 me-3 d-flex mt-1">
@@ -423,6 +435,7 @@ function Navbar() {
 											id="dropdownMenuAccount"
 											data-bs-toggle="dropdown"
 											aria-expanded="false"
+											href='/'
 										>
 											Share NFTs
 											<img
@@ -440,7 +453,7 @@ function Navbar() {
 													<li className="nav-item list-group-item border-0 p-0">
 														<a
 															className="dropdown-item py-2 ps-3 border-radius-md"
-															href=""
+															href="/"
 														>
 															<div className="d-flex">
 																<div className="icon h-10 me-3 d-flex mt-1">
@@ -460,7 +473,7 @@ function Navbar() {
 													<li className="nav-item list-group-item border-0 p-0">
 														<a
 															className="dropdown-item py-2 ps-3 border-radius-md"
-															href=""
+															href="/"
 														>
 															<div className="d-flex">
 																<div className="icon h-10 me-3 d-flex mt-1">
@@ -483,7 +496,7 @@ function Navbar() {
 												<div className="col-md-12 g-0">
 													<a
 														className="dropdown-item py-2 ps-3 border-radius-md"
-														href=""
+														href="/"
 													>
 														<div className="d-flex">
 															<div className="icon h-10 me-3 d-flex mt-1">
@@ -501,7 +514,7 @@ function Navbar() {
 													</a>
 													<a
 														className="dropdown-item py-2 ps-3 border-radius-md"
-														href=""
+														href="/"
 													>
 														<div className="d-flex">
 															<div className="icon h-10 me-3 d-flex mt-1">
@@ -528,6 +541,7 @@ function Navbar() {
 											id="dropdownMenuBlocks"
 											data-bs-toggle="dropdown"
 											aria-expanded="false"
+											href='/'
 										>
 											<span>About</span>
 											<img
@@ -545,37 +559,37 @@ function Navbar() {
 													<div className="row">
 														<div className="col-12 position-relative">
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span>Blog</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span>Pressrelease</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span>About Us</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span>Jobs</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span>Affiliates</span>
 															</a>
 															<a
-																href=""
+																href="/"
 																className="dropdown-item border-radius-md"
 															>
 																<span>Mediakit</span>
@@ -586,22 +600,22 @@ function Navbar() {
 											</div>
 
 											<div className="d-lg-none">
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span>Blog</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span>Pressrelease</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span>About Us</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span>Jobs</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span>Affiliates</span>
 												</a>
-												<a href="" className="dropdown-item border-radius-md">
+												<a href="/" className="dropdown-item border-radius-md">
 													<span>Mediakit</span>
 												</a>
 											</div>
@@ -609,21 +623,38 @@ function Navbar() {
 									</li>
 								</ul>
 								<ul className="navbar-nav d-lg-block d-none">
-									<li className="nav-item">
-										<a
-											href="javascript:;"
-											className="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1 px-4"
-											// onClick="smoothToPricing('pricing-soft-ui')"
-										>
-											Login / Sign up
-										</a>
-									</li>
+									<ul className="navbar-nav d-lg-block d-none">
+										<li className="nav-item" />
+										<li className="nav-item">
+											{false ? (
+												<div
+													onClick={() => setVisibleSideBar(true)}
+													className="btn btn-sm btn btn-outline-primary btn-round mb-0 me-1 px-4"
+													// htmlFor="expand-toggle"
+												>
+													<i className="fas fa-user me-2" />
+													MY ACCOUNT
+												</div>
+											) : (
+												<button
+													type='button'
+													className="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 px-4"
+													onClick={() => setVisibleModalLogin(true)}
+												>
+													Login / Sign up
+												</button>
+											)}
+										</li>
+									</ul>
 								</ul>
 							</div>
 						</div>
 					</nav>
 				</div>
 			</div>
+			<label id="nav-close" className={`${visibleSideBar || visibleModalLogin ? "pd-modal" : "" }`} onClick = {onResetVissble}/>
+			<SiderBar visible={visibleSideBar} setVisible={setVisibleSideBar}/>
+			<ModalLogin visible={visibleModalLogin} setVisible={setVisibleModalLogin}/>
 		</Wrapper>
 	);
 }
