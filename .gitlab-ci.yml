@@ -1,4 +1,6 @@
 stages:
+  - build
+  - test
   - deploy
 
 cache:
@@ -8,20 +10,6 @@ cache:
   paths:
     - node_modules/
   policy: pull
-
-install:
-  image: ...
-  stage: .pre # always first, no matter if it is listed in stages
-  cache:
-    key:
-      files:
-        - package-lock.json
-    paths:
-      - node_modules/
-    when: on_success
-    policy: pull-push
-  script:
-    - npm ci --cache .npm --prefer-offline
 
 include:
   - project: "BAPSoftware/outsource/bapsw.s0142.goemon/goemon-devops"
