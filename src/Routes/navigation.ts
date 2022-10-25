@@ -8,6 +8,7 @@ import { navigator as courseNavigator } from '@modules/course/routes';
 import { navigator as authNavigator } from '@modules/auth/routes';
 import { FaqLayout, FundDetailLayout } from '@layouts';
 
+
 const navigator = {
 	HOME: '/',
 	FUND_DETAIL: '/fund_detail',

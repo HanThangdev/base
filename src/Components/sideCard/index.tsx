@@ -9,7 +9,7 @@ import { Wrapper } from './styled';
 
 function SideCard() {
 	return (
-		<Wrapper className="card shadow-md mt-md-0 mt-5 position-sticky top-1">
+		<Wrapper className="card shadow-md mt-md-0 mt-5 position-sticky top-100px">
 			<div className="card-header py-2" />
 			<div className="card-body mt-0 pt-2">
 				<div className="row">
