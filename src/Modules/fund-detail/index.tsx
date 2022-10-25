@@ -1,11 +1,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-script-url */
-/* eslint-disable react/jsx-no-script-url */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { useState } from 'react';
 import {
 	// FundLogo1,
 	// FundLogo2,
@@ -23,12 +21,13 @@ import CalculateFund from '@components/calculateFund';
 import Card from '@components/card';
 import Diccussion from '@components/diccussion';
 import SideCard from '@components/sideCard';
-import { Wrapper } from './styled';
+import { Link, Wrapper } from './styled';
+import { listNav } from './constant';
 
 function FundDetail() {
 	const navigate = useNavigate();
 	// const { t } = useTranslation();
-
+	const [itemActive, setItemActive] = useState(['pitch']);
 	const LIST_CARD = [
 		{
 			avatar: FundLogo5,
@@ -109,67 +108,39 @@ function FundDetail() {
 									alt="Dubai Real Estate Investment Fund"
 								/>
 							</div>
-							<section className="position-sticky top-1 z-index-999 tab-menu">
+							<section className="position-sticky top-100px z-index-999 tab-menu">
 								<div className="container px-0">
 									<div className="row">
 										<div className="col-12 mx-auto mb-5">
 											<div className="nav-wrapper position-relative end-0">
 												<ul
-													className="nav nav-pills nav-fill p-1"
+													className="nav nav-pills nav-fill p-1 "
 													role="tablist"
 												>
-													<li className="nav-item now">
-														<a
-															className="nav-link fs-7 mb-0 px-0 py-2 active"
-															href="#pitch"
-														>
-															Pitch
-														</a>
-													</li>
-													<li className="nav-item">
-														<a
-															className="nav-link fs-7 mb-0 px-0 py-2"
-															href="#diccussion"
-														>
-															Diccussion
-															<span className="badge bg-gradient-secondary font-weight-normal ms-2">
-																198
-															</span>
-														</a>
-													</li>
-													<li className="nav-item">
-														<a
-															className="nav-link fs-7 mb-0 px-0 py-2"
-															href="#updates"
-														>
-															Updates
-															<span className="badge bg-gradient-secondary font-weight-normal ms-2">
-																2
-															</span>
-														</a>
-													</li>
-													<li className="nav-item">
-														<a
-															className="nav-link fs-7 mb-0 px-0 py-2"
-															href="#review"
-														>
-															Review
-															<span className="badge bg-gradient-secondary font-weight-normal ms-2">
-																59
-															</span>
-														</a>
-													</li>
-													<li className="nav-item">
-														<a
-															className="nav-link fs-7 mb-0 px-0 py-2"
-															href="#sharenfts"
-														>
-															Share NFTs
-															<span className="badge bg-gradient-secondary font-weight-normal ms-2">
-																259
-															</span>
-														</a>
-													</li>
+													{listNav.map((item) => {
+														const { title, key, ref, totalNoti } = item;
+														return (
+															<li
+																className="nav-item moving-tab"
+																key={key}
+																onClick={() => setItemActive([key])}
+															>
+																<Link
+																	className={`nav-link fs-7 mb-0 px-0 py-2 ${
+																		itemActive.includes(key) ? 'active now' : ''
+																	}`}
+																	href={ref}
+																>
+																	{title}
+																	{!!totalNoti && (
+																		<span className="badge bg-gradient-secondary font-weight-normal ms-2">
+																			{totalNoti}
+																		</span>
+																	)}
+																</Link>
+															</li>
+														);
+													})}
 												</ul>
 											</div>
 										</div>
@@ -305,10 +276,8 @@ function FundDetail() {
 									<hr className="horizontal dark-left" />
 									<p className="fs-6 font-weight-bolder">
 										We have prepared an FAQ.{' '}
-										<a
+										<span
 											onClick={() => navigate(navigator.FAQ)}
-											role="button"
-											target="_blank"
 											className="font-weight-bolder text-primary icon-move-right"
 										>
 											Please use FAQ before asking the team
@@ -316,7 +285,7 @@ function FundDetail() {
 												className="fas fa-arrow-right text-sm ms-1"
 												aria-hidden="true"
 											/>
-										</a>
+										</span>
 									</p>
 									<p className="fs-6">
 										Ask questions and share feedback with the{' '}
@@ -326,13 +295,13 @@ function FundDetail() {
 										below.
 									</p>
 									<div className="img-fluid">
-										<Diccussion idFund="id1"/>
+										<Diccussion idFund="id1" />
 									</div>
 								</div>
 								<div id="updates" className="pt-6 mb-6">
 									<h3>Updates</h3>
 									<hr className="horizontal dark-left" />
-									<a href="javascript::" className="icon-move-right">
+									<a href="/" className="icon-move-right">
 										<div className="card shadow-md justify-content-center mb-4 ps-4">
 											<div className="card-body p-3">
 												<h6 className="mb-0">May 2022 Revenue Update</h6>
@@ -350,7 +319,7 @@ function FundDetail() {
 											</div>
 										</div>
 									</a>
-									<a href="javascript::" className="icon-move-right">
+									<a href="/" className="icon-move-right">
 										<div className="card shadow-md justify-content-center mb-4 ps-4">
 											<div className="card-body p-3">
 												<h6 className="mb-0">
@@ -370,7 +339,7 @@ function FundDetail() {
 											</div>
 										</div>
 									</a>
-									<a href="javascript::" className="icon-move-right">
+									<a href="/" className="icon-move-right">
 										<div className="card shadow-md justify-content-center mb-4 ps-4">
 											<div className="card-body p-3">
 												<h6 className="mb-0">Launched🚀</h6>
@@ -404,7 +373,7 @@ function FundDetail() {
 										</p>
 										<div className="author align-items-center">
 											<div className="avatar">
-												<img src={FundLogo4} />
+												<img src={FundLogo4} alt=""/>
 											</div>
 											<div className="name ps-2">
 												<span>Ivana Gerge</span>
@@ -425,7 +394,7 @@ function FundDetail() {
 										</p>
 										<div className="author align-items-center">
 											<div className="avatar">
-												<img src={FundLogo4} />
+												<img src={FundLogo4} alt=""/>
 											</div>
 											<div className="name ps-2">
 												<span>Ivana Gerge</span>
@@ -446,7 +415,7 @@ function FundDetail() {
 										</p>
 										<div className="author align-items-center">
 											<div className="avatar">
-												<img src={FundLogo4} />
+												<img src={FundLogo4} alt=""/>
 											</div>
 											<div className="name ps-2">
 												<span>Ivana Gerge</span>

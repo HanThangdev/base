@@ -1,7 +1,20 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import { useState } from 'react';
 import { Wrapper } from './styled';
 
+
+
 function Header() {
+	const [isFocused , setIsFocused] = useState<string>("");
+
+	const onFocus = () => {
+		setIsFocused("focused")
+	}
+
+	const onBlur = () => {
+		setIsFocused("")
+	}
+	
 	return (
 		<Wrapper>
 			<div className="page-header min-vh-50">
@@ -85,7 +98,7 @@ function Header() {
 					</div>
 					<div className="col-lg-3 mt-lg-n2 mt-2">
 						<label className="">Search: </label>
-						<div className="input-group">
+						<div className={`input-group ${isFocused}`} onFocus={onFocus} onBlur={onBlur}>
 							<span className="input-group-text">
 								<i className="fas fa-search" aria-hidden="true" />
 							</span>
