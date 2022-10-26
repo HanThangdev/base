@@ -2,7 +2,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useWeb3Auth } from '@services/web3auth';
 import { GOEMON_LOGO, DownArrowDark } from '@assets/template/img';
 import { ModalLogin } from '@components/modal';
 import SiderBar from '../sidebar';
@@ -12,11 +13,25 @@ function Navbar() {
 
 	const [visibleSideBar, setVisibleSideBar] = useState(false)
 	const [visibleModalLogin, setVisibleModalLogin] = useState(false)
+	const [profile, setProfile] = useState<unknown | null >(null)
+  const { provider, logout, web3Auth } = useWeb3Auth();
 
 	const onResetVissble = () => {
 		setVisibleSideBar(false);
 		setVisibleModalLogin(false);
 	}
+	useEffect(() => {
+		if(web3Auth){
+			const getProfile = async () => {
+				const user = await web3Auth?.getUserInfo()
+				const account = await provider?.getAccounts()
+				setProfile({...user, walletAddress: account[0]})
+			}
+			getProfile()
+		}
+	}, [web3Auth])
+
+	
 
 	return (
 		<Wrapper className="container position-sticky z-index-sticky top-0">
@@ -626,7 +641,7 @@ function Navbar() {
 									<ul className="navbar-nav d-lg-block d-none">
 										<li className="nav-item" />
 										<li className="nav-item">
-											{false ? (
+											{provider ? (
 												<div
 													onClick={() => setVisibleSideBar(true)}
 													className="btn btn-sm btn btn-outline-primary btn-round mb-0 me-1 px-4"
@@ -653,8 +668,8 @@ function Navbar() {
 				</div>
 			</div>
 			<label id="nav-close" className={`${visibleSideBar || visibleModalLogin ? "pd-modal" : "" }`} onClick = {onResetVissble}/>
-			<SiderBar visible={visibleSideBar} setVisible={setVisibleSideBar}/>
-			<ModalLogin visible={visibleModalLogin} setVisible={setVisibleModalLogin}/>
+			<SiderBar visible={visibleSideBar} setVisible={setVisibleSideBar} logout={logout} profile={profile}/>
+			<ModalLogin visible={visibleModalLogin} setVisible={setVisibleModalLogin} />
 		</Wrapper>
 	);
 }

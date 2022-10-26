@@ -1,18 +1,18 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable consistent-return */
+import { IWalletProvider } from "@services/networkProvider/provider";
 import { SafeEventEmitterProvider } from "@web3auth/base";
 import { SolanaWallet } from "@web3auth/solana-provider";
-import { IWalletProvider } from "./walletProvider";
 
-const solanaProvider = (provider: SafeEventEmitterProvider, uiConsole: (...args: unknown[]) => void): IWalletProvider => {
+const solanaProvider = (provider: SafeEventEmitterProvider): IWalletProvider => {
   const solanaWallet = new SolanaWallet(provider);
 
   const getAccounts = async (): Promise<string[]> => {
     try {
       const acc = await solanaWallet.requestAccounts();
-      uiConsole("Solana accounts", acc);
       return acc;
     } catch (error) {
       console.error("Error", error);
-      uiConsole("error", error);
       return [];
     }
   };
@@ -21,10 +21,9 @@ const solanaProvider = (provider: SafeEventEmitterProvider, uiConsole: (...args:
     try {
       const accounts = await solanaWallet.requestAccounts();
       const balance = await solanaWallet.request({ method: "getBalance", params: accounts });
-      uiConsole("Solana balance", balance);
+      return balance
     } catch (error) {
       console.error("Error", error);
-      uiConsole("error", error);
     }
   };
 
@@ -32,15 +31,12 @@ const solanaProvider = (provider: SafeEventEmitterProvider, uiConsole: (...args:
     try {
       const msg = Buffer.from("Test Signing Message ", "utf8");
       const res = await solanaWallet.signMessage(msg);
-      uiConsole("Solana sign message", res);
+      return res
     } catch (error) {
       console.error("Error", error);
-      uiConsole("error", error);
     }
   };
   const signV4Message = async () => {
-    
-      uiConsole("error, method not supported ");
     
   };
 

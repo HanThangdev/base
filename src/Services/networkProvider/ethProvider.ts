@@ -1,17 +1,18 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable consistent-return */
 import { SafeEventEmitterProvider } from "@web3auth/base";
 import Web3 from "web3";
-import { getV4TypedData } from "./data";
-import { IWalletProvider } from "./walletProvider";
+import { getV4TypedData } from "../data";
+import { IWalletProvider } from "./provider";
 
-const ethProvider = (provider: SafeEventEmitterProvider, uiConsole: (...args: unknown[]) => void): IWalletProvider => {
+const ethProvider = (provider: SafeEventEmitterProvider): IWalletProvider => {
   const getAccounts = async () => {
     try {
       const web3 = new Web3(provider as any);
       const accounts = await web3.eth.getAccounts();
-      uiConsole("Eth accounts", accounts);
+      return accounts
     } catch (error) {
       console.error("Error", error);
-      uiConsole("error", error);
     }
   };
 
@@ -19,12 +20,10 @@ const ethProvider = (provider: SafeEventEmitterProvider, uiConsole: (...args: un
     try {
       const web3 = new Web3(provider as any);
       const accounts = await web3.eth.getAccounts();
-      console.log("accounts", accounts)
       const balance = await web3.eth.getBalance(accounts[0]);
-      uiConsole("Eth balance", balance);
+      return balance
     } catch (error) {
       console.error("Error", error);
-      uiConsole("error", error);
     }
   };
 
@@ -41,14 +40,12 @@ const ethProvider = (provider: SafeEventEmitterProvider, uiConsole: (...args: un
         },
         (err: Error, result: any) => {
           if (err) {
-            return uiConsole(err);
+            return console.log(err, result)
           }
-          uiConsole("Eth sign message => true", result);
         }
       );
     } catch (error) {
       console.log("error", error);
-      uiConsole("error", error);
     }
   };
   const signV4Message = async () => {
@@ -65,14 +62,13 @@ const ethProvider = (provider: SafeEventEmitterProvider, uiConsole: (...args: un
         },
         (err: Error, result: any) => {
           if (err) {
-            return uiConsole(err);
+            return console.log(err);
           }
-          uiConsole("Eth sign message => true", result);
+          console.log("Eth sign message => true", result);
         }
       );
     } catch (error) {
       console.log("error", error);
-      uiConsole("error", error);
     }
   };
 

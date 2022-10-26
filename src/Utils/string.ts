@@ -57,3 +57,10 @@ export const decodePath = (path: any) => {
 export function formatIdEle(text: string) {
 	return text.toLocaleLowerCase().replaceAll(' ', '');
 }
+
+export const shortAddress = (value: string, n = 6, nlast = 6, v = 13) => {
+  if (value?.length <= v) { return value }
+  const subString = value?.substr(0, n)
+  const lastSubString = value?.substr(value.length - nlast, value.length)
+  return `${subString}...${lastSubString}`
+}

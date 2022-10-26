@@ -68,7 +68,7 @@ function HomeScreen() {
 			isWhiteList: false,
 			followCount: 9598,
 			backgroundImage: 'fund-5',
-			key: 5,
+			key: 6,
 		},
 	];
 	return (

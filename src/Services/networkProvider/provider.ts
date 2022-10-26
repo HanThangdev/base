@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { SafeEventEmitterProvider } from "@web3auth/base";
 import ethProvider from "./ethProvider";
 import solanaProvider from "./solanaProvider";
@@ -12,9 +13,9 @@ export interface IWalletProvider {
 
 }
 
-export const getWalletProvider = (chain: string, provider: SafeEventEmitterProvider, uiConsole: any): IWalletProvider => {
+export const getWalletProvider = (chain: string, provider: SafeEventEmitterProvider): IWalletProvider => {
   if (chain === "solana") {
-    return solanaProvider(provider, uiConsole);
+    return solanaProvider(provider);
   }
-  return ethProvider(provider, uiConsole);
+  return ethProvider(provider);
 };
