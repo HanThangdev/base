@@ -8,6 +8,15 @@ export enum TypeLoginProvider {
 	DISCORD = 'discord',
 }
 
+export enum TypeChain {
+	ETH_mainnet= "ETH_mainnet",
+	ETH_testnet= "ETH_testnet"
+}
+
+export enum MethodChain {
+	ETH_CHAIN= "eth_private_key",
+}
+
 export const LOGIN_VIA_EMAIL = "email_passwordless"
 
 export const LOGIN_PROVIDER: {
@@ -37,3 +46,4 @@ export const LOGIN_PROVIDER: {
 		function: (cb) => cb(TypeLoginProvider.TWITTER)
 	}
 }
+

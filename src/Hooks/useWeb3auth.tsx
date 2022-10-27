@@ -3,7 +3,6 @@
 /* eslint-disable react/function-component-definition */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/jsx-no-constructed-context-values */
-import { useAuth } from '@hooks';
 import type { LOGIN_PROVIDER_TYPE } from '@toruslabs/openlogin';
 import {
 	ADAPTER_EVENTS,
@@ -28,6 +27,8 @@ import {
 import { Web3authNetWorkType } from '@constants';
 import QRCodeModal from '@walletconnect/qrcode-modal';
 import { CHAIN_CONFIG, CHAIN_CONFIG_TYPE } from '@config/chainConfig';
+import { getAppPubKey } from '@config/web3auth/appPubKey';
+import { useAuth } from './injectStore';
 
 export interface IWeb3AuthContext {
 	web3Auth: Web3AuthCore | null;
@@ -93,18 +94,15 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 	const [provider, setProvider] = useState<IWalletProvider | null>(null);
 	const [user, setUser] = useState<unknown | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
+	const { loginAction } = useAuth();
 
 	const setWalletProvider = useCallback(
 		(web3authProvider: SafeEventEmitterProvider) => {
-			const walletProvider = getWalletProvider(
-				chain,
-				web3authProvider,
-			);
+			const walletProvider = getWalletProvider(chain, web3authProvider);
 			setProvider(walletProvider);
 		},
 		[chain]
 	);
-
 	useEffect(() => {
 		const subscribeAuthEvents = (web3auth: Web3AuthCore) => {
 			// Can subscribe to all ADAPTER_EVENTS and LOGIN_MODAL_EVENTS
@@ -132,7 +130,6 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 
 		async function init() {
 			try {
-				
 				setIsLoading(true);
 				const clientId =
 					'BD8pvWp8a7mYvc8V2adDX4BrnEb72psCq4CcIkvFUyuj44c6e0InroHoMWqk1Wz6IKw1dJ8Jbbye0X8sSGi9IJU';
@@ -158,16 +155,26 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 				web3AuthInstance.configureAdapter(wcAdapter);
 
 				await web3AuthInstance.init();
-        console.log("response", web3AuthInstance)
+				
 				setWeb3Auth(web3AuthInstance);
+			 
 			} catch (error) {
 				console.error(error);
 			} finally {
 				setIsLoading(false);
+				
 			}
 		}
 		init();
 	}, [chain, web3AuthNetwork, setWalletProvider]);
+
+	useEffect(() => {
+		if(web3Auth){
+			const pubKey = getAppPubKey(web3Auth, chain);
+			console.log('pubKey', pubKey);
+			loginAction({pubKey});
+		}
+	},[])
 
 	const login = async (
 		adapter: WALLET_ADAPTER_TYPE,
@@ -175,7 +182,7 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 		login_hint?: string
 	) => {
 		try {
-			console.log("login",adapter, loginProvider, provider, web3Auth)
+			console.log('login', adapter, loginProvider, provider, web3Auth);
 			setIsLoading(true);
 			if (!web3Auth) {
 				console.log('web3auth not initialized yet');
@@ -185,7 +192,8 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 				loginProvider,
 				login_hint,
 			});
-			console.log(localProvider);
+			
+
 			setWalletProvider(localProvider!);
 		} catch (error) {
 			console.log('error', error);
@@ -193,6 +201,7 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 			setIsLoading(false);
 		}
 	};
+
 	const loginWithWalletConnect = async () => {
 		try {
 			setIsLoading(true);
@@ -227,11 +236,10 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 				console.log('web3auth not initialized yet');
 				return;
 			}
-			await web3Auth.getUserInfo();;
+			await web3Auth.getUserInfo();
 		} catch (error) {
-			console.error("Error", error);
+			console.error('Error', error);
 		}
-	 
 	};
 
 	const getAccounts = async () => {
@@ -240,9 +248,9 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 				console.log('web3auth not initialized yet');
 				return;
 			}
-			await  provider.getAccounts();
+			await provider.getAccounts();
 		} catch (error) {
-			console.error("Error", error);
+			console.error('Error', error);
 		}
 	};
 
@@ -252,9 +260,9 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 				console.log('web3auth not initialized yet');
 				return;
 			}
-		 	await provider.getBalance();
+			await provider.getBalance();
 		} catch (error) {
-			console.error("Error", error);
+			console.error('Error', error);
 		}
 	};
 
@@ -280,23 +288,23 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 		}
 		provider.getPrivateKey();
 	};
- 
+
 	const contextProvider = {
-    web3Auth,
-    provider,
-    user,
-    isLoading,
-    login,
-    loginWithWalletConnect,
-    logout,
-    getUserInfo,
-    getAccounts,
-    getBalance,
-    signMessage,
-    signV4Message,
-    getPrivateKey
-  };
-  
+		web3Auth,
+		provider,
+		user,
+		isLoading,
+		login,
+		loginWithWalletConnect,
+		logout,
+		getUserInfo,
+		getAccounts,
+		getBalance,
+		signMessage,
+		signV4Message,
+		getPrivateKey,
+	};
+
 	return (
 		<Web3AuthContext.Provider value={contextProvider}>
 			{children}

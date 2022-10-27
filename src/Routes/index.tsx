@@ -18,7 +18,7 @@ const CourseRoutes = lazy(() => import('@modules/course/routes'));
 export default function AppRoutes() {
 
 	const [web3AuthNetwork, setWeb3AuthNetwork] = useState<Web3authNetWorkType>("mainnet");
-  const [chain, setChain] = useState<CHAIN_CONFIG_TYPE>("mainnet");
+  const [chain, setChain] = useState<CHAIN_CONFIG_TYPE>("ETH_mainnet");
 	
 	return (
 		<Suspense fallback={<Loading />}>

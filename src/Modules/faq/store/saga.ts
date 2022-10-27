@@ -4,7 +4,7 @@ import { sendContact } from '@apis';
 import { Action } from '@type/Store';
 import { SEND_CONTACT } from './constants';
 
-export function* sendContactAction({ payload }: Action) {
+export function* sendContactSaga({ payload }: Action) {
 	try {
     yield sendContact(payload);
 		yield put({
@@ -20,5 +20,5 @@ export function* sendContactAction({ payload }: Action) {
 
 
 export default function* faqSaga() {
-	yield takeLatest(REQUEST(SEND_CONTACT), sendContactAction);
+	yield takeLatest(REQUEST(SEND_CONTACT), sendContactSaga);
 }
