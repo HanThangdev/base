@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect, useState } from 'react';
-import { useWeb3Auth } from '@services/web3auth';
+import { useWeb3Auth } from '@hooks/useWeb3auth';
 import { GOEMON_LOGO, DownArrowDark } from '@assets/template/img';
 import { ModalLogin } from '@components/modal';
 import SiderBar from '../sidebar';

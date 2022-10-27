@@ -33,7 +33,6 @@
 			"@type": ["Types"],
 			"@utils": ["Utils/"],
 			"@web3": ["Web3"],
-			"@services": ["Services"],
 
 			"@tests/*": ["__tests__/*"],
 			"@adapters/*": ["Adapters/*"],
@@ -51,8 +50,6 @@
 			"@type/*": ["Types/*"],
 			"@utils/*": ["Utils/*"],
 			"@web3/*": ["Web3/*"],
-			"@services/*": ["Services/*"],
-
 		}
 	},
 	"include": ["src", "craco.config.ts", "jest.config.js"]

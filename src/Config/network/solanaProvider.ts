@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable consistent-return */
-import { IWalletProvider } from "@services/networkProvider/provider";
+import { IWalletProvider } from "@config/network/provider";
 import { SafeEventEmitterProvider } from "@web3auth/base";
 import { SolanaWallet } from "@web3auth/solana-provider";
 

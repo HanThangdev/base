@@ -3,8 +3,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { GOEMON_LOGO } from "@assets/template/img";
-import { useWeb3Auth } from "@services/web3auth";
 import { FormInput } from "@components/form";
+import { useWeb3Auth } from "@hooks/useWeb3auth";
 import { LOGIN_PROVIDER, LOGIN_VIA_EMAIL, TypeLoginProvider } from "@constants";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { WALLET_ADAPTERS } from "@web3auth/base";

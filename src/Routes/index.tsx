@@ -6,9 +6,9 @@ import { Switch, Route } from 'react-router-dom';
 import { CustomRoute } from '@components';
 import { Loading } from '@components/common';
 
+import { Web3AuthProvider } from '@hooks/useWeb3auth';
 import NotFoundScreen from '@modules/other/404';
-import { Web3AuthProvider } from '@services/web3auth';
-import { WEB3AUTH_NETWORK_TYPE } from '@config/web3AuthNetwork';
+import { WEB3AUTH_NETWORK_TYPE } from '@constants/web3auth';
 import { CHAIN_CONFIG_TYPE } from '@config/chainConfig';
 import { ROUTES } from './navigation';
 

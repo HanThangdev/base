@@ -15,7 +15,7 @@ import { Web3AuthCore } from '@web3auth/core';
 import { OpenloginAdapter } from '@web3auth/openlogin-adapter';
 import { WalletConnectV1Adapter } from '@web3auth/wallet-connect-v1-adapter';
 import { NetworkSwitch } from '@web3auth/ui';
-import { getWalletProvider, IWalletProvider } from '@services/networkProvider/provider';
+import { getWalletProvider, IWalletProvider } from '@config/network/provider';
 import {
 	createContext,
 	FunctionComponent,
@@ -26,7 +26,7 @@ import {
 	useState,
 } from 'react';
 import QRCodeModal from '@walletconnect/qrcode-modal';
-import { WEB3AUTH_NETWORK_TYPE } from '@config/web3AuthNetwork';
+import { WEB3AUTH_NETWORK_TYPE } from '@constants/web3auth';
 import { CHAIN_CONFIG, CHAIN_CONFIG_TYPE } from '@config/chainConfig';
 
 export interface IWeb3AuthContext {

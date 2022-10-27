@@ -15,5 +15,4 @@ export const alias = (prefix = 'src') => ({
 	'@type': `${prefix}/Type`,
 	'@utils': `${prefix}/Utils`,
 	'@web3': `${prefix}/Web3`,
-	'@services': `${prefix}/Services`,
 });
