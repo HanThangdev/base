@@ -10,4 +10,4 @@ export const WEB3AUTH_NETWORK = {
   },
 } as const;
 
-export type WEB3AUTH_NETWORK_TYPE = keyof typeof WEB3AUTH_NETWORK;
+export type Web3authNetWorkType = keyof typeof WEB3AUTH_NETWORK;

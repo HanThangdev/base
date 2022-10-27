@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable consistent-return */
-import { getV4TypedData } from "@constants/data";
+import { getV4TypedData } from "@constants";
 import { SafeEventEmitterProvider } from "@web3auth/base";
 import Web3 from "web3";
 import { IWalletProvider } from "./provider";

@@ -6,9 +6,9 @@ import { Switch, Route } from 'react-router-dom';
 import { CustomRoute } from '@components';
 import { Loading } from '@components/common';
 
+import { Web3authNetWorkType } from '@constants';
 import { Web3AuthProvider } from '@hooks/useWeb3auth';
 import NotFoundScreen from '@modules/other/404';
-import { WEB3AUTH_NETWORK_TYPE } from '@constants/web3auth';
 import { CHAIN_CONFIG_TYPE } from '@config/chainConfig';
 import { ROUTES } from './navigation';
 
@@ -17,7 +17,7 @@ const CourseRoutes = lazy(() => import('@modules/course/routes'));
 
 export default function AppRoutes() {
 
-	const [web3AuthNetwork, setWeb3AuthNetwork] = useState<WEB3AUTH_NETWORK_TYPE>("mainnet");
+	const [web3AuthNetwork, setWeb3AuthNetwork] = useState<Web3authNetWorkType>("mainnet");
   const [chain, setChain] = useState<CHAIN_CONFIG_TYPE>("mainnet");
 	
 	return (

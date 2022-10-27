@@ -25,8 +25,8 @@ import {
 	useEffect,
 	useState,
 } from 'react';
+import { Web3authNetWorkType } from '@constants';
 import QRCodeModal from '@walletconnect/qrcode-modal';
-import { WEB3AUTH_NETWORK_TYPE } from '@constants/web3auth';
 import { CHAIN_CONFIG, CHAIN_CONFIG_TYPE } from '@config/chainConfig';
 
 export interface IWeb3AuthContext {
@@ -74,13 +74,13 @@ export function useWeb3Auth() {
 }
 
 interface IWeb3AuthState {
-	web3AuthNetwork: WEB3AUTH_NETWORK_TYPE;
+	web3AuthNetwork: Web3authNetWorkType;
 	chain: CHAIN_CONFIG_TYPE;
 	children?: React.ReactNode;
 }
 interface IWeb3AuthProps {
 	children?: ReactNode;
-	web3AuthNetwork: WEB3AUTH_NETWORK_TYPE;
+	web3AuthNetwork: Web3authNetWorkType;
 	chain: CHAIN_CONFIG_TYPE;
 }
 
