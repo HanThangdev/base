@@ -135,7 +135,7 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 				
 				setIsLoading(true);
 				const clientId =
-					'BLf14uwUA_rcPyy5b8ED1zVcOVZGL0SwwIGTRIOplUQ6Vp4H7QfEDcX4o9qTEeR8uqDyXSrxXLOZ4RVhBSRyb7A';
+					'BD8pvWp8a7mYvc8V2adDX4BrnEb72psCq4CcIkvFUyuj44c6e0InroHoMWqk1Wz6IKw1dJ8Jbbye0X8sSGi9IJU';
 				const web3AuthInstance = new Web3AuthCore({
 					chainConfig: currentChainConfig,
 					enableLogging: true,
