@@ -17,3 +17,17 @@ export const Button = styled.button`
 	cursor: pointer;
 	outline: inherit;
 `;
+
+export const NavbarIcon = styled.div`
+	display: block;
+  padding: 10px 0 10px 20px;
+  margin: 5px 0;
+  border-radius: 9999px;
+	&:hover {
+    background-color: var(--bs-gray-100);
+		cursor:pointer
+  }
+	&:focus {
+		background-color: var(--bs-gray-100);
+}
+`;

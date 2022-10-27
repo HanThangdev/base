@@ -1,6 +1,6 @@
 const path = require(`path`);
 const { ProvidePlugin } = require('webpack');
-
+const webpack = require('webpack');
 const { alias } = require(`./src/Config/aliases`);
 const SRC = `./src`;
 const aliases = alias(SRC);
@@ -28,12 +28,19 @@ export default {
 					url: require.resolve('url/'),
 					util: require.resolve('util/'),
 				},
+				alias: {
+					process: 'process/browser',
+				},
 			},
 		},
 		plugins: [
 			new ProvidePlugin({
 				Buffer: ['buffer', 'Buffer'],
 			}),
+			
+			new webpack.ProvidePlugin({
+				process: 'process/browser',
+ 			})
 		],
 	},
 };

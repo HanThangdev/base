@@ -49,7 +49,7 @@
 			"@themes/*": ["Themes/*"],
 			"@type/*": ["Types/*"],
 			"@utils/*": ["Utils/*"],
-			"@web3/*": ["Web3/*"]
+			"@web3/*": ["Web3/*"],
 		}
 	},
 	"include": ["src", "craco.config.ts", "jest.config.js"]

@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useAuth } from '@hooks';
 import { Loading } from '@components/common';
 import { useEffect } from 'react';
@@ -11,7 +10,7 @@ function App() {
 		loadProfileAction();
 	}, []);
 
-	return isLoading ? <Loading /> : <Approutes />;
+	return isLoading ? <Loading /> :<Approutes />;
 }
 
 export default App;

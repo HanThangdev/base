@@ -3,29 +3,39 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { LOGO_BUSD, LOGO_ETH, LOGO_USDC, LOGO_USDT } from "@assets";
 import { FundLogo1 } from "@assets/template/img";
-import { ToggleNav } from "./styled";
+import { shortAddress } from "@utils/string";
+import { NavbarIcon, ToggleNav } from "./styled";
 
 interface IProps {
 	visible: boolean;
 	setVisible: (params: boolean) => void;
+	logout: any
+	profile: any
 }
 
 function SiderBar({
 	visible,
-	setVisible
+	setVisible,
+	logout,
+	profile
 }: IProps) {
 
+	const onLogout = () => {
+		logout();
+		setVisible(false)
+	}
+	console.log(profile)
 	return (
 		<div className="fixed-plugin w-100 h-100">
 		<ToggleNav visible={visible} className="card shadow-lg">
 			<div className="card-header pb-0 pt-3 bg-transparent">
 				<div className="float-start d-flex align-items-center">
 					<div className="me-3">
-						<img src={FundLogo1} className="avatar_img" alt="avatar_img"/>
+						<img src={profile?.profileImage || FundLogo1} className="avatar_img" alt="avatar_img"/>
 					</div>
 					<div className="flex-grow-1">
-						<span className="fs-6 font-weight-bolder">0x3c82…604c</span>
-						<p className="fs-8 text-secondary mt-minus1 mb-1">0x3c82…604c</p>
+						<span className="fs-6 font-weight-bolder">{shortAddress(profile?.walletAddress) || ""}</span>
+						<p className="fs-8 text-secondary mt-minus1 mb-1">{shortAddress(profile?.walletAddress)|| ""}</p>
 					</div>
 				</div>
 				<div className="float-end mt-4" onClick={() => setVisible(false)}>
@@ -38,28 +48,28 @@ function SiderBar({
 				{/* Sidenav Type */}
 				<div className="row sidenav-menu">
 					<div className="col-6 pe-0">
-						<a href="/"><i className="far fa-briefcase" /><span>Portfolio</span></a>
+						<NavbarIcon><i className="far fa-briefcase" /><span>Portfolio</span></NavbarIcon>
 					</div>
 					<div className="col-6 ps-0">
-						<a href="/"><i className="fa-light fa-chart-pie-simple" /><span>Share NFTs</span></a>
+						<NavbarIcon><i className="fa-light fa-chart-pie-simple" /><span>Share NFTs</span></NavbarIcon>
 					</div>
 					<div className="col-6 pe-0">
-						<a href="/"><i className="fa-light fa-rotate" /><span>Subscription</span></a>
+						<NavbarIcon><i className="fa-light fa-rotate" /><span>Subscription</span></NavbarIcon>
 					</div>
 					<div className="col-6 ps-0">
-						<a href="/"><i className="fa-light fa-id-card" /><span>KYC</span></a>
+						<NavbarIcon><i className="fa-light fa-id-card" /><span>KYC</span></NavbarIcon>
 					</div>
 					<div className="col-6 pe-0">
-						<a href="/"><i className="fa-regular fa-wallet" /><span>Wallet</span></a>
+						<NavbarIcon><i className="fa-regular fa-wallet" /><span>Wallet</span></NavbarIcon>
 					</div>
 					<div className="col-6 ps-0">
-						<a href="/"><i className="fa-regular fa-sliders-up" /><span>Setting</span></a>
+						<NavbarIcon><i className="fa-regular fa-sliders-up" /><span>Setting</span></NavbarIcon>
 					</div>
 					<div className="col-6 pe-0">
-						<a href="/"><i className="far fa-comment-alt-dots" /><span>Message</span></a>
+						<NavbarIcon><i className="far fa-comment-alt-dots" /><span>Message</span></NavbarIcon>
 					</div>
-					<div className="col-6 ps-0">
-						<a href="/"><i className="far fa-sign-out-alt" /><span>Logout</span></a>
+					<div className="col-6 ps-0" onClick={onLogout}>
+						<NavbarIcon><i className="far fa-sign-out-alt"/><span>Logout</span></NavbarIcon>
 					</div>
 				</div>
 				<hr className="horizontal dark my-3" />
