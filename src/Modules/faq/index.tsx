@@ -12,7 +12,7 @@ import { FAQ_TABNAME } from '@constants';
 import { Wrapper } from './styled';
 import FormContact from './send_contact';
 
-function FaqPage() {
+function Faq() {
 	const { FundManagerFaq, InvestorFaq } = listFaq;
 	const { typeTab } = useFaq();
 	const [trans] = useTranslation('common');
@@ -97,4 +97,4 @@ function FaqPage() {
 	);
 }
 
-export default FaqPage;
+export default Faq;

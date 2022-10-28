@@ -1,15 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import styled from 'styled-components';
-import { Navbar, Footer, Header, } from '@components';
+import { Navbar, Footer, } from '@components';
+import { HeaderHome } from '@components/layout/header';
 
 const Wrapper: any = styled.div``;
 
 function HomeLayout({ children }: any) {
 
 	return (
-		<Wrapper className="fundlist">
+		<Wrapper className="fund_list">
 			<Navbar />
-			<Header />
+			<HeaderHome />
 			{children}
 			<Footer />
 		</Wrapper>

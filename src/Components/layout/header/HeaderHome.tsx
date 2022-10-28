@@ -4,7 +4,7 @@ import { Wrapper } from './styled';
 
 
 
-function Header() {
+function HeaderHome() {
 	const [isFocused , setIsFocused] = useState<string>("");
 
 	const onFocus = () => {
@@ -124,4 +124,4 @@ function Header() {
 	);
 }
 
-export default Header;
+export default HeaderHome;

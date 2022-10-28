@@ -7,6 +7,7 @@ import { useAuth } from '@hooks';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
 import { getLocalStorage } from '@utils/storage';
 import NotFoundScreen from '@modules/other/404';
+import { LOCAL_WEB3AUTH_LOGINED } from '@constants';
 import { ROUTES } from './navigation';
 
 const AuthRoutes = lazy(() => import('@modules/auth/routes'));
@@ -15,7 +16,7 @@ const CourseRoutes = lazy(() => import('@modules/course/routes'));
 export default function AppRoutes() {
 	const { paramsToLogin } = useWeb3Auth();
 	const { loginAction } = useAuth();
-	const isLogined = getLocalStorage('Web3Auth-cachedAdapter');
+	const isLogined = getLocalStorage(LOCAL_WEB3AUTH_LOGINED);
 
 	useEffect(() => {
 		if (paramsToLogin.app_pub_key && paramsToLogin.id_token && isLogined) {

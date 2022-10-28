@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {
 	createReducer,
 	updateObject,
@@ -7,6 +8,7 @@ import {
 } from '@utils/redux';
 import { Action } from '@type/Store';
 import { AuthState } from '@type/Store/auth';
+import { removeLocalStorage, setLocalStorage, STORAGE } from '@utils/storage';
 import { LOAD_PROFILE, LOGIN, LOGOUT } from './constants';
 
 export const initialState: AuthState = {
@@ -25,10 +27,10 @@ function login(state: AuthState) {
 }
 
 function loginSuccess(state: AuthState, { payload }: Action) {
-	const { message } = payload;
+	const { access_token, refresh_token} = payload;
+	setLocalStorage(STORAGE.USER_TOKEN, JSON.stringify({access_token, refresh_token}));
 	return updateObject(state, {
 		isLoading: false,
-		message,
 	});
 }
 
@@ -46,6 +48,7 @@ function logout(state: AuthState) {
 }
 
 function logoutSuccess(state: AuthState, { payload }: Action) {
+	removeLocalStorage(STORAGE.USER_TOKEN)
 	const { message } = payload;
 	return updateObject(state, {
 		isLoading: false,

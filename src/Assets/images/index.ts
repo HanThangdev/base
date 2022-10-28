@@ -10,3 +10,4 @@ export { default as LOGO_LINE } from './logo-line.png';
 export { default as LOGO_TWITTER } from './logo-twitter.png';
 export { default as LOGO_GOOGLE } from './logo-google.png';
 export { default as LOGO_DISCORD } from './logo-discord.png';
+export { default as LOGO_PAYMENT } from './trustbadge-wide.png';

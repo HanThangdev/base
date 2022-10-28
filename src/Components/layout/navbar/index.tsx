@@ -4,8 +4,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect, useState } from 'react';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
-import { GOEMON_LOGO, DownArrowDark } from '@assets/template/img';
-import { getLocalStorage } from '@utils/storage';
+import { GOEMON_LOGO, DownArrowDark, FundLogo1 } from '@assets/template/img';
+import { getLocalStorage, STORAGE } from '@utils/storage';
 import { ModalLogin } from '@components/modal';
 import SiderBar from '../sidebar';
 import { Wrapper } from './styled';
@@ -14,8 +14,8 @@ function Navbar() {
 	const [visibleSideBar, setVisibleSideBar] = useState(false);
 	const [visibleModalLogin, setVisibleModalLogin] = useState(false);
 	const [profile, setProfile] = useState<unknown | null>(null);
-	const { provider, logout, web3Auth } = useWeb3Auth();
-	const isLogined = getLocalStorage('Web3Auth-cachedAdapter');
+	const { provider, logout, web3Auth, isLoading } = useWeb3Auth();
+	const isLogined = getLocalStorage(STORAGE.USER_TOKEN);
 
 	const onResetVissble = () => {
 		setVisibleSideBar(false);
@@ -25,7 +25,7 @@ function Navbar() {
 	useEffect(() => {
 		if (web3Auth) {
 			const getProfile = async () => {
-				const user = await web3Auth?.getUserInfo();
+				const user = await web3Auth.getUserInfo();
 				const account = await provider?.getAccounts();
 				setProfile({ ...user, walletAddress: account[0] });
 			};
@@ -637,31 +637,335 @@ function Navbar() {
 										</div>
 									</li>
 								</ul>
-								<ul className="navbar-nav d-lg-block d-none">
+								{isLogined ? (
 									<ul className="navbar-nav d-lg-block d-none">
-										<li className="nav-item" />
-										<li className="nav-item">
-											{isLogined ? (
-												<div
-													onClick={() => setVisibleSideBar(true)}
-													className="btn btn-sm btn btn-outline-primary btn-round mb-0 me-1 px-4"
-													// htmlFor="expand-toggle"
-												>
-													<i className="fas fa-user me-2" />
-													MY ACCOUNT
+										<li className="nav-item dropdown dropdown-hover px-1 me-1">
+											<a href='/' className="nav-link btn btn-link mb-0 px-3">
+												<i className="fa-regular fa-bell fs-5 text-gray-600" />
+												<span className="unread" />
+											</a>
+											<div
+												className="dropdown-menu dropdown-menu-animation dropdown-lg dropdown-right p-3 border-radius-xl mt-0 mt-lg-3"
+												aria-labelledby="dropdownMenuPages10"
+											>
+												<div className="row d-none d-lg-block">
+													<div className="col-12 px-1 py-2">
+														<div className="row">
+															<div className="col-12 position-relative">
+																<div className="d-flex justify-content-between px-2">
+																	<div className="fs-7 font-weight-bold">
+																		<i className="fa-regular fa-bell fs-5 text-gray-600 me-2" />
+																		Notifications (999)
+																	</div>
+																	<button
+																		type="button"
+																		className="btn btn-outline-primary btn-xs mb-0"
+																	>
+																		Read All
+																	</button>
+																</div>
+																<hr className="horizontal dark mt-3 mb-2" />
+																<a
+																	href="\"
+																	className="dropdown-item border-radius-md text-wrap"
+																>
+																	<div className="d-flex justify-content-start align-items-center">
+																		<div className="me-2">
+																			<img
+																				src="./assets/img/goemon/announce_100x100-2.png"
+																				className="avatar_img"
+																				alt=''
+																			/>
+																		</div>
+																		<div className="w-100">
+																			<p className="fs-8 text-secondary mt-minus1 mb-0 text-end">
+																				3 hour
+																			</p>
+																			<span className="fs-7 font-weight-bolder">
+																				ABC Crypto Fund
+																			</span>
+																			<p className="fs-7 mb-0 lh-sm">
+																				Added fund investment destinations.
+																				Please check here for details.
+																			</p>
+																		</div>
+																	</div>
+																</a>
+																<hr className="horizontal dark mt-3 mb-2" />
+																<a
+																	href="\"
+																	className="dropdown-item border-radius-md text-wrap"
+																>
+																	<div className="d-flex justify-content-start align-items-center">
+																		<div className="me-2">
+																			<img
+																				src="./assets/img/goemon/announce_100x100-2.png"
+																				className="avatar_img"
+																				alt=''
+																			/>
+																		</div>
+																		<div className="w-100">
+																			<p className="fs-8 text-secondary mt-minus1 mb-0 text-end">
+																				3 hour
+																			</p>
+																			<span className="fs-7 font-weight-bolder">
+																				ABC Crypto Fund
+																			</span>
+																			<p className="fs-7 mb-0 lh-sm">
+																				Added fund investment destinations.
+																				Please check here for details.
+																			</p>
+																		</div>
+																	</div>
+																</a>
+																<hr className="horizontal dark mt-3 mb-2" />
+																<a
+																	href="\"
+																	className="dropdown-item border-radius-md text-wrap"
+																>
+																	<div className="d-flex justify-content-start align-items-center">
+																		<div className="me-2">
+																			<img
+																				src="./assets/img/goemon/announce_100x100-2.png"
+																				className="avatar_img"
+																				alt=''
+																			/>
+																		</div>
+																		<div className="w-100">
+																			<p className="fs-8 text-secondary mt-minus1 mb-0 text-end">
+																				10-23 16:00
+																			</p>
+																			<span className="fs-7 font-weight-bolder">
+																				Deposit Confirmed
+																			</span>
+																			<p className="fs-7 mb-0 lh-sm">
+																				Your deposit has been confirmed. Deposit
+																				amount: 10000.0000 USDT
+																			</p>
+																		</div>
+																	</div>
+																</a>
+																<hr className="horizontal dark mt-3 mb-2" />
+															</div>
+														</div>
+													</div>
 												</div>
-											) : (
-												<button
-													type="button"
-													className="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 px-4"
-													onClick={() => setVisibleModalLogin(true)}
-												>
-													Login / Sign up
-												</button>
-											)}
+												{/* Message > Mobile */}
+												<div className="d-lg-none">
+													<a
+														href="/"
+														className="dropdown-item border-radius-md"
+													>
+														<span>Blog</span>
+													</a>
+													<a
+														href="/"
+														className="dropdown-item border-radius-md"
+													>
+														<span>Pressrelease</span>
+													</a>
+													<a
+														href="/"
+														className="dropdown-item border-radius-md"
+													>
+														<span>About Us</span>
+													</a>
+													<a
+														href="/"
+														className="dropdown-item border-radius-md"
+													>
+														<span>Jobs</span>
+													</a>
+													<a
+														href="/"
+														className="dropdown-item border-radius-md"
+													>
+														<span>Affiliates</span>
+													</a>
+													<a
+														href="/"
+														className="dropdown-item border-radius-md"
+													>
+														<span>Mediakit</span>
+													</a>
+												</div>
+											</div>
 										</li>
+										{/* Message */}
+										<li className="nav-item dropdown dropdown-hover px-1 me-2">
+											<a href="/" className="nav-link btn btn-link mb-0 px-3">
+												<i className="far fa-envelope fs-5 text-gray-600" />
+												<span className="unread" />
+											</a>
+											<div
+												className="dropdown-menu dropdown-menu-animation dropdown-lg dropdown-right p-3 border-radius-xl mt-0 mt-lg-3"
+												aria-labelledby="dropdownMenuPages10"
+											>
+												<div className="row d-none d-lg-block">
+													<div className="col-12 px-1 py-2">
+														<div className="row">
+															<div className="col-12 position-relative">
+																<div className="d-flex justify-content-between px-2">
+																	<div className="fs-7 font-weight-bold">
+																		<i className="far fa-envelope fs-5 text-gray-600 me-2" />
+																		Inbox (999)
+																	</div>
+																	<button
+																		type="button"
+																		className="btn btn-outline-primary btn-xs mb-0"
+																	>
+																		See All in Inbox
+																	</button>
+																</div>
+																<hr className="horizontal dark mt-3 mb-2" />
+																<a
+																	href="\"
+																	className="dropdown-item border-radius-md text-wrap"
+																>
+																	<div className="d-flex justify-content-start align-items-center">
+																		<div className="me-2">
+																			<img
+																				src="./assets/img/goemon/avatar_2.png"
+																				className="avatar_img"
+																				alt=""
+																			/>
+																		</div>
+																		<div className="w-100">
+																			<p className="fs-8 text-secondary mt-minus1 mb-0 text-end">
+																				3 hour
+																			</p>
+																			<span className="fs-7 font-weight-bolder">
+																				Mark Zackerbarg
+																			</span>
+																			<p className="fs-7 mb-0 lh-sm">
+																				HHi thanks for contacting me! Nothing
+																				will ever enter my wallet. The earnings
+																				will go into the contract and can be...
+																			</p>
+																		</div>
+																	</div>
+																</a>
+																<hr className="horizontal dark mt-3 mb-2" />
+																<a
+																	href="\"
+																	className="dropdown-item border-radius-md text-wrap"
+																>
+																	<div className="d-flex justify-content-start align-items-center">
+																		<div className="me-2">
+																			<img
+																				src="./assets/img/goemon/avatar_2.png"
+																				className="avatar_img"
+																				alt=""
+																			/>
+																		</div>
+																		<div className="w-100">
+																			<p className="fs-8 text-secondary mt-minus1 mb-0 text-end">
+																				10-20 17:45
+																			</p>
+																			<span className="fs-7 font-weight-bolder">
+																				Mark Zackerbarg
+																			</span>
+																			<p className="fs-7 mb-0 lh-sm">
+																				HHi thanks for contacting me! Nothing
+																				will ever enter my wallet. The earnings
+																				will go into the contract and can be...
+																			</p>
+																		</div>
+																	</div>
+																</a>
+																<hr className="horizontal dark mt-3 mb-2" />
+																<a
+																	href="\"
+																	className="dropdown-item border-radius-md text-wrap"
+																>
+																	<div className="d-flex justify-content-start align-items-center">
+																		<div className="me-2">
+																			<img
+																				src="./assets/img/goemon/avatar_2.png"
+																				className="avatar_img"
+																				alt=""
+																			/>
+																		</div>
+																		<div className="w-100">
+																			<p className="fs-8 text-secondary mt-minus1 mb-0 text-end">
+																				10-1 18:00
+																			</p>
+																			<span className="fs-7 font-weight-bolder">
+																				Mark Zackerbarg
+																			</span>
+																			<p className="fs-7 mb-0 lh-sm">
+																				HHi thanks for contacting me! Nothing
+																				will ever enter my wallet. The earnings
+																				will go into the contract and can be...
+																			</p>
+																		</div>
+																	</div>
+																</a>
+																<hr className="horizontal dark mt-3 mb-2" />
+															</div>
+														</div>
+													</div>
+												</div>
+												{/* Message > Mobile */}
+												<div className="d-lg-none">
+													<a
+														href="\"
+														className="dropdown-item border-radius-md"
+													>
+														<span>Blog</span>
+													</a>
+													<a
+														href="\"
+														className="dropdown-item border-radius-md"
+													>
+														<span>Pressrelease</span>
+													</a>
+													<a
+														href="\"
+														className="dropdown-item border-radius-md"
+													>
+														<span>About Us</span>
+													</a>
+													<a
+														href="\"
+														className="dropdown-item border-radius-md"
+													>
+														<span>Jobs</span>
+													</a>
+													<a
+														href="\"
+														className="dropdown-item border-radius-md"
+													>
+														<span>Affiliates</span>
+													</a>
+													<a
+														href="\"
+														className="dropdown-item border-radius-md"
+													>
+														<span>Mediakit</span>
+													</a>
+												</div>
+											</div>
+										</li>
+										<li className="nav-item" onClick={() => setVisibleSideBar(true)}>
+        							<label className="btn btn-link mb-0 me-3 p-0" htmlFor="expand-toggle"><img src={FundLogo1} className="avatar_img" alt=''/></label>
+      							</li>
 									</ul>
-								</ul>
+								) : (
+									<button
+										type="button"
+										className="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 px-4"
+										onClick={() => setVisibleModalLogin(true)}
+										disabled={isLoading}
+									>
+										{isLoading ? (
+											<i className="fa-solid fa-sync input-right-text fa-spin fs-6 me-2" />
+										) : (
+											``
+										)}
+										Login / Sign up
+									</button>
+								)}
 							</div>
 						</div>
 					</nav>
