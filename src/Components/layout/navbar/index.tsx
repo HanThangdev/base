@@ -5,33 +5,33 @@
 import { useEffect, useState } from 'react';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
 import { GOEMON_LOGO, DownArrowDark } from '@assets/template/img';
+import { getLocalStorage } from '@utils/storage';
 import { ModalLogin } from '@components/modal';
 import SiderBar from '../sidebar';
 import { Wrapper } from './styled';
 
 function Navbar() {
-
-	const [visibleSideBar, setVisibleSideBar] = useState(false)
-	const [visibleModalLogin, setVisibleModalLogin] = useState(false)
-	const [profile, setProfile] = useState<unknown | null >(null)
-  const { provider, logout, web3Auth } = useWeb3Auth();
+	const [visibleSideBar, setVisibleSideBar] = useState(false);
+	const [visibleModalLogin, setVisibleModalLogin] = useState(false);
+	const [profile, setProfile] = useState<unknown | null>(null);
+	const { provider, logout, web3Auth } = useWeb3Auth();
+	const isLogined = getLocalStorage('Web3Auth-cachedAdapter');
 
 	const onResetVissble = () => {
 		setVisibleSideBar(false);
 		setVisibleModalLogin(false);
-	}
-	useEffect(() => {
-		if(web3Auth){
-			const getProfile = async () => {
-				const user = await web3Auth?.getUserInfo()
-				const account = await provider?.getAccounts()
-				setProfile({...user, walletAddress: account[0]})
-			}
-			getProfile()
-		}
-	}, [web3Auth])
+	};
 
-	
+	useEffect(() => {
+		if (web3Auth) {
+			const getProfile = async () => {
+				const user = await web3Auth?.getUserInfo();
+				const account = await provider?.getAccounts();
+				setProfile({ ...user, walletAddress: account[0] });
+			};
+			getProfile();
+		}
+	}, [web3Auth]);
 
 	return (
 		<Wrapper className="container position-sticky z-index-sticky top-0">
@@ -46,7 +46,7 @@ function Navbar() {
 								data-placement="bottom"
 								target="_blank"
 							>
-								<img src={GOEMON_LOGO} width="150" alt="logo goemon"/>
+								<img src={GOEMON_LOGO} width="150" alt="logo goemon" />
 							</a>
 							<button
 								className="navbar-toggler shadow-none ms-md-2"
@@ -81,7 +81,7 @@ function Navbar() {
 											id="dropdownMenuBlocks"
 											data-bs-toggle="dropdown"
 											aria-expanded="false"
-											href='/'
+											href="/"
 										>
 											<span>Admin Panel</span>
 											<img
@@ -305,7 +305,7 @@ function Navbar() {
 											id="dropdownMenuDocs"
 											data-bs-toggle="dropdown"
 											aria-expanded="false"
-											href='/'
+											href="/"
 										>
 											Funds
 											<img
@@ -450,7 +450,7 @@ function Navbar() {
 											id="dropdownMenuAccount"
 											data-bs-toggle="dropdown"
 											aria-expanded="false"
-											href='/'
+											href="/"
 										>
 											Share NFTs
 											<img
@@ -556,7 +556,7 @@ function Navbar() {
 											id="dropdownMenuBlocks"
 											data-bs-toggle="dropdown"
 											aria-expanded="false"
-											href='/'
+											href="/"
 										>
 											<span>About</span>
 											<img
@@ -641,7 +641,7 @@ function Navbar() {
 									<ul className="navbar-nav d-lg-block d-none">
 										<li className="nav-item" />
 										<li className="nav-item">
-											{provider ? (
+											{isLogined ? (
 												<div
 													onClick={() => setVisibleSideBar(true)}
 													className="btn btn-sm btn btn-outline-primary btn-round mb-0 me-1 px-4"
@@ -652,7 +652,7 @@ function Navbar() {
 												</div>
 											) : (
 												<button
-													type='button'
+													type="button"
 													className="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 px-4"
 													onClick={() => setVisibleModalLogin(true)}
 												>
@@ -667,9 +667,21 @@ function Navbar() {
 					</nav>
 				</div>
 			</div>
-			<label id="nav-close" className={`${visibleSideBar || visibleModalLogin ? "pd-modal" : "" }`} onClick = {onResetVissble}/>
-			<SiderBar visible={visibleSideBar} setVisible={setVisibleSideBar} logout={logout} profile={profile}/>
-			<ModalLogin visible={visibleModalLogin} setVisible={setVisibleModalLogin} />
+			<label
+				id="nav-close"
+				className={`${visibleSideBar || visibleModalLogin ? 'pd-modal' : ''}`}
+				onClick={onResetVissble}
+			/>
+			<SiderBar
+				visible={visibleSideBar}
+				setVisible={setVisibleSideBar}
+				logout={logout}
+				profile={profile}
+			/>
+			<ModalLogin
+				visible={visibleModalLogin}
+				setVisible={setVisibleModalLogin}
+			/>
 		</Wrapper>
 	);
 }

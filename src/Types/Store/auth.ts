@@ -4,4 +4,5 @@ export type AuthState = {
 	authenticated: boolean | null;
 	profile: any;
 	isSubmitting: boolean;
+	message: string;
 };
