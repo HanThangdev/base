@@ -7,7 +7,7 @@ import {
 } from '@utils/redux';
 import { Action } from '@type/Store';
 import { AuthState } from '@type/Store/auth';
-import { LOAD_PROFILE, LOGIN } from './constants';
+import { LOAD_PROFILE, LOGIN, LOGOUT } from './constants';
 
 export const initialState: AuthState = {
 	isLoading: false,
@@ -15,6 +15,7 @@ export const initialState: AuthState = {
 	authenticated: null,
 	profile: {},
 	isSubmitting: false,
+	message: '',
 };
 
 function login(state: AuthState) {
@@ -24,18 +25,37 @@ function login(state: AuthState) {
 }
 
 function loginSuccess(state: AuthState, { payload }: Action) {
-	const { profile } = payload;
+	const { message } = payload;
 	return updateObject(state, {
 		isLoading: false,
-		authenticated: true,
-		profile,
+		message,
 	});
 }
 
 function loginFailure(state: AuthState, { error }: Action) {
 	return updateObject(state, {
 		error,
-		authenticated: false,
+		isLoading: false,
+	});
+}
+
+function logout(state: AuthState) {
+	return updateObject(state, {
+		isLoading: true,
+	});
+}
+
+function logoutSuccess(state: AuthState, { payload }: Action) {
+	const { message } = payload;
+	return updateObject(state, {
+		isLoading: false,
+		message,
+	});
+}
+
+function logoutFailure(state: AuthState, { error }: Action) {
+	return updateObject(state, {
+		error,
 		isLoading: false,
 	});
 }
@@ -68,6 +88,10 @@ export default createReducer(initialState, {
 	[REQUEST(LOGIN)]: login,
 	[SUCCESS(LOGIN)]: loginSuccess,
 	[FAILURE(LOGIN)]: loginFailure,
+
+	[REQUEST(LOGOUT)]: logout,
+	[SUCCESS(LOGOUT)]: logoutSuccess,
+	[FAILURE(LOGOUT)]: logoutFailure,
 
 	[REQUEST(LOAD_PROFILE)]: loadProfile,
 	[SUCCESS(LOAD_PROFILE)]: profileLoaded,

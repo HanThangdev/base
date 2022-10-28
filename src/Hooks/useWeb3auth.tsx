@@ -3,6 +3,7 @@
 /* eslint-disable react/function-component-definition */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/jsx-no-constructed-context-values */
+/* eslint-disable @typescript-eslint/naming-convention */
 import type { LOGIN_PROVIDER_TYPE } from '@toruslabs/openlogin';
 import {
 	ADAPTER_EVENTS,
@@ -10,11 +11,13 @@ import {
 	WALLET_ADAPTERS,
 	WALLET_ADAPTER_TYPE,
 } from '@web3auth/base';
+import { CHAIN_CONFIG, CHAIN_CONFIG_TYPE } from '@config/chainConfig';
 import { Web3AuthCore } from '@web3auth/core';
 import { OpenloginAdapter } from '@web3auth/openlogin-adapter';
 import { WalletConnectV1Adapter } from '@web3auth/wallet-connect-v1-adapter';
 import { NetworkSwitch } from '@web3auth/ui';
 import { getWalletProvider, IWalletProvider } from '@config/network/provider';
+import { getAppPubKey } from '@config/web3auth/appPubKey';
 import {
 	createContext,
 	FunctionComponent,
@@ -26,15 +29,19 @@ import {
 } from 'react';
 import { Web3authNetWorkType } from '@constants';
 import QRCodeModal from '@walletconnect/qrcode-modal';
-import { CHAIN_CONFIG, CHAIN_CONFIG_TYPE } from '@config/chainConfig';
-import { getAppPubKey } from '@config/web3auth/appPubKey';
 import { useAuth } from './injectStore';
+
+export interface IParamLoginState {
+	id_token: any;
+	app_pub_key: string;
+}
 
 export interface IWeb3AuthContext {
 	web3Auth: Web3AuthCore | null;
 	provider: IWalletProvider | null;
 	isLoading: boolean;
 	user: unknown;
+	paramsToLogin: IParamLoginState;
 	login: (
 		adapter: WALLET_ADAPTER_TYPE,
 		provider: LOGIN_PROVIDER_TYPE,
@@ -55,6 +62,10 @@ export const Web3AuthContext = createContext<IWeb3AuthContext>({
 	provider: null,
 	isLoading: false,
 	user: null,
+	paramsToLogin: {
+		id_token: '',
+		app_pub_key: '',
+	},
 	login: async (
 		adapter: WALLET_ADAPTER_TYPE,
 		provider?: LOGIN_PROVIDER_TYPE,
@@ -94,7 +105,10 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 	const [provider, setProvider] = useState<IWalletProvider | null>(null);
 	const [user, setUser] = useState<unknown | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
-	const { loginAction } = useAuth();
+	const [paramsToLogin, setParamsToLogin] = useState<IParamLoginState>({
+		app_pub_key: '',
+		id_token: '',
+	});
 
 	const setWalletProvider = useCallback(
 		(web3authProvider: SafeEventEmitterProvider) => {
@@ -155,26 +169,19 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 				web3AuthInstance.configureAdapter(wcAdapter);
 
 				await web3AuthInstance.init();
-				
 				setWeb3Auth(web3AuthInstance);
-			 
+				const pubKey = await getAppPubKey(web3AuthInstance, chain);
+				const idToken = await web3AuthInstance.getUserInfo();
+				const id_token = idToken.idToken;
+				setParamsToLogin({ id_token, app_pub_key: pubKey });
 			} catch (error) {
 				console.error(error);
 			} finally {
 				setIsLoading(false);
-				
 			}
 		}
 		init();
 	}, [chain, web3AuthNetwork, setWalletProvider]);
-
-	useEffect(() => {
-		if(web3Auth){
-			const pubKey = getAppPubKey(web3Auth, chain);
-			console.log('pubKey', pubKey);
-			loginAction({pubKey});
-		}
-	},[])
 
 	const login = async (
 		adapter: WALLET_ADAPTER_TYPE,
@@ -182,7 +189,6 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 		login_hint?: string
 	) => {
 		try {
-			console.log('login', adapter, loginProvider, provider, web3Auth);
 			setIsLoading(true);
 			if (!web3Auth) {
 				console.log('web3auth not initialized yet');
@@ -192,7 +198,6 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 				loginProvider,
 				login_hint,
 			});
-			
 
 			setWalletProvider(localProvider!);
 		} catch (error) {
@@ -294,6 +299,7 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 		provider,
 		user,
 		isLoading,
+		paramsToLogin,
 		login,
 		loginWithWalletConnect,
 		logout,

@@ -3,6 +3,7 @@ const END_POINT: any = {
 
 	// auth
 	LOGIN: '/api/v1/public/user/verify/web3auth',
+	LOGOUT: '/api/v1/private/user/logout',
 	PROFILE_USER: '/profile-user',
 
 	// course
@@ -15,7 +16,7 @@ const END_POINT: any = {
 	// common
 	PRESIGNED: '/api/v1/file/pre-signed',
 
-	// faq 
+	// faq
 	SEND_CONTACT: '/api/v1/public/contact',
 };
 

@@ -1,10 +1,17 @@
 import { REQUEST } from '@utils/redux';
 import { Payload } from '@type/Store';
-import { LOGIN, LOAD_PROFILE } from './constants';
+import { LOGIN, LOAD_PROFILE, LOGOUT } from './constants';
 
 export function login(payload: Payload) {
 	return {
 		type: REQUEST(LOGIN),
+		payload,
+	};
+}
+
+export function logout(payload: Payload) {
+	return {
+		type: REQUEST(LOGOUT),
 		payload,
 	};
 }

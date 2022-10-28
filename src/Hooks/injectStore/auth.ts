@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import saga from '@modules/auth/store/saga';
 import reducer from '@modules/auth/store/reducer';
-import { login, loadProfile } from '@modules/auth/store/actions';
+import { login, loadProfile, logout } from '@modules/auth/store/actions';
 import { useInjectSaga, useInjectReducer } from '@config/store';
 import { USER_ROLE } from '@modules/auth/constant';
 import { makeSelectAuthentication } from '@modules/auth/store/selectors';
@@ -18,6 +18,7 @@ export const useAuth = () => {
 
 	const dispatch = useDispatch();
 	const loginAction = (payload?: any) => dispatch(login(payload));
+	const logoutAction = (payload?: any) => dispatch(logout(payload));
 	const loadProfileAction = (payload?: any) => dispatch(loadProfile(payload));
 
 	return {
@@ -26,6 +27,7 @@ export const useAuth = () => {
 		authenticated,
 		profile,
 		loginAction,
+		logoutAction,
 		loadProfileAction,
 	};
 };

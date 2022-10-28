@@ -1,26 +1,36 @@
 import { put, takeLatest } from 'redux-saga/effects';
 
 import { REQUEST, SUCCESS, FAILURE } from '@utils/redux';
-import { login } from '@apis';
-import { getLocalStorage, setLocalStorage, STORAGE } from '@utils';
+import { login, logout } from '@apis';
+import { getLocalStorage, STORAGE } from '@utils';
 import { Action } from '@type/Store';
-import { LOAD_PROFILE, LOGIN } from './constants';
+import { LOAD_PROFILE, LOGIN, LOGOUT } from './constants';
 
 export function* loginSaga({ payload }: Action) {
 	try {
-		const { data: result } = yield login(payload);
-		const { tokens, user } = result;
-		setLocalStorage(STORAGE.USER_TOKEN, tokens.access.token);
-		setLocalStorage(STORAGE.USER_DATA, JSON.stringify(user));
+		const { data: message } = yield login(payload);
 		yield put({
 			type: SUCCESS(LOGIN),
-			payload: {
-				profile: result,
-			},
+			payload: message,
 		});
 	} catch (error) {
 		yield put({
 			type: FAILURE(LOGIN),
+			error,
+		});
+	}
+}
+
+export function* logoutSaga({ payload }: Action) {
+	try {
+		const { data: message } = yield logout(payload);
+		yield put({
+			type: SUCCESS(LOGOUT),
+			payload: message,
+		});
+	} catch (error) {
+		yield put({
+			type: FAILURE(LOGOUT),
 			error,
 		});
 	}
@@ -49,5 +59,6 @@ export function* loadProfileSaga() {
 
 export default function* authSaga() {
 	yield takeLatest(REQUEST(LOGIN), loginSaga);
+	yield takeLatest(REQUEST(LOGOUT), logoutSaga);
 	yield takeLatest(REQUEST(LOAD_PROFILE), loadProfileSaga);
 }
