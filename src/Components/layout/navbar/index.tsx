@@ -7,6 +7,7 @@ import { useWeb3Auth } from '@hooks/useWeb3auth';
 import { GOEMON_LOGO, DownArrowDark } from '@assets/template/img';
 import { getLocalStorage } from '@utils/storage';
 import { ModalLogin } from '@components/modal';
+import { LOCAL_WEB3AUTH_LOGINED } from '@constants';
 import SiderBar from '../sidebar';
 import { Wrapper } from './styled';
 
@@ -15,7 +16,7 @@ function Navbar() {
 	const [visibleModalLogin, setVisibleModalLogin] = useState(false);
 	const [profile, setProfile] = useState<unknown | null>(null);
 	const { provider, logout, web3Auth } = useWeb3Auth();
-	const isLogined = getLocalStorage('Web3Auth-cachedAdapter');
+	const isLogined = getLocalStorage(LOCAL_WEB3AUTH_LOGINED);
 
 	const onResetVissble = () => {
 		setVisibleSideBar(false);
