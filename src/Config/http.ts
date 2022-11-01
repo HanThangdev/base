@@ -3,13 +3,23 @@
 /* eslint-disable symbol-description */
 import axios from 'axios';
 import JSONBig from 'json-bigint';
+import jwt_decode from 'jwt-decode';
+import dayjs from 'dayjs';
 
 import { isEmpty, assign } from 'lodash';
 import { BASE_API_URL } from '@constants';
-import { STORAGE, getLocalStorage } from '@utils';
+import { STORAGE, getLocalStorage, setLocalStorage } from '@utils';
 
 const singletonEnforcer = Symbol();
 const BASE_URL = `${BASE_API_URL}`;
+
+interface Token {
+	name: string;
+	exp: number;
+	iat: number;
+	email: string | null;
+}
+
 class AxiosClient {
 	axiosClient: any;
 
@@ -34,10 +44,31 @@ class AxiosClient {
 			JSONBig.parse(data);
 
 		this.axiosClient.interceptors.request.use(
-			(configure: any) => {
-				const token = getLocalStorage(STORAGE.USER_TOKEN);
-				if (token) {
-					configure.headers.Authorization = `Bearer ${token}`;
+			async (configure: any) => {
+				const token: any =
+					JSON.parse(getLocalStorage(STORAGE.USER_TOKEN) || '{}') || null;
+				if (!isEmpty(token)) {
+					const user = jwt_decode<Token>(token.access_token);
+					// Check time expire
+					const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
+					// If time not expired set access token to header and call api
+					if (!isExpired) {
+						configure.headers.Authorization = `Bearer ${token.access_token}`;
+						return configure;
+					}
+					// Request get new access token
+					const response = await axios.post(
+						`${BASE_URL}/api/v1/private/auth/refresh`,
+						{},
+						{
+							headers: {
+								Authorization: `Bearer ${token.refresh_token}`,
+							},
+						}
+					);
+					// Set new access token in to localstorage
+					setLocalStorage(STORAGE.USER_TOKEN, response.data);
+					configure.headers.Authorization = `Bearer ${response.data.access}`;
 				}
 				return configure;
 			},

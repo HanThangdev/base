@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Wrapper } from './styled';
+
+import { Wrapper } from "./styled";
 
 function HeaderFundDetail() {
 	return (

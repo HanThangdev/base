@@ -2,8 +2,8 @@ const END_POINT: any = {
 	TEST_API: 'api/0.4/',
 
 	// auth
-	LOGIN: '/api/v1/public/user/verify/web3auth',
-	LOGOUT: '/api/v1/private/user/logout',
+	LOGIN: '/api/v1/public/auth/signin',
+	LOGOUT: '/api/v1/private/auth/logout',
 	PROFILE_USER: '/profile-user',
 
 	// course
