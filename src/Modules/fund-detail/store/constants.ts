@@ -1,0 +1,1 @@
+export const FUNDS_DETAIL = '@FUND/FUNDS_DETAIL';

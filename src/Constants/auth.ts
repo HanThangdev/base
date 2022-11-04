@@ -35,9 +35,9 @@ export const LOGIN_PROVIDER: {
 		logo: LOGO_GOOGLE,
 		function: (cb) => cb(TypeLoginProvider.GOOGLE),
 	},
-	[TypeLoginProvider.DISCORD]: {
-		logo: LOGO_DISCORD,
-		function: (cb) => cb(TypeLoginProvider.DISCORD),
+	[TypeLoginProvider.TWITTER]: {
+		logo: LOGO_TWITTER,
+		function: (cb) => cb(TypeLoginProvider.TWITTER),
 	},
 	[TypeLoginProvider.FACEBOOK]: {
 		logo: LOGO_FACEBOOK,
@@ -47,9 +47,10 @@ export const LOGIN_PROVIDER: {
 		logo: LOGO_LINE,
 		function: (cb) => cb(TypeLoginProvider.LINE),
 	},
-	[TypeLoginProvider.TWITTER]: {
-		logo: LOGO_TWITTER,
-		function: (cb) => cb(TypeLoginProvider.TWITTER),
+	
+	[TypeLoginProvider.DISCORD]: {
+		logo: LOGO_DISCORD,
+		function: (cb) => cb(TypeLoginProvider.DISCORD),
 	},
 };
 

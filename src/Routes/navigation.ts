@@ -9,7 +9,6 @@ import { navigator as courseNavigator } from '@modules/course/routes';
 import { navigator as authNavigator } from '@modules/auth/routes';
 import { FaqLayout, FundDetailLayout, InvestLayout } from '@layouts';
 
-
 const navigator = {
 	HOME: '/',
 	FUND_DETAIL: '/fund_detail',
@@ -29,7 +28,7 @@ export const ROUTES = [
 		exact: true,
 	},
 	{
-		path: navigator.FUND_DETAIL,
+		path: `${navigator.FUND_DETAIL}/:id`,
 		component: FundDetail,
 		layout: FundDetailLayout,
 		rules: [USER_ROLE.ADMIN],

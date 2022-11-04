@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { WavesWhite } from '@assets/template/img';
+import { Input } from 'reactstrap';
 
 function CalculateFund() {
 	return (
@@ -36,25 +37,22 @@ function CalculateFund() {
 											<label className="">Investment per Quarter</label>
 											<div className="input-group mb-4">
 												<span className="input-group-text">$</span>
-												<input
+												<Input
 													type="text"
 													className="form-control"
 													inputMode="numeric"
 													placeholder=""
-													// onFocus="focused(this)" onfocusout="defocused(this)"
 												/>
 											</div>
 										</div>
 										<div className="col-md-6">
 											<label className="">How long do you invest?</label>
 											<div className="input-group mb-4">
-												<input
+												<Input
 													type="text"
 													className="form-control"
 													inputMode="numeric"
 													placeholder=""
-													// onFocus="focused(this)"
-													// onfocusout="defocused(this)"
 												/>
 												<span className="input-group-text input-right-text">
 													Quarter
@@ -64,12 +62,11 @@ function CalculateFund() {
 										<div className="col-md-4">
 											<label className="">Management Fee</label>
 											<div className="input-group mb-4">
-												<input
+												<Input
 													type="text"
 													className="form-control"
 													inputMode="numeric"
 													placeholder=""
-													// onFocus="focused(this)" onfocusout="defocused(this)"
 												/>
 												<span className="input-group-text input-right-text">
 													%
@@ -79,12 +76,11 @@ function CalculateFund() {
 										<div className="col-md-4">
 											<label className="">Carry</label>
 											<div className="input-group mb-4">
-												<input
+												<Input
 													type="text"
 													className="form-control"
 													inputMode="numeric"
 													placeholder=""
-													// onFocus="focused(this)" onfocusout="defocused(this)"
 												/>
 												<span className="input-group-text input-right-text">
 													%
@@ -94,12 +90,11 @@ function CalculateFund() {
 										<div className="col-md-4">
 											<label className="">Expected return multiple</label>
 											<div className="input-group mb-4">
-												<input
+												<Input
 													type="text"
 													className="form-control"
 													inputMode="numeric"
 													placeholder=""
-													// onFocus="focused(this)" onfocusout="defocused(this)"
 												/>
 												<span className="input-group-text input-right-text">
 													X

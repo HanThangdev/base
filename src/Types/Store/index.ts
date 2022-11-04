@@ -1,6 +1,7 @@
 import { AuthState } from './auth';
 import { CourseState } from './course';
 import { FaqState } from './faq';
+import { FundDetailState, FundListState } from './fund';
 import { GlobalState } from './global';
 
 export type ActionCallback = {
@@ -25,5 +26,7 @@ export type Store = {
 	global: GlobalState;
 	registrationCourses: CourseState;
 	auth: AuthState;
-	faq: FaqState;
+	faq?: FaqState;
+	home?: FundListState;
+	fund_detail?: FundDetailState;
 };

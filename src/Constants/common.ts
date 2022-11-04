@@ -118,3 +118,5 @@ export const mapMimeToExt = {
 	'application/x-7z-compressed': '7z',
 	'video/quicktime': 'MOV',
 };
+
+export const MILION_UNIT = 1000000

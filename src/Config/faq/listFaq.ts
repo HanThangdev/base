@@ -1,6 +1,7 @@
 export default {
 	InvestorFaq: [
 		{
+			id: 'about1',
 			name: 'About1',
 			children: [
 				{
@@ -16,6 +17,7 @@ export default {
 			],
 		},
 		{
+			id: 'subscription',
 			name: 'Subscription',
 			children: [
 				{
@@ -36,6 +38,7 @@ export default {
 			],
 		},
 		{
+			id: 'earning_a_return',
 			name: 'Earning a Return',
 			children: [
 				{
@@ -51,6 +54,7 @@ export default {
 			],
 		},
 		{
+			id: 'investment',
 			name: 'Investment',
 			children: [
 				{
@@ -68,6 +72,7 @@ export default {
 	],
 	FundManagerFaq: [
 		{
+			id: 'about1',
 			name: 'About',
 			children: [
 				{
@@ -83,6 +88,7 @@ export default {
 			],
 		},
 		{
+			id: 'subscription',
 			name: 'Subscription',
 			children: [
 				{
@@ -98,6 +104,7 @@ export default {
 			],
 		},
 		{
+			id: 'earning_a_return',
 			name: 'Earning a Return',
 			children: [
 				{
@@ -113,6 +120,7 @@ export default {
 			],
 		},
 		{
+			id: 'investment',
 			name: 'Investment',
 			children: [
 				{

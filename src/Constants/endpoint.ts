@@ -6,6 +6,10 @@ const END_POINT: any = {
 	LOGOUT: '/api/v1/private/auth/logout',
 	PROFILE_USER: '/profile-user',
 
+	// fund
+	FUND_LIST: 'api/v1/public/funds',
+	FUND_DETAIL: 'api/v1/public/funds',
+
 	// course
 	COURSE_LIST: '/v1/users',
 	CREATE_COURSE: '/v1/users',

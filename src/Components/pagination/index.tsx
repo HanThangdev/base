@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button, Wrapper } from './styled';
 
 interface IProps {
-	data: any;
+	data: number;
 	buttonConst: number;
 	contentPerPage: any;
 	siblingCount: any;
@@ -17,9 +17,7 @@ function Pagination({
 	contentPerPage,
 	siblingCount,
 }: IProps) {
-	const [totalPageCount] = useState<number>(
-		Math.ceil(data.length / contentPerPage)
-	);
+	const [totalPageCount] = useState<number>(Math.ceil(data / contentPerPage));
 	const [currentPage, setCurrentPage] = useState<number>(1);
 
 	const paginationRange = usePaginationRange({

@@ -4,10 +4,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/alt-text */
-
+import navigator from '@routes/navigation';
 import { Wrapper } from './styled';
 
-function SideCard() {
+function SideCard({navigate}: any) {
 	return (
 		<Wrapper className="card shadow-md mt-md-0 mt-5 position-sticky top-100px">
 			<div className="card-header py-2" />
@@ -49,6 +49,7 @@ function SideCard() {
 						<button
 							type="button"
 							className="btn bg-gradient-primary btn-lg w-100"
+							onClick={() => navigate(navigator.INVEST)}
 						>
 							Subscribe Now
 							<span className="badge badge-primary ms-2">Only Whitelist</span>

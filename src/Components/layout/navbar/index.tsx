@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
 import { GOEMON_LOGO, DownArrowDark, FundLogo1 } from '@assets/template/img';
 import { getLocalStorage, STORAGE } from '@utils/storage';
+import { Collapse, NavbarBrand, NavbarToggler, NavLink } from 'reactstrap';
 import { ModalLogin } from '@components/modal';
 import SiderBar from '../sidebar';
 import { Wrapper } from './styled';
@@ -14,6 +15,7 @@ function Navbar() {
 	const [visibleSideBar, setVisibleSideBar] = useState(false);
 	const [visibleModalLogin, setVisibleModalLogin] = useState(false);
 	const [profile, setProfile] = useState<unknown | null>(null);
+	const [isOpen, setIsOpen] = useState(false);
 	const { provider, logout, web3Auth, isLoading } = useWeb3Auth();
 	const isLogined = getLocalStorage(STORAGE.USER_TOKEN);
 
@@ -33,22 +35,25 @@ function Navbar() {
 		}
 	}, [web3Auth]);
 
+	const toggle = () => setIsOpen(!isOpen);
+
 	return (
 		<Wrapper className="container position-sticky z-index-sticky top-0">
 			<div className="row">
 				<div className="col-12">
 					<nav className="navbar navbar-expand-lg blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-1 nav_header_menu">
 						<div className="container-fluid px-0">
-							<a
-								className="navbar-brand font-weight-bolder ms-sm-3"
+							<NavbarBrand
+								className="font-weight-bolder ms-sm-3"
 								href=" https://mockup.goemon.io/v01"
 								title="GOEMON - Crypto Rolling Fund"
 								data-placement="bottom"
 								target="_blank"
 							>
 								<img src={GOEMON_LOGO} width="150" alt="logo goemon" />
-							</a>
-							<button
+							</NavbarBrand>
+							<NavbarToggler
+								onClick={toggle}
 								className="navbar-toggler shadow-none ms-md-2"
 								type="button"
 								data-bs-toggle="collapse"
@@ -62,20 +67,22 @@ function Navbar() {
 									<span className="navbar-toggler-bar bar2" />
 									<span className="navbar-toggler-bar bar3" />
 								</span>
-							</button>
-							<div
+							</NavbarToggler>
+							<Collapse
+								isOpen={isOpen}
+								navbar
 								className="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0"
 								id="navigation"
 							>
-								<a
+								<NavLink
 									href="/"
 									className="btn btn-sm  bg-gradient-primary btn-round my-3 ms-auto d-lg-none d-block"
 								>
 									SIGN IN
-								</a>
+								</NavLink>
 								<ul className="navbar-nav navbar-nav-hover mx-auto">
 									<li className="nav-item dropdown dropdown-hover mx-3">
-										<a
+										<NavLink
 											className="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font-weight-bolder"
 											role="button"
 											id="dropdownMenuBlocks"
@@ -89,7 +96,7 @@ function Navbar() {
 												alt="down-arrow"
 												className="arrow ms-1"
 											/>
-										</a>
+										</NavLink>
 										<div
 											className="dropdown-menu dropdown-menu-animation dropdown-xl p-3 border-radius-xl mt-0 mt-lg-3"
 											aria-labelledby="dropdownMenuPages10"
@@ -249,15 +256,7 @@ function Navbar() {
 												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Overview</span>
 												</a>
-												<a href="/" className="dropdown-item border-radius-md">
-													<span className="ps-3">Fundraising</span>
-												</a>
-												<a href="/" className="dropdown-item border-radius-md">
-													<span className="ps-3">Investing</span>
-												</a>
-												<a href="/" className="dropdown-item border-radius-md">
-													<span className="ps-3">Post</span>
-												</a>
+
 												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Message</span>
 												</a>
@@ -640,7 +639,7 @@ function Navbar() {
 								{isLogined ? (
 									<ul className="navbar-nav d-lg-block d-none">
 										<li className="nav-item dropdown dropdown-hover px-1 me-1">
-											<a href='/' className="nav-link btn btn-link mb-0 px-3">
+											<a href="/" className="nav-link btn btn-link mb-0 px-3">
 												<i className="fa-regular fa-bell fs-5 text-gray-600" />
 												<span className="unread" />
 											</a>
@@ -674,7 +673,7 @@ function Navbar() {
 																			<img
 																				src="./assets/img/goemon/announce_100x100-2.png"
 																				className="avatar_img"
-																				alt=''
+																				alt=""
 																			/>
 																		</div>
 																		<div className="w-100">
@@ -701,7 +700,7 @@ function Navbar() {
 																			<img
 																				src="./assets/img/goemon/announce_100x100-2.png"
 																				className="avatar_img"
-																				alt=''
+																				alt=""
 																			/>
 																		</div>
 																		<div className="w-100">
@@ -728,7 +727,7 @@ function Navbar() {
 																			<img
 																				src="./assets/img/goemon/announce_100x100-2.png"
 																				className="avatar_img"
-																				alt=''
+																				alt=""
 																			/>
 																		</div>
 																		<div className="w-100">
@@ -947,9 +946,17 @@ function Navbar() {
 												</div>
 											</div>
 										</li>
-										<li className="nav-item" onClick={() => setVisibleSideBar(true)}>
-        							<label className="btn btn-link mb-0 me-3 p-0" htmlFor="expand-toggle"><img src={FundLogo1} className="avatar_img" alt=''/></label>
-      							</li>
+										<li
+											className="nav-item"
+											onClick={() => setVisibleSideBar(true)}
+										>
+											<label
+												className="btn btn-link mb-0 me-3 p-0"
+												htmlFor="expand-toggle"
+											>
+												<img src={FundLogo1} className="avatar_img" alt="" />
+											</label>
+										</li>
 									</ul>
 								) : (
 									<button
@@ -966,7 +973,7 @@ function Navbar() {
 										Login / Sign up
 									</button>
 								)}
-							</div>
+							</Collapse>
 						</div>
 					</nav>
 				</div>

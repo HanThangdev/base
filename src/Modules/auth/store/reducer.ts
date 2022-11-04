@@ -27,8 +27,7 @@ function login(state: AuthState) {
 }
 
 function loginSuccess(state: AuthState, { payload }: Action) {
-	const { access_token, refresh_token} = payload;
-	setLocalStorage(STORAGE.USER_TOKEN, JSON.stringify({access_token, refresh_token}));
+	setLocalStorage(STORAGE.USER_TOKEN, JSON.stringify(payload));
 	return updateObject(state, {
 		isLoading: false,
 	});
@@ -48,7 +47,7 @@ function logout(state: AuthState) {
 }
 
 function logoutSuccess(state: AuthState, { payload }: Action) {
-	removeLocalStorage(STORAGE.USER_TOKEN)
+	removeLocalStorage(STORAGE.USER_TOKEN);
 	const { message } = payload;
 	return updateObject(state, {
 		isLoading: false,
