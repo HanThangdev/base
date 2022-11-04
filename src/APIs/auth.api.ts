@@ -6,7 +6,7 @@ function login(data: any) {
 }
 
 function logout(data: any) {
-	return http.delete(END_POINT.LOGOUT, data).then((res) => res);
+	return http.post(END_POINT.LOGOUT, data).then((res) => res);
 }
 
 function getProfile({ userId }: any) {
