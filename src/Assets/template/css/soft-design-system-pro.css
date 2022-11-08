@@ -2757,7 +2757,7 @@ progress {
 .form-control:focus {
   color: #495057;
   background-color: #fff;
-  border-color: #e293d3;
+  border-color: #e9aede;
   outline: 0;
   box-shadow: 0 0 0 2px #e9aede;
 }
@@ -37903,4 +37903,9 @@ input[type=text], input[type=email] {
   display: block !important;
   background-color: rgba(0, 0, 0, 0.4) !important;
   z-index: 1100;
+}
+
+.input-group:focus-within {
+  box-shadow: 0 0 0 2px #e9aede;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }

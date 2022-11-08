@@ -67,7 +67,7 @@ class AxiosClient {
 						}
 					);
 					// Set new access token in to localstorage
-					setLocalStorage(STORAGE.USER_TOKEN, response.data);
+					setLocalStorage(STORAGE.USER_TOKEN, JSON.stringify(response.data));
 					configure.headers.Authorization = `Bearer ${response.data.access_token}`;
 				}
 				return configure;

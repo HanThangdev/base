@@ -52,7 +52,7 @@ function Faq() {
 						<div className="col-lg-9">
 							<div className="accordion" id="Faq_investor">
 								{listCurrentFaq?.map((item: any) => (
-									<Wrapper>
+									<Wrapper key={item.id}>
 										<h4 className="pt-7 mb-4 ps-3" id={formatIdEle(item?.name)}>
 											{trans(item?.name)}
 										</h4>
@@ -64,7 +64,7 @@ function Faq() {
 														type="button"
 														data-bs-toggle="collapse"
 														data-bs-target="#collapse2-1"
-														aria-expanded="false"
+														aria-expanded="true"
 														aria-controls="collapse2-1"
 													>
 														{trans(it?.name)}
@@ -74,9 +74,10 @@ function Faq() {
 												</h6>
 												<div
 													id="collapse2-1"
-													className="accordion-collapse collapse"
+													className="accordion-collapse collapsing show"
 													aria-labelledby="faqcat2-1"
 													data-bs-parent="#Faq_investor"
+													// style={{height:"100px"}}
 												>
 													<div className="accordion-body text-m opacity-8">
 														{trans(it?.description)}

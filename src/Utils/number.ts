@@ -1,3 +1,5 @@
+import { MILION_UNIT } from "@constants";
+
 export function convertToRawNumber(value: any) {
 	return value.replace(/,/g, '');
 }
@@ -15,3 +17,23 @@ export const convertTimeToNumber = (time = '00:00:00') => {
 export function sum(a: number, b: number) {
 	return a + b;
 }
+
+export const formatFundSize = (
+	value: number,
+	typeCurrentcy: string = 'en-US'
+) => {
+	const total = Intl.NumberFormat(typeCurrentcy);
+	if (value > MILION_UNIT) {
+		const values = value / MILION_UNIT;
+		return `${total.format(values)}M`;
+	}
+	return total.format(value);
+};
+
+export const formatCurrentcy = (
+	value: number,
+	typeCurrentcy: string = 'en-US'
+) => {
+	const total = Intl.NumberFormat(typeCurrentcy);
+	return total.format(value);
+};

@@ -3,57 +3,49 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
 	// FundLogo1,
 	// FundLogo2,
-	FundLogo3,
+	// FundLogo3,
 	FundLogo4,
 	FundLogo5,
 	FundLogo6,
 	// Diccussion,
 	// WavesWhite,
 } from '@assets/template/img';
-import { useNavigate } from '@hooks';
+import { useLoadFund, useLoadFundDetail, useNavigate } from '@hooks';
+import { useParams } from 'react-router-dom';
 // import { useTranslation } from 'react-i18next';
+import { isEmpty } from 'lodash';
 import navigator from '@routes/navigation';
 import CalculateFund from '@components/calculateFund';
 import Card from '@components/card';
 import Diccussion from '@components/diccussion';
 import SideCard from '@components/sideCard';
+import { formatFundSize, formatCurrentcy } from '@utils/number';
 import { Link, Wrapper } from './styled';
 import { listNav } from './constant';
 
+interface IParamsURL {
+	id: string;
+}
+
 function FundDetail() {
 	const navigate = useNavigate();
+	const params = useParams<IParamsURL>();
+	const { id } = params;
+
+	const idFund = useMemo(() => id, [id]);
 	// const { t } = useTranslation();
 	const [itemActive, setItemActive] = useState(['pitch']);
-	const LIST_CARD = [
-		{
-			avatar: FundLogo5,
-			description: `Trucks is the leading transportation investor in the world, with $7B in exits including Joby Aviation, NuTonomy, Bear Flag Robotics, AEye and Roadster. This is our secret opportunity fund, which invests...`,
-			isWhiteList: false,
-			followCount: 9598,
-			backgroundImage: 'fund-2',
-			key: 2,
-		},
-		{
-			avatar: FundLogo4,
-			description: `Trucks is the leading transportation investor in the world, with $7B in exits including Joby Aviation, NuTonomy, Bear Flag Robotics, AEye and Roadster. This is our secret opportunity fund, which invests...`,
-			isWhiteList: false,
-			followCount: 9598,
-			backgroundImage: 'fund-3',
-			key: 3,
-		},
-		{
-			avatar: FundLogo3,
-			description: `Trucks is the leading transportation investor in the world, with $7B in exits including Joby Aviation, NuTonomy, Bear Flag Robotics, AEye and Roadster. This is our secret opportunity fund, which invests...`,
-			isWhiteList: false,
-			followCount: 9598,
-			backgroundImage: 'fund-4',
-			key: 4,
-		},
-	];
+	const { listFund } = useLoadFund();
+	const { fund, getFundDetailAction } = useLoadFundDetail();
+
+	useEffect(() => {
+		getFundDetailAction({ id: idFund });
+	}, [idFund]);
+
 	return (
 		<Wrapper>
 			{/* Detail of Fund */}
@@ -69,18 +61,15 @@ function FundDetail() {
 								<div className="flex-shrink-0">
 									<img
 										className="fund_detail_logo"
-										src={FundLogo5}
+										src={fund?.avatar_url}
 										alt="Dubai Real Estate Investment Fund"
 									/>
 								</div>
 								<div className="flex-grow-1 ms-2">
 									<h2 className="fs-3 text-dark fund_detail_title">
-										Dubai Real Estate Investment Fund
+										{fund?.name}
 									</h2>
-									<p className="mb-0 text-dark">
-										Using AI and neural networks to make video game and film
-										NPCs more lifelike
-									</p>
+									<p className="mb-0 text-dark">{fund?.description}</p>
 									<span className="fs-8 font-weight-bold">
 										<i className="ni ni-calendar-grid-58 fs-7 me-1" />
 										Started January, 2023
@@ -230,19 +219,19 @@ function FundDetail() {
 										<div className="col-6">
 											<span className="fs-7">Fund Size</span>
 											<p className="fs-5 font-weight-bolder mt-minus1 mb-3">
-												$1.2M per quarter
+												${formatFundSize(fund?.total_fund_size)} per quarter
 											</p>
 										</div>
 										<div className="col-6">
 											<span className="fs-7">Min Quarterly Investment</span>
 											<p className="fs-5 font-weight-bolder mt-minus1 mb-3">
-												$1,000
+												${formatCurrentcy(fund?.min_investment_amount)}
 											</p>
 										</div>
 										<div className="col-6">
 											<span className="fs-7">Min Subscription Period</span>
 											<p className="fs-5 font-weight-bolder mt-minus1 mb-3">
-												4 Quarters
+												{fund?.min_subscription_period} Quarters
 											</p>
 										</div>
 										<div className="col-6">
@@ -260,13 +249,13 @@ function FundDetail() {
 										<div className="col-6">
 											<span className="fs-7">Management Fee</span>
 											<p className="fs-5 font-weight-bolder mt-minus1 mb-3">
-												2% per year
+												{fund?.management_fee_percentage}% per year
 											</p>
 										</div>
 										<div className="col-6">
 											<span className="fs-7">Platform Fee</span>
 											<p className="fs-5 font-weight-bolder mt-minus1 mb-3">
-												0.15% of contributed capital
+												{fund?.platform_fee}% of contributed capital
 											</p>
 										</div>
 									</div>
@@ -295,7 +284,7 @@ function FundDetail() {
 										below.
 									</p>
 									<div className="img-fluid">
-										<Diccussion idFund="id1" />
+										<Diccussion idFund={idFund} />
 									</div>
 								</div>
 								<div id="updates" className="pt-6 mb-6">
@@ -373,7 +362,7 @@ function FundDetail() {
 										</p>
 										<div className="author align-items-center">
 											<div className="avatar">
-												<img src={FundLogo4} alt=""/>
+												<img src={FundLogo4} alt="" />
 											</div>
 											<div className="name ps-2">
 												<span>Ivana Gerge</span>
@@ -394,7 +383,7 @@ function FundDetail() {
 										</p>
 										<div className="author align-items-center">
 											<div className="avatar">
-												<img src={FundLogo4} alt=""/>
+												<img src={FundLogo4} alt="" />
 											</div>
 											<div className="name ps-2">
 												<span>Ivana Gerge</span>
@@ -415,7 +404,7 @@ function FundDetail() {
 										</p>
 										<div className="author align-items-center">
 											<div className="avatar">
-												<img src={FundLogo4} alt=""/>
+												<img src={FundLogo4} alt="" />
 											</div>
 											<div className="name ps-2">
 												<span>Ivana Gerge</span>
@@ -429,7 +418,7 @@ function FundDetail() {
 							</section>
 						</div>
 						<div className="col-lg-4 ps-50px mt-minus50px">
-							<SideCard />
+							<SideCard navigate={navigate} />
 						</div>
 					</div>
 				</div>
@@ -439,17 +428,12 @@ function FundDetail() {
 			<section className="pt-7 pb-0 mb-7">
 				<div className="container">
 					<div className="row">
-						{LIST_CARD.map((it) => (
-							<Card
-								avatar={it.avatar}
-								description={it.description}
-								isWhiteList={it.isWhiteList}
-								followCount={it.followCount}
-								backgroundImage={it.backgroundImage}
-								key={it.key}
-								navigate={navigate}
-							/>
-						))}
+						{!isEmpty(listFund) &&
+							listFund
+								.slice(0, 3)
+								.map((it: any) => (
+									<Card dataCard={it} key={it.id} navigate={navigate} />
+								))}
 					</div>
 				</div>
 			</section>

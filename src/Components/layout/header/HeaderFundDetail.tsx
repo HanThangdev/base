@@ -1,17 +1,21 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-import { Wrapper } from "./styled";
+import { useLoadFundDetail } from "@hooks";
+import { BackgroundFund, Wrapper } from "./styled";
 
 function HeaderFundDetail() {
+
+	const { fund } = useLoadFundDetail();
+
 	return (
 		<Wrapper>
-			<div className="page-header min-vh-35">
+			<BackgroundFund image={fund?.banner_url} className="page-header min-vh-35">
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-12" />
 					</div>
 				</div>
-			</div>
+			</BackgroundFund>
 			<div
 				className="position-relative overflow-hidden"
 				style={{ height: '36px', marginTop: '-33px' }}
