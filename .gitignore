@@ -27,3 +27,5 @@ yarn.lock
 web3.json
 
 *.xlsx
+
+package-lock.json

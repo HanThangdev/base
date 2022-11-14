@@ -4,6 +4,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable @typescript-eslint/naming-convention */
 import navigator from '@routes/navigation';
+import { formatCurrentcy, formatFundSize } from '@utils/number';
 import { HeaderCard, Wrapper } from './styled';
 
 interface ICardProps {
@@ -18,15 +19,15 @@ function Card({ dataCard, navigate }: ICardProps) {
 		name,
 		description,
 		is_whitelist,
-		// min_investment_amount,
+		min_investment_amount,
 		// max_investment_amount,
-		// min_subscription_period,
+		min_subscription_period,
 		// max_subscription_period,
-		// min_carry,
-		// max_carry,
-		// total_fund_size,
-		// management_fee_percentage,
-		// platform_fee,
+		min_carry,
+		max_carry,
+		total_fund_size,
+		management_fee_percentage,
+		platform_fee,
 		// owner,
 		id,
 	} = dataCard;
@@ -101,12 +102,12 @@ function Card({ dataCard, navigate }: ICardProps) {
 						<hr className="horizontal dark" />
 						<div className="col-6">
 							<span className="fs-8">Min Quarterly Investment</span>
-							<p className="fs-7 font-weight-bolder mt-minus1 mb-1">$1,000</p>
+							<p className="fs-7 font-weight-bolder mt-minus1 mb-1">${formatCurrentcy(min_investment_amount)}</p>
 						</div>
 						<div className="col-6">
 							<span className="fs-8">Min Subscription Period</span>
 							<p className="fs-7 font-weight-bolder mt-minus1 mb-1">
-								4 Quarters
+								{min_subscription_period} Quarters
 							</p>
 						</div>
 						<div className="col-6">
@@ -118,17 +119,17 @@ function Card({ dataCard, navigate }: ICardProps) {
 						<div className="col-6">
 							<span className="fs-8">Fund Size</span>
 							<p className="fs-7 font-weight-bolder mt-minus1 mb-1">
-								$1.2M per quarter
+								${formatFundSize(total_fund_size)} per quarter
 							</p>
 						</div>
 						<div className="col-6">
 							<span className="fs-8">Carry</span>
-							<p className="fs-7 font-weight-bolder mt-minus1 mb-1">20-25%</p>
+							<p className="fs-7 font-weight-bolder mt-minus1 mb-1">{min_carry}-{max_carry}%</p>
 						</div>
 						<div className="col-6">
 							<span className="fs-8">Fee</span>
 							<p className="fs-7 font-weight-bolder mt-minus1 mb-1">
-								Mgmt 2% (+ 0.15%)
+								Mgmt {management_fee_percentage}% (+ {platform_fee}%)
 							</p>
 						</div>
 					</div>
