@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLoadFund } from '@hooks';
+import { FundListPayload } from '@type/Store/fund';
 import { useCallback, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Input, InputGroup, InputGroupText } from 'reactstrap';
+import { Form, Input, InputGroup, InputGroupText } from 'reactstrap';
 import * as yup from 'yup';
 import { Wrapper } from './styled';
 
@@ -18,15 +19,14 @@ function HeaderHome() {
 		resolver: yupResolver(validationSchema),
 	});
 	const { getFundListAction } = useLoadFund();
-	const { handleSubmit } = form;
+	const { register, handleSubmit } = form;
 
 	useEffect(() => {
 		getFundListAction({});
 	}, []);
 
 	const onSubmit = useCallback(
-		(data: any) => {
-			console.log(data);
+		(data: FundListPayload) => {
 			getFundListAction(data);
 		},
 		[getFundListAction]
@@ -81,12 +81,9 @@ function HeaderHome() {
 				</div>
 			</div>
 			<FormProvider {...form}>
-				<form
+				<Form
 					className="container"
 					onSubmit={handleSubmit(onSubmit)}
-					id="contact-form"
-					method="post"
-					autoComplete="off"
 				>
 					<div className="row bg-white shadow-lg mt-n6 border-radius-md pb-4 p-3 mx-sm-0 mx-1 position-relative">
 						<div className="col-lg-3 mt-lg-n2 mt-2">
@@ -129,7 +126,8 @@ function HeaderHome() {
 								<Input
 									className="form-control"
 									placeholder="Fund name etc..."
-									name="search"
+									{...register('name')}
+									name="name"
 								/>
 							</InputGroup>
 						</div>
@@ -140,7 +138,7 @@ function HeaderHome() {
 							</button>
 						</div>
 					</div>
-				</form>
+				</Form>
 			</FormProvider>
 		</Wrapper>
 	);

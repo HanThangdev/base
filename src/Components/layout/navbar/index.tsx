@@ -5,19 +5,22 @@
 import { useEffect, useState } from 'react';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
 import { GOEMON_LOGO, DownArrowDark, FundLogo1 } from '@assets/template/img';
-import { getLocalStorage, STORAGE } from '@utils/storage';
 import { Collapse, NavbarBrand, NavbarToggler, NavLink } from 'reactstrap';
 import { ModalLogin } from '@components/modal';
 import SiderBar from '../sidebar';
 import { Wrapper } from './styled';
 
+interface IProfile {
+	profileImage?: string
+	walletAddress?: any
+}
+
 function Navbar() {
 	const [visibleSideBar, setVisibleSideBar] = useState(false);
 	const [visibleModalLogin, setVisibleModalLogin] = useState(false);
-	const [profile, setProfile] = useState<unknown | null>(null);
+	const [profile, setProfile] = useState<IProfile | null>(null);
 	const [isOpen, setIsOpen] = useState(false);
 	const { provider, logout, web3Auth, isLoading } = useWeb3Auth();
-	const isLogined = getLocalStorage(STORAGE.USER_TOKEN);
 
 	const onResetVissble = () => {
 		setVisibleSideBar(false);
@@ -636,7 +639,7 @@ function Navbar() {
 										</div>
 									</li>
 								</ul>
-								{isLogined ? (
+								{provider ? (
 									<ul className="navbar-nav d-lg-block d-none">
 										<li className="nav-item dropdown dropdown-hover px-1 me-1">
 											<a href="/" className="nav-link btn btn-link mb-0 px-3">
@@ -905,45 +908,7 @@ function Navbar() {
 														</div>
 													</div>
 												</div>
-												{/* Message > Mobile */}
-												<div className="d-lg-none">
-													<a
-														href="\"
-														className="dropdown-item border-radius-md"
-													>
-														<span>Blog</span>
-													</a>
-													<a
-														href="\"
-														className="dropdown-item border-radius-md"
-													>
-														<span>Pressrelease</span>
-													</a>
-													<a
-														href="\"
-														className="dropdown-item border-radius-md"
-													>
-														<span>About Us</span>
-													</a>
-													<a
-														href="\"
-														className="dropdown-item border-radius-md"
-													>
-														<span>Jobs</span>
-													</a>
-													<a
-														href="\"
-														className="dropdown-item border-radius-md"
-													>
-														<span>Affiliates</span>
-													</a>
-													<a
-														href="\"
-														className="dropdown-item border-radius-md"
-													>
-														<span>Mediakit</span>
-													</a>
-												</div>
+												
 											</div>
 										</li>
 										<li
@@ -954,7 +919,7 @@ function Navbar() {
 												className="btn btn-link mb-0 me-3 p-0"
 												htmlFor="expand-toggle"
 											>
-												<img src={FundLogo1} className="avatar_img" alt="" />
+												<img src={profile?.profileImage || FundLogo1} className="avatar_img" alt="" />
 											</label>
 										</li>
 									</ul>

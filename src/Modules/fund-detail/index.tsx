@@ -22,10 +22,10 @@ import navigator from '@routes/navigation';
 import CalculateFund from '@components/calculateFund';
 import Card from '@components/card';
 import Diccussion from '@components/diccussion';
-import SideCard from '@components/sideCard';
 import { formatFundSize, formatCurrentcy } from '@utils/number';
 import { Link, Wrapper } from './styled';
 import { listNav } from './constant';
+import SideCard from './SideCard';
 
 interface IParamsURL {
 	id: string;
@@ -418,7 +418,7 @@ function FundDetail() {
 							</section>
 						</div>
 						<div className="col-lg-4 ps-50px mt-minus50px">
-							<SideCard navigate={navigate} />
+							<SideCard navigate={navigate} fund={fund} />
 						</div>
 					</div>
 				</div>
