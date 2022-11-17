@@ -32,8 +32,10 @@ function ModalLogin({ visible, setVisible }: IProps) {
 		await login(WALLET_ADAPTERS.OPENLOGIN, LOGIN_VIA_EMAIL, email);
 	};
 
+	const toggle = () => setVisible(!visible);
+
 	return (
-		<Modal isOpen={visible} className="modal-400 modal-dialog-centered">
+		<Modal isOpen={visible}  toggle={toggle} className="modal-400 modal-dialog-centered">
 			<ModalHeader className="border-0 pb-0">
 				<img src={GOEMON_LOGO} alt="" width={150} />
 				<button
@@ -41,7 +43,7 @@ function ModalLogin({ visible, setVisible }: IProps) {
 					className="btn-close text-dark"
 					data-bs-dismiss="modal"
 					aria-label="Close"
-					onClick={() => setVisible(false)}
+					onClick={toggle}
 				>
 					<i className="fas fa-times" aria-hidden="true" />
 				</button>

@@ -1,25 +1,30 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect, useState } from 'react';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
+import { useAuth } from '@hooks';
 import { GOEMON_LOGO, DownArrowDark, FundLogo1 } from '@assets/template/img';
 import { Collapse, NavbarBrand, NavbarToggler, NavLink } from 'reactstrap';
 import { ModalLogin } from '@components/modal';
+import { TypeLoginProvider } from '@constants';
+import { DEFAULT_AVATAR } from '@assets';
+import { isEmpty } from 'lodash';
 import SiderBar from '../sidebar';
 import { Wrapper } from './styled';
 
-interface IProfile {
-	profileImage?: string
-	walletAddress?: any
-}
+// interface IProfile {
+// 	profileImage?: string
+// 	walletAddress?: any
+// }
 
 function Navbar() {
 	const [visibleSideBar, setVisibleSideBar] = useState(false);
 	const [visibleModalLogin, setVisibleModalLogin] = useState(false);
-	const [profile, setProfile] = useState<IProfile | null>(null);
 	const [isOpen, setIsOpen] = useState(false);
+	const {profile,loadProfileAction} = useAuth()
 	const { provider, logout, web3Auth, isLoading } = useWeb3Auth();
 
 	const onResetVissble = () => {
@@ -32,7 +37,11 @@ function Navbar() {
 			const getProfile = async () => {
 				const user = await web3Auth.getUserInfo();
 				const account = await provider?.getAccounts();
-				setProfile({ ...user, walletAddress: account[0] });
+				let inforUser 
+					user?.typeOfLogin === TypeLoginProvider.DISCORD ? 
+						inforUser = {...user, profileImage: DEFAULT_AVATAR, walletAddress: account[0]}
+							: inforUser = { ...user, walletAddress: account[0] }
+				loadProfileAction(inforUser)
 			};
 			getProfile();
 		}
@@ -639,7 +648,7 @@ function Navbar() {
 										</div>
 									</li>
 								</ul>
-								{provider ? (
+								{!isEmpty(profile) ? (
 									<ul className="navbar-nav d-lg-block d-none">
 										<li className="nav-item dropdown dropdown-hover px-1 me-1">
 											<a href="/" className="nav-link btn btn-link mb-0 px-3">

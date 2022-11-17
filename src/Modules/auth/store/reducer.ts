@@ -52,6 +52,7 @@ function logoutSuccess(state: AuthState, { payload }: Action) {
 	return updateObject(state, {
 		isLoading: false,
 		message,
+		profile:{},
 	});
 }
 
@@ -62,28 +63,30 @@ function logoutFailure(state: AuthState, { error }: Action) {
 	});
 }
 
-function loadProfile(state: AuthState) {
+function loadProfile(state: AuthState, { payload }: Action) {
 	return updateObject(state, {
-		isLoading: true,
-	});
-}
-
-function profileLoaded(state: AuthState, { payload }: Action) {
-	const { profile } = payload;
-	return updateObject(state, {
-		isLoading: false,
 		authenticated: true,
-		profile,
+		profile:payload,
 	});
 }
 
-function profileLoadingError(state: AuthState, { error }: Action) {
-	return updateObject(state, {
-		error,
-		isLoading: false,
-		authenticated: false,
-	});
-}
+// function profileLoaded(state: AuthState, { payload }: Action) {
+// 	const { profile } = payload;
+// 	console.log(payload)
+// 	return updateObject(state, {
+// 		isLoading: false,
+// 		authenticated: true,
+// 		profile,
+// 	});
+// }
+
+// function profileLoadingError(state: AuthState, { error }: Action) {
+// 	return updateObject(state, {
+// 		error,
+// 		isLoading: false,
+// 		authenticated: false,
+// 	});
+// }
 
 // Slice reducer
 export default createReducer(initialState, {
@@ -96,6 +99,6 @@ export default createReducer(initialState, {
 	[FAILURE(LOGOUT)]: logoutFailure,
 
 	[REQUEST(LOAD_PROFILE)]: loadProfile,
-	[SUCCESS(LOAD_PROFILE)]: profileLoaded,
-	[FAILURE(LOAD_PROFILE)]: profileLoadingError,
+	// [SUCCESS(LOAD_PROFILE)]: profileLoaded,
+	// [FAILURE(LOAD_PROFILE)]: profileLoadingError,
 });
