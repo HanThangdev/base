@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { LOGO_ETH, LOGO_PAYMENT, LOGO_USDC, LOGO_USDT } from '@assets';
-import { FundLogo1 } from '@assets/template/img';
+import { DEFAULT_AVATAR, LOGO_ETH, LOGO_PAYMENT, LOGO_USDC, LOGO_USDT } from '@assets';
 import { useAuth } from '@hooks';
 import { shortAddress } from '@utils/string';
 import { NavbarIcon, ToggleNav } from './styled';
@@ -29,7 +28,7 @@ function SiderBar({ visible, setVisible, logout, profile }: IProps) {
 				<div className="card-header pb-0 pt-2 mt-3">
           <div className="w-100 float-start d-flex align-items-center">
             <div className="me-3">
-              <img alt="" src={profile?.profileImage || FundLogo1} className="avatar_img" />
+              <img alt="" src={profile?.profileImage || DEFAULT_AVATAR} className="avatar_img" />
             </div>
             <div className="w-100">
               <span className="fs-6 font-weight-bolder">{shortAddress(profile?.walletAddress) || ''}</span>
