@@ -24,7 +24,7 @@ function Navbar() {
 	const [visibleSideBar, setVisibleSideBar] = useState(false);
 	const [visibleModalLogin, setVisibleModalLogin] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
-	const {profile,loadProfileAction} = useAuth()
+	const { profile, loadProfileAction } = useAuth();
 	const { provider, logout, web3Auth, isLoading } = useWeb3Auth();
 
 	const onResetVissble = () => {
@@ -37,11 +37,15 @@ function Navbar() {
 			const getProfile = async () => {
 				const user = await web3Auth.getUserInfo();
 				const account = await provider?.getAccounts();
-				let inforUser 
-					user?.typeOfLogin === TypeLoginProvider.DISCORD ? 
-						inforUser = {...user, profileImage: DEFAULT_AVATAR, walletAddress: account[0]}
-							: inforUser = { ...user, walletAddress: account[0] }
-				loadProfileAction(inforUser)
+				let inforUser;
+				user?.typeOfLogin === TypeLoginProvider.DISCORD
+					? (inforUser = {
+							...user,
+							profileImage: DEFAULT_AVATAR,
+							walletAddress: account[0],
+					  })
+					: (inforUser = { ...user, walletAddress: account[0] });
+				loadProfileAction(inforUser);
 			};
 			getProfile();
 		}
@@ -71,7 +75,7 @@ function Navbar() {
 								data-bs-toggle="collapse"
 								data-bs-target="#navigation"
 								aria-controls="navigation"
-								aria-expanded="false"
+								aria-expanded={isOpen ? 'true' : 'false'}
 								aria-label="Toggle navigation"
 							>
 								<span className="navbar-toggler-icon mt-2">
@@ -86,12 +90,12 @@ function Navbar() {
 								className="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0"
 								id="navigation"
 							>
-								<NavLink
-									href="/"
+								<span
 									className="btn btn-sm  bg-gradient-primary btn-round my-3 ms-auto d-lg-none d-block"
+									onClick={() => setVisibleModalLogin(true)}
 								>
 									SIGN IN
-								</NavLink>
+								</span>
 								<ul className="navbar-nav navbar-nav-hover mx-auto">
 									<li className="nav-item dropdown dropdown-hover mx-3">
 										<NavLink
@@ -917,7 +921,6 @@ function Navbar() {
 														</div>
 													</div>
 												</div>
-												
 											</div>
 										</li>
 										<li
@@ -928,24 +931,32 @@ function Navbar() {
 												className="btn btn-link mb-0 me-3 p-0"
 												htmlFor="expand-toggle"
 											>
-												<img src={profile?.profileImage || FundLogo1} className="avatar_img" alt="" />
+												<img
+													src={profile?.profileImage || FundLogo1}
+													className="avatar_img"
+													alt=""
+												/>
 											</label>
 										</li>
 									</ul>
 								) : (
-									<button
-										type="button"
-										className="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 px-4"
-										onClick={() => setVisibleModalLogin(true)}
-										disabled={isLoading}
-									>
-										{isLoading ? (
-											<i className="fa-solid fa-sync input-right-text fa-spin fs-6 me-2" />
-										) : (
-											``
-										)}
-										Login / Sign up
-									</button>
+									<ul className="navbar-nav d-lg-block d-none">
+										<li className="nav-item">
+											<button
+												type="button"
+												className="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 px-4"
+												onClick={() => setVisibleModalLogin(true)}
+												disabled={isLoading}
+											>
+												{isLoading ? (
+													<i className="fa-solid fa-sync input-right-text fa-spin fs-6 me-2" />
+												) : (
+													``
+												)}
+												Login / Sign up
+											</button>
+										</li>
+									</ul>
 								)}
 							</Collapse>
 						</div>
