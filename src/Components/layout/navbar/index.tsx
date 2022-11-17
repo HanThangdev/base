@@ -6,10 +6,10 @@
 import { useEffect, useState } from 'react';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
 import { useAuth } from '@hooks';
-import { GOEMON_LOGO, DownArrowDark, FundLogo1 } from '@assets/template/img';
+import { GOEMON_LOGO, DownArrowDark } from '@assets/template/img';
 import { Collapse, NavbarBrand, NavbarToggler, NavLink } from 'reactstrap';
 import { ModalLogin } from '@components/modal';
-import { TypeLoginProvider } from '@constants';
+import { TypeLoginProvider, TypeLoginWithEmail } from '@constants';
 import { DEFAULT_AVATAR } from '@assets';
 import { isEmpty } from 'lodash';
 import SiderBar from '../sidebar';
@@ -38,7 +38,7 @@ function Navbar() {
 				const user = await web3Auth.getUserInfo();
 				const account = await provider?.getAccounts();
 				let inforUser;
-				user?.typeOfLogin === TypeLoginProvider.DISCORD
+				user?.typeOfLogin === TypeLoginProvider.DISCORD || user?.typeOfLogin === TypeLoginWithEmail.EMAIL
 					? (inforUser = {
 							...user,
 							profileImage: DEFAULT_AVATAR,
@@ -932,7 +932,7 @@ function Navbar() {
 												htmlFor="expand-toggle"
 											>
 												<img
-													src={profile?.profileImage || FundLogo1}
+													src={profile?.profileImage || DEFAULT_AVATAR}
 													className="avatar_img"
 													alt=""
 												/>

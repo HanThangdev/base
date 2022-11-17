@@ -7,4 +7,5 @@ export * from './diccussion';
 export * from './auth';
 export * from './web3auth';
 export * from './data';
+export * from './message';
 export { default as END_POINT } from './endpoint';

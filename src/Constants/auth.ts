@@ -14,6 +14,10 @@ export enum TypeLoginProvider {
 	DISCORD = 'discord',
 }
 
+export enum TypeLoginWithEmail {
+	EMAIL = 'jwt',
+}
+
 export enum TypeChain {
 	ETH_mainnet = 'ETH_mainnet',
 	ETH_testnet = 'ETH_testnet',
