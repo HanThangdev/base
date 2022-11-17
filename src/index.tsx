@@ -10,6 +10,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import ThemeProvider, { ThemedGlobalStyle } from './Themes';
 import './types.d';
+import './style.css';
 // import '@config/firebase'
 // import Web3Provider from '@utils/web3'
 // const { web3 } = Web3Provider.getWeb3Instance()
