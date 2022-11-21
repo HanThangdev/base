@@ -7,4 +7,5 @@ export * from './array';
 export * from './time';
 export * from './s3';
 export * from './redux';
+export * from './authentication';
 export { default as Web3Class } from './web3';
