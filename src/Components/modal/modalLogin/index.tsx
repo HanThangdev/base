@@ -33,7 +33,12 @@ function ModalLogin({ visible, setVisible }: IProps) {
 
 	const loginViaEmail = async (data: any) => {
 		const { email } = data;
-		await login(WALLET_ADAPTERS.OPENLOGIN, LOGIN_VIA_EMAIL, email);
+
+		if (web3Auth?.status !== ADAPTER_EVENTS.READY) {
+			Message.error(t('error_message:CONNECTION_IS_INTERRUPTED'));
+		} else {
+			await login(WALLET_ADAPTERS.OPENLOGIN, LOGIN_VIA_EMAIL, email);
+		}
 	};
 
 	const toggle = () => setVisible(!visible);
