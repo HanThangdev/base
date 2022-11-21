@@ -89,11 +89,12 @@ function HeaderHome() {
 						<div className="col-lg-3 mt-lg-n2 mt-2">
 							<label className="">Filter by: </label>
 							<select
+								defaultValue="allfunds"
 								className="form-control"
 								name="choices-button"
 								id="choices-button"
 							>
-								<option value="allfunds" selected>
+								<option value="allfunds">
 									All Funds
 								</option>
 								<option value="featured">Featured</option>
@@ -103,11 +104,12 @@ function HeaderHome() {
 						<div className="col-lg-3 mt-lg-n2 mt-2">
 							<label className="">Sort by: </label>
 							<select
+								defaultValue="mostfollower"
 								className="form-control"
 								name="choices-remove-button"
 								id="choices-remove-button"
 							>
-								<option value="mostfollower" selected>
+								<option value="mostfollower">
 									Most Follower
 								</option>
 								<option value="hiestfundsize">Hiest Fund size</option>

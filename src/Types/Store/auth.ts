@@ -6,3 +6,8 @@ export type AuthState = {
 	isSubmitting: boolean;
 	message: string;
 };
+
+
+export interface Message {
+  logoutMessage?: string;
+}

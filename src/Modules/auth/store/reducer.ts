@@ -7,9 +7,13 @@ import {
 	FAILURE,
 } from '@utils/redux';
 import { Action } from '@type/Store';
-import { AuthState } from '@type/Store/auth';
+import { AuthState, Message } from '@type/Store/auth';
 import { removeLocalStorage, setLocalStorage, STORAGE } from '@utils/storage';
-import { LOAD_PROFILE, LOGIN, LOGOUT } from './constants';
+import BroadcastChannel from "broadcast-channel";
+import { LOAD_PROFILE, LOGIN, LOGOUT, LOGOUT_MESSAGE } from './constants';
+
+
+const logoutChannel: BroadcastChannel<Message> = new BroadcastChannel("logout");
 
 export const initialState: AuthState = {
 	isLoading: false,
@@ -48,6 +52,7 @@ function logout(state: AuthState) {
 
 function logoutSuccess(state: AuthState, { payload }: Action) {
 	removeLocalStorage(STORAGE.USER_TOKEN);
+	logoutChannel.postMessage({ logoutMessage: LOGOUT_MESSAGE })
 	const { message } = payload;
 	return updateObject(state, {
 		isLoading: false,

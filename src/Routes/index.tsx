@@ -6,6 +6,7 @@ import { Loading } from '@components/common';
 import { useAuth } from '@hooks';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
 import { getLocalStorage } from '@utils/storage';
+import { logoutAllTabsEventListener } from '@utils/authentication';
 import NotFoundScreen from '@modules/other/404';
 import { LOCAL_WEB3AUTH_LOGINED } from '@constants';
 import { ROUTES } from './navigation';
@@ -23,6 +24,10 @@ export default function AppRoutes() {
 			loginAction(paramsToLogin);
 		}
 	}, [isLogined]);
+
+	useEffect(() => {
+		logoutAllTabsEventListener()
+	}, []);
 
 	return (
 		<Suspense fallback={<Loading />}>

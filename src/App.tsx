@@ -10,8 +10,8 @@ import Approutes from './Routes';
 
 function App() {
 	const [web3AuthNetwork, setWeb3AuthNetwork] =
-		useState<Web3authNetWorkType>('mainnet');
-	const [chain, setChain] = useState<CHAIN_CONFIG_TYPE>('ETH_mainnet');
+		useState<Web3authNetWorkType>('testnet');
+	const [chain, setChain] = useState<CHAIN_CONFIG_TYPE>('ETH_testnet');
 
 	return (
 		<Web3AuthProvider chain={chain} web3AuthNetwork={web3AuthNetwork}>

@@ -8,6 +8,6 @@ export const getAppPubKey = async(web3auth: Web3AuthCore, chain : CHAIN_CONFIG_T
   const appScopedPrivkey: any = await web3auth?.provider?.request({
     method: CHAIN_INFOR[chain].method, // use "private_key" for other non-evm chains
   });
-  const appPubKey = getPublicCompressed(Buffer.from(appScopedPrivkey.padStart(64, "0"), "hex")).toString("hex");
+  const appPubKey = getPublicCompressed(Buffer.from(appScopedPrivkey?.padStart(64, "0"), "hex")).toString("hex");
   return appPubKey
 }
