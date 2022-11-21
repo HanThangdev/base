@@ -6,9 +6,11 @@ import { FormInput } from '@components/form';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
 import { LOGIN_PROVIDER, LOGIN_VIA_EMAIL, TypeLoginProvider } from '@constants';
+import * as Message from '@components/message';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { WALLET_ADAPTERS } from '@web3auth/base';
+import { WALLET_ADAPTERS, ADAPTER_EVENTS } from '@web3auth/base';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { validationSchema } from './schema';
 
 interface IProps {
@@ -17,11 +19,13 @@ interface IProps {
 }
 
 function ModalLogin({ visible, setVisible }: IProps) {
+	const { t } = useTranslation(['error_message']);
+
 	const form = useForm({
 		resolver: yupResolver(validationSchema),
 	});
 	const { handleSubmit } = form;
-	const { login } = useWeb3Auth();
+	const { login, web3Auth } = useWeb3Auth();
 
 	const loginSocial = async (type: TypeLoginProvider) => {
 		await login(WALLET_ADAPTERS.OPENLOGIN, type);
@@ -35,7 +39,11 @@ function ModalLogin({ visible, setVisible }: IProps) {
 	const toggle = () => setVisible(!visible);
 
 	return (
-		<Modal isOpen={visible}  toggle={toggle} className="modal-400 modal-dialog-centered">
+		<Modal
+			isOpen={visible}
+			toggle={toggle}
+			className="modal-400 modal-dialog-centered"
+		>
 			<ModalHeader className="border-0 pb-0">
 				<img src={GOEMON_LOGO} alt="" width={150} />
 				<button
@@ -63,7 +71,11 @@ function ModalLogin({ visible, setVisible }: IProps) {
 								type="button"
 								className="btn btn-outline-light px-3"
 								onClick={() => {
-									v?.function(loginSocial);
+									if (web3Auth?.status !== ADAPTER_EVENTS.READY) {
+										Message.error(t('error_message:CONNECTION_IS_INTERRUPTED'));
+									} else {
+										v?.function(loginSocial);
+									}
 								}}
 							>
 								<img src={v?.logo} alt="" width={26} />

@@ -21,5 +21,6 @@
 	"ERROR_HAVE_A_COURSE_COST_IN_LIST": "選択された講座の中にユーザーが購入された有料講座があるため、まとめて削除できません。",
 	"FILE_NAME_EXIST": "同名のファイルが存在します",
 	"AUTOMATIC_COURSE_ASSIGNMENT_ALREADY_EXIST": "自動割り当て設定名は既に使われています。 別の設定名を入力してください。",
-	"ERROR_INVALID_RANGE_DATE": "閉講日時が開講日時以前に指定されています。"
+	"ERROR_INVALID_RANGE_DATE": "閉講日時が開講日時以前に指定されています。",
+	"CONNECTION_IS_INTERRUPTED": "The connection is interrupted. Please refresh (F5) to try again."
 }

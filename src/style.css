@@ -3,3 +3,7 @@
 * {
 	font-family: 'Poppins', sans-serif;
 }
+
+.ant-message {
+	z-index: 1100;
+}

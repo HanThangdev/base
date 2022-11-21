@@ -21,5 +21,6 @@
 	"ERROR_HAVE_A_COURSE_COST_IN_LIST": "Trong danh sách các khóa học bạn đã chọn để xóa, có tồn tại khóa học có phí mà đã được user mua, nên bạn không thể xóa.",
 	"FILE_NAME_EXIST": "Tồn tại file có cùng tên",
 	"AUTOMATIC_COURSE_ASSIGNMENT_ALREADY_EXIST": "Tên cài đặt gán tự động này đã tồn tại. Vui lòng nhập tên khác.",
-	"ERROR_INVALID_RANGE_DATE": "Ngày bế giảng phải được xác định trước ngày khai giảng."
+	"ERROR_INVALID_RANGE_DATE": "Ngày bế giảng phải được xác định trước ngày khai giảng.",
+	"CONNECTION_IS_INTERRUPTED": "The connection is interrupted. Please refresh (F5) to try again."
 }

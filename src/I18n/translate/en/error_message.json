@@ -21,5 +21,6 @@
 	"ERROR_HAVE_A_COURSE_COST_IN_LIST": "In your selected courses to delete list, there are paid courses that users have bought, therefore you are not allowed to delete.",
 	"FILE_NAME_EXIST": "A file with the same name exists",
 	"AUTOMATIC_COURSE_ASSIGNMENT_ALREADY_EXIST": "This auto assignment settings name has already been taken. Please enter another name.",
-	"ERROR_INVALID_RANGE_DATE": "The course end date and time is set before the course start date and time."
+	"ERROR_INVALID_RANGE_DATE": "The course end date and time is set before the course start date and time.",
+	"CONNECTION_IS_INTERRUPTED": "The connection is interrupted. Please refresh (F5) to try again."
 }

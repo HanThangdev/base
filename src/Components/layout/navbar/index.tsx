@@ -38,7 +38,8 @@ function Navbar() {
 				const user = await web3Auth.getUserInfo();
 				const account = await provider?.getAccounts();
 				let inforUser;
-				user?.typeOfLogin === TypeLoginProvider.DISCORD || user?.typeOfLogin === TypeLoginWithEmail.EMAIL
+				user?.typeOfLogin === TypeLoginProvider.DISCORD ||
+				user?.typeOfLogin === TypeLoginWithEmail.EMAIL
 					? (inforUser = {
 							...user,
 							profileImage: DEFAULT_AVATAR,
@@ -127,7 +128,7 @@ function Navbar() {
 																		<i className="far fa-user fs-6" />
 																	</div>
 																</div>
-																Dashbord
+																Dashboard
 															</div>
 															<a
 																href="/"
@@ -267,7 +268,7 @@ function Navbar() {
 															<i className="far fa-user fs-6" />
 														</div>
 													</div>
-													Dashbord
+													Dashboard
 												</div>
 												<a href="/" className="dropdown-item border-radius-md">
 													<span className="ps-3">Overview</span>
