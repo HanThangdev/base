@@ -107,7 +107,6 @@ function urlFormKycAccount(state: AuthState) {
 }
 
 function urlFormKycAccountSuccess(state: AuthState, { payload }: Action) {
-	setLocalStorage(STORAGE.USER_TOKEN, JSON.stringify(payload));
 	return updateObject(state, {
 		isLoading: false,
 		urlFormKyc: payload,
