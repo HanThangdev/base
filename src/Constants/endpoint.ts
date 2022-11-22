@@ -5,6 +5,7 @@ const END_POINT: any = {
 	LOGIN: '/api/v1/public/auth/signin',
 	LOGOUT: '/api/v1/private/auth/logout',
 	PROFILE_USER: '/profile-user',
+	URL_FORM_KYC_ACCOUNT: '/api/v1/private/auth/kyc',
 
 	// fund
 	FUND_LIST: 'api/v1/public/funds',
