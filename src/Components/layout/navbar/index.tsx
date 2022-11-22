@@ -24,7 +24,7 @@ function Navbar() {
 	const [visibleSideBar, setVisibleSideBar] = useState(false);
 	const [visibleModalLogin, setVisibleModalLogin] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
-	const { profile, loadProfileAction } = useAuth();
+	const { profile, loadProfileAction, urlFormKycAccountAction } = useAuth();
 	const { provider, logout, web3Auth, isLoading } = useWeb3Auth();
 
 	const onResetVissble = () => {
@@ -49,6 +49,7 @@ function Navbar() {
 				loadProfileAction(inforUser);
 			};
 			getProfile();
+			urlFormKycAccountAction();
 		}
 	}, [web3Auth]);
 

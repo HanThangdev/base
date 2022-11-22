@@ -9,11 +9,16 @@ import {
 import { Action } from '@type/Store';
 import { AuthState, Message } from '@type/Store/auth';
 import { removeLocalStorage, setLocalStorage, STORAGE } from '@utils/storage';
-import BroadcastChannel from "broadcast-channel";
-import { LOAD_PROFILE, LOGIN, LOGOUT, LOGOUT_MESSAGE } from './constants';
+import BroadcastChannel from 'broadcast-channel';
+import {
+	LOAD_PROFILE,
+	LOGIN,
+	LOGOUT,
+	LOGOUT_MESSAGE,
+	URL_FORM_KYC_ACCOUNT,
+} from './constants';
 
-
-const logoutChannel: BroadcastChannel<Message> = new BroadcastChannel("logout");
+const logoutChannel: BroadcastChannel<Message> = new BroadcastChannel('logout');
 
 export const initialState: AuthState = {
 	isLoading: false,
@@ -22,6 +27,7 @@ export const initialState: AuthState = {
 	profile: {},
 	isSubmitting: false,
 	message: '',
+	urlFormKyc: '',
 };
 
 function login(state: AuthState) {
@@ -52,12 +58,12 @@ function logout(state: AuthState) {
 
 function logoutSuccess(state: AuthState, { payload }: Action) {
 	removeLocalStorage(STORAGE.USER_TOKEN);
-	logoutChannel.postMessage({ logoutMessage: LOGOUT_MESSAGE })
+	logoutChannel.postMessage({ logoutMessage: LOGOUT_MESSAGE });
 	const { message } = payload;
 	return updateObject(state, {
 		isLoading: false,
 		message,
-		profile:{},
+		profile: {},
 	});
 }
 
@@ -71,7 +77,7 @@ function logoutFailure(state: AuthState, { error }: Action) {
 function loadProfile(state: AuthState, { payload }: Action) {
 	return updateObject(state, {
 		authenticated: true,
-		profile:payload,
+		profile: payload,
 	});
 }
 
@@ -93,6 +99,28 @@ function loadProfile(state: AuthState, { payload }: Action) {
 // 	});
 // }
 
+// urlFormKycAccount
+function urlFormKycAccount(state: AuthState) {
+	return updateObject(state, {
+		isLoading: true,
+	});
+}
+
+function urlFormKycAccountSuccess(state: AuthState, { payload }: Action) {
+	setLocalStorage(STORAGE.USER_TOKEN, JSON.stringify(payload));
+	return updateObject(state, {
+		isLoading: false,
+		urlFormKyc: payload,
+	});
+}
+
+function urlFormKycAccountFailure(state: AuthState, { error }: Action) {
+	return updateObject(state, {
+		error,
+		isLoading: false,
+	});
+}
+
 // Slice reducer
 export default createReducer(initialState, {
 	[REQUEST(LOGIN)]: login,
@@ -106,4 +134,8 @@ export default createReducer(initialState, {
 	[REQUEST(LOAD_PROFILE)]: loadProfile,
 	// [SUCCESS(LOAD_PROFILE)]: profileLoaded,
 	// [FAILURE(LOAD_PROFILE)]: profileLoadingError,
+
+	[REQUEST(URL_FORM_KYC_ACCOUNT)]: urlFormKycAccount,
+	[SUCCESS(URL_FORM_KYC_ACCOUNT)]: urlFormKycAccountSuccess,
+	[FAILURE(URL_FORM_KYC_ACCOUNT)]: urlFormKycAccountFailure,
 });

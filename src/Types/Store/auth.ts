@@ -5,9 +5,9 @@ export type AuthState = {
 	profile: any;
 	isSubmitting: boolean;
 	message: string;
+	urlFormKyc: string;
 };
 
-
 export interface Message {
-  logoutMessage?: string;
+	logoutMessage?: string;
 }
