@@ -17,6 +17,7 @@ import { OpenloginAdapter } from '@web3auth/openlogin-adapter';
 import { WalletConnectV1Adapter } from '@web3auth/wallet-connect-v1-adapter';
 import { NetworkSwitch } from '@web3auth/ui';
 import { getWalletProvider, IWalletProvider } from '@config/network/provider';
+import { setLocalStorage } from '@utils/storage';
 import { getAppPubKey } from '@config/web3auth/appPubKey';
 import {
 	createContext,
@@ -27,9 +28,8 @@ import {
 	useEffect,
 	useState,
 } from 'react';
-import { Web3authNetWorkType } from '@constants';
+import { LOCAL_WEB3AUTH_LOGINED, StatusLogin, Web3authNetWorkType } from '@constants';
 import QRCodeModal from '@walletconnect/qrcode-modal';
-import { useAuth } from './injectStore';
 
 export interface IParamLoginState {
 	id_token: any;
@@ -200,6 +200,7 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 			});
 
 			setWalletProvider(localProvider!);
+			setLocalStorage(LOCAL_WEB3AUTH_LOGINED, StatusLogin.LOGINED)
 		} catch (error) {
 			console.log('error', error);
 		} finally {
