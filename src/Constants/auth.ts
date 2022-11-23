@@ -51,7 +51,7 @@ export const LOGIN_PROVIDER: {
 		logo: LOGO_LINE,
 		function: (cb) => cb(TypeLoginProvider.LINE),
 	},
-	
+
 	[TypeLoginProvider.DISCORD]: {
 		logo: LOGO_DISCORD,
 		function: (cb) => cb(TypeLoginProvider.DISCORD),
@@ -59,3 +59,8 @@ export const LOGIN_PROVIDER: {
 };
 
 export const LOCAL_WEB3AUTH_LOGINED = 'Web3Auth-cachedAdapter';
+
+export enum StatusLogin {
+	LOGINED = 'openlogin',
+	EXPIRED = 'expired',
+}

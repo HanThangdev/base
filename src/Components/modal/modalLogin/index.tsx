@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable consistent-return */
 /* eslint-disable react/prop-types */
+import { Dispatch, SetStateAction } from 'react';
 import { GOEMON_LOGO } from '@assets/template/img';
 import { FormInput } from '@components/form';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
@@ -15,7 +16,7 @@ import { validationSchema } from './schema';
 
 interface IProps {
 	visible: boolean;
-	setVisible: any;
+	setVisible: Dispatch<SetStateAction<boolean>>;
 }
 
 function ModalLogin({ visible, setVisible }: IProps) {

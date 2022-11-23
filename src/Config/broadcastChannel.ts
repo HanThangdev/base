@@ -1,8 +1,8 @@
-import { Message } from "@type/Store/auth";
 import BroadcastChannel from "broadcast-channel";
+import {  Message } from '@type/Store/auth';
 
 
-const logoutChannel: BroadcastChannel<Message> = new BroadcastChannel("logout");
+export const logoutChannel: BroadcastChannel<Message> = new BroadcastChannel("logout");
 
 export const logoutAllTabsEventListener = () => {
   logoutChannel.onmessage = () => {

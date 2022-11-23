@@ -9,7 +9,7 @@ const resources = {
 	jp,
 };
 
-const INIT_LANGUAGE = getLocalStorage(STORAGE.LANGUAGE) || 'jp';
+const INIT_LANGUAGE = getLocalStorage(STORAGE.LANGUAGE) || 'en';
 
 i18next.use(initReactI18next).init({
 	resources,
