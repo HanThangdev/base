@@ -13,6 +13,9 @@ import { ROUTES } from './navigation';
 
 const AuthRoutes = lazy(() => import('@modules/auth/routes'));
 const CourseRoutes = lazy(() => import('@modules/course/routes'));
+const InvestorPanelRoutes = lazy(
+	() => import('@modules/investor-panel/routes')
+);
 
 export default function AppRoutes() {
 	const { paramsToLogin } = useWeb3Auth();
@@ -47,6 +50,8 @@ export default function AppRoutes() {
 				))}
 				<Route path="/auth" component={AuthRoutes} />
 				<Route path="/course" component={CourseRoutes} />
+				<Route path="/investor_panel" component={InvestorPanelRoutes} />
+
 				<Route path="*" component={NotFoundScreen} />
 			</Switch>
 		</Suspense>

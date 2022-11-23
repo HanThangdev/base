@@ -1,22 +1,31 @@
 import { USER_ROLE } from '@modules/auth/constant';
-import HomeLayout from '@layouts/home';
 
 import HomeScreen from '@modules/home';
 import FundDetail from '@modules/fund-detail';
 import Faq from '@modules/faq';
 import Invest from '@modules/invest';
+import InvestorPanel from '@modules/investor-panel';
 import { navigator as courseNavigator } from '@modules/course/routes';
 import { navigator as authNavigator } from '@modules/auth/routes';
-import { FaqLayout, FundDetailLayout, InvestLayout } from '@layouts';
+import { navigator as investorPanelNavigator } from '@modules/investor-panel/routes';
+import {
+	HomeLayout,
+	FaqLayout,
+	FundDetailLayout,
+	InvestLayout,
+	InvestorPanelLayout,
+} from '@layouts';
 
 const navigator = {
 	HOME: '/',
 	FUND_DETAIL: '/fund_detail',
 	FAQ: '/faq',
 	INVEST: '/invest',
+	INVESTOR_PANEL: '/investor_panel',
 
 	...courseNavigator,
 	...authNavigator,
+	...investorPanelNavigator,
 };
 
 export const ROUTES = [
@@ -45,6 +54,13 @@ export const ROUTES = [
 		path: navigator.INVEST,
 		component: Invest,
 		layout: InvestLayout,
+		rules: [USER_ROLE.ADMIN],
+		exact: true,
+	},
+	{
+		path: navigator.INVESTOR_PANEL,
+		component: InvestorPanel,
+		layout: InvestorPanelLayout,
 		rules: [USER_ROLE.ADMIN],
 		exact: true,
 	},

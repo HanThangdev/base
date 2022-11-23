@@ -51,7 +51,7 @@
 	--bs-black-rgb: 0, 0, 0;
 	--bs-body-color-rgb: 103, 116, 142;
 	--bs-body-bg-rgb: 255, 255, 255;
-	--bs-font-sans-serif: Open Sans;
+	--bs-font-sans-serif: Poppins, sans-serif;
 	--bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
 		'Liberation Mono', 'Courier New', monospace;
 	--bs-gradient: linear-gradient(
@@ -2753,7 +2753,7 @@ progress {
 .form-control:focus {
 	color: #495057;
 	background-color: #fff;
-	border-color: #e9aede;
+	border-color: #e293d3;
 	outline: 0;
 	box-shadow: 0 0 0 2px #e9aede;
 }
@@ -3593,7 +3593,7 @@ textarea.form-control.is-invalid {
 .btn {
 	--bs-btn-padding-x: 10px;
 	--bs-btn-padding-y: 0.75rem;
-	--bs-btn-font-family: ;
+	--bs-btn-font-family: Poppins, sans-serif;
 	--bs-btn-font-size: 0.75rem;
 	--bs-btn-font-weight: 700;
 	--bs-btn-line-height: 1.4;
@@ -10944,6 +10944,10 @@ fieldset:disabled .btn {
 
 .z-index-999 {
 	z-index: 999 !important;
+}
+
+.letter-spacing-0 {
+	letter-spacing: 0 !important;
 }
 
 .letter-spacing-1 {
@@ -21022,7 +21026,7 @@ fieldset:disabled .btn {
 }
 
 .card .card-body {
-	font-family: 'Open Sans';
+	font-family: Poppins, sans-serif;
 	padding: 1.5rem;
 }
 
@@ -38591,6 +38595,157 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	margin: 0.5rem 1rem 1rem 1rem !important;
 }
 
+.investor_panel .anchor_adjust {
+	padding-top: 7rem;
+	margin-top: -7rem;
+}
+
+/*-- Database Table --*/
+.dataTable-wrapper .dataTable-bottom .dataTable-info {
+	font-size: 0.75rem;
+	font-weight: bold;
+}
+
+.dataTable-wrapper .dataTable-top .dataTable-search input {
+	font-size: 0.75rem;
+}
+
+.dataTable-wrapper .dataTable-bottom {
+	padding-top: 30px;
+}
+
+/*-- Upload profile image input type file jQuery + Bootstrap --*/
+.profile-pic-wrapper {
+	width: 80px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.pic-holder {
+	text-align: center;
+	position: relative;
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+}
+.pic-holder .pic {
+	height: 80px;
+	width: 80px;
+	-o-object-fit: cover;
+	object-fit: cover;
+	-o-object-position: center;
+	object-position: center;
+}
+.pic-holder .upload-file-block,
+.pic-holder .upload-loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 80px;
+	width: 80px;
+	background-color: rgba(90, 92, 105, 0.7);
+	color: #f8f9fc;
+	font-size: 10px;
+	font-weight: 600;
+	opacity: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s;
+}
+
+.pic-holder .upload-file-block {
+	cursor: pointer;
+	margin-left: 0 !important;
+}
+
+.pic-holder:hover .upload-file-block,
+.uploadProfileInput:focus ~ .upload-file-block {
+	opacity: 1;
+}
+
+.pic-holder.uploadInProgress .upload-file-block {
+	display: none;
+}
+
+.pic-holder.uploadInProgress .upload-loader {
+	opacity: 1;
+}
+
+/* Snackbar css */
+.snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	bottom: 30px;
+	font-size: 14px;
+	transform: translateX(-50%);
+}
+
+.snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+	to {
+		bottom: 30px;
+		opacity: 1;
+	}
+}
+
+@keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+	to {
+		bottom: 30px;
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeout {
+	from {
+		bottom: 30px;
+		opacity: 1;
+	}
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		bottom: 30px;
+		opacity: 1;
+	}
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
+}
+
 /*-- etc --*/
 .bg-gradient-primary {
 	background-image: linear-gradient(310deg, #7928ca 0%, #ff0080 80%) !important;
@@ -38657,24 +38812,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	margin-top: -12rem;
 }
 
-.pd-modal {
-	display: block !important;
-	background-color: rgba(0, 0, 0, 0.4) !important;
-	z-index: 1100;
-}
-
-.input-group:focus-within {
-	box-shadow: 0 0 0 2px #e9aede;
-	transition: box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
 /* CUSTOM STYLE =======================================*/
 .sidenav-menu > div > span {
 	display: block;
 	padding: 10px 0 10px 20px;
 	margin: 2px 0;
 	border-radius: 9999px;
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .sidenav-menu > div > span:hover,
@@ -38698,4 +38842,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .sidenav-menu > div > span:hover,
 .sidenav-menu > div > span:focus {
 	background-color: var(--bs-gray-100);
+}
+
+.pd-modal {
+	display: block !important;
+	background-color: rgba(0, 0, 0, 0.4) !important;
+	z-index: 1100;
+}
+
+.input-group:focus-within {
+	box-shadow: 0 0 0 2px #e9aede;
+	transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }

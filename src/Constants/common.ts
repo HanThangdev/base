@@ -120,3 +120,5 @@ export const mapMimeToExt = {
 };
 
 export const MILION_UNIT = 1000000
+
+export const ERC20Test = '0x10cED108C2F0f793bb7B9D014667a1D29E2A226B'

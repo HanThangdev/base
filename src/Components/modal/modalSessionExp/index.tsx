@@ -6,8 +6,6 @@ import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import { useAuth, useRoot } from '@hooks';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
-import { logoutChannel } from '@config/broadcastChannel';
-import { LOGOUT_MESSAGE } from '@modules/auth/store/constants';
 import { removeLocalStorage, STORAGE } from '@utils/storage';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 
@@ -24,7 +22,6 @@ function ModalSessionExp({setVisible} : IProps) {
 
 	const onAcceptLogout = () => {
 		toggleSessionAccountAction();
-		logoutChannel.postMessage({ logoutMessage: LOGOUT_MESSAGE })
 		removeLocalStorage(STORAGE.USER_TOKEN);
 		setVisible(true)
 	};
