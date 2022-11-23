@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import { Dispatch, SetStateAction } from 'react';
 import {
 	DEFAULT_AVATAR,
 	LOGO_ETH,
@@ -9,18 +10,18 @@ import {
 	LOGO_USDT,
 } from '@assets';
 import { useAuth } from '@hooks';
+import { useWeb3Auth } from '@hooks/useWeb3auth';
 import { shortAddress } from '@utils/string';
 import { NavbarIcon, ToggleNav } from './styled';
 
 interface IProps {
 	visible: boolean;
-	setVisible: (params: boolean) => void;
-	logout: any;
-	profile: any;
+	setVisible: Dispatch<SetStateAction<boolean>>;
 }
 
-function SiderBar({ visible, setVisible, logout, profile }: IProps) {
-	const { logoutAction, urlFormKyc } = useAuth();
+function SiderBar({ visible, setVisible }: IProps) {
+	const { profile, logoutAction, urlFormKyc } = useAuth();
+	const { logout } = useWeb3Auth();
 
 	const onLogout = () => {
 		logout();

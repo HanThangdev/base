@@ -7,9 +7,9 @@ import {
 	FAILURE,
 } from '@utils/redux';
 import { Action } from '@type/Store';
-import { AuthState, Message } from '@type/Store/auth';
+import { AuthState } from '@type/Store/auth';
+import { logoutChannel } from '@config/broadcastChannel';
 import { removeLocalStorage, setLocalStorage, STORAGE } from '@utils/storage';
-import BroadcastChannel from 'broadcast-channel';
 import {
 	LOAD_PROFILE,
 	LOGIN,
@@ -17,8 +17,6 @@ import {
 	LOGOUT_MESSAGE,
 	URL_FORM_KYC_ACCOUNT,
 } from './constants';
-
-const logoutChannel: BroadcastChannel<Message> = new BroadcastChannel('logout');
 
 export const initialState: AuthState = {
 	isLoading: false,

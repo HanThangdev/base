@@ -7,12 +7,11 @@ import jwt_decode from 'jwt-decode';
 import dayjs from 'dayjs';
 
 import { isEmpty, assign } from 'lodash';
-import { BASE_API_URL } from '@constants';
-import { STORAGE, getLocalStorage, setLocalStorage, removeLocalStorage } from '@utils';
+import { BASE_API_URL, LOCAL_WEB3AUTH_LOGINED, StatusLogin } from '@constants';
+import { STORAGE, getLocalStorage, setLocalStorage } from '@utils';
 
 const singletonEnforcer = Symbol();
 const BASE_URL = `${BASE_API_URL}`;
-
 interface Token {
 	name: string;
 	exp: number;
@@ -52,12 +51,6 @@ class AxiosClient {
 					const user = jwt_decode<Token>(token.access_token);
 					// Check time expire
 					const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
-					// Check time expire
-					const isexpWeb3Auth = dayjs.unix(user.expWeb3Auth).diff(dayjs()) < 1;
-					if (isexpWeb3Auth) {
-						removeLocalStorage(STORAGE.USER_TOKEN);
-						return configure;
-					}
 					// If time not expired set access token to header and call api
 					if (!isExpired) {
 						configure.headers.Authorization = `Bearer ${token.access_token}`;
@@ -99,6 +92,7 @@ class AxiosClient {
 						case 500:
 							break;
 						case 401:
+							setLocalStorage(LOCAL_WEB3AUTH_LOGINED, StatusLogin.EXPIRED)
 							break;
 						case 404:
 							break;

@@ -8,24 +8,20 @@ import { useWeb3Auth } from '@hooks/useWeb3auth';
 import { useAuth } from '@hooks';
 import { GOEMON_LOGO, DownArrowDark } from '@assets/template/img';
 import { Collapse, NavbarBrand, NavbarToggler, NavLink } from 'reactstrap';
-import { ModalLogin } from '@components/modal';
+import { ModalLogin, ModalSessionExp } from '@components/modal';
 import { TypeLoginProvider, TypeLoginWithEmail } from '@constants';
 import { DEFAULT_AVATAR } from '@assets';
 import { isEmpty } from 'lodash';
 import SiderBar from '../sidebar';
 import { Wrapper } from './styled';
 
-// interface IProfile {
-// 	profileImage?: string
-// 	walletAddress?: any
-// }
 
 function Navbar() {
 	const [visibleSideBar, setVisibleSideBar] = useState(false);
 	const [visibleModalLogin, setVisibleModalLogin] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const { profile, loadProfileAction, urlFormKycAccountAction } = useAuth();
-	const { provider, logout, web3Auth, isLoading } = useWeb3Auth();
+	const { provider, web3Auth, isLoading } = useWeb3Auth();
 
 	const onResetVissble = () => {
 		setVisibleSideBar(false);
@@ -973,11 +969,12 @@ function Navbar() {
 			<SiderBar
 				visible={visibleSideBar}
 				setVisible={setVisibleSideBar}
-				logout={logout}
-				profile={profile}
 			/>
 			<ModalLogin
 				visible={visibleModalLogin}
+				setVisible={setVisibleModalLogin}
+			/>
+			<ModalSessionExp
 				setVisible={setVisibleModalLogin}
 			/>
 		</Wrapper>

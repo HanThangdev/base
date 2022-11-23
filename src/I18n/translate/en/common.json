@@ -95,5 +95,7 @@
 	"detail": "Detail",
 	"resend": "Resend",
 	"list": "List",
-	"total_courses": "All {{amount}} item(s)"
+	"total_courses": "All {{amount}} item(s)",
+	"accept": "Accept",
+	"login": "Login"
 }

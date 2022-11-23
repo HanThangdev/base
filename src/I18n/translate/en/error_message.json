@@ -22,5 +22,6 @@
 	"FILE_NAME_EXIST": "A file with the same name exists",
 	"AUTOMATIC_COURSE_ASSIGNMENT_ALREADY_EXIST": "This auto assignment settings name has already been taken. Please enter another name.",
 	"ERROR_INVALID_RANGE_DATE": "The course end date and time is set before the course start date and time.",
-	"CONNECTION_IS_INTERRUPTED": "The connection is interrupted. Please refresh (F5) to try again."
+	"CONNECTION_IS_INTERRUPTED": "The connection is interrupted. Please refresh (F5) to try again.",
+	"SESSION_TIME_OUT": "Login session has expired, please login again."
 }
