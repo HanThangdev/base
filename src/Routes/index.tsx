@@ -22,7 +22,7 @@ export default function AppRoutes() {
 
 	useEffect(() => {
 		switch (isLogined) {
-			case StatusLogin.LOGINED:
+			case StatusLogin.LOGINED || StatusLogin.PROCESSING:
 				if (paramsToLogin.app_pub_key && paramsToLogin.id_token) {
 					loginAction(paramsToLogin);
 				}

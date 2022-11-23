@@ -200,7 +200,7 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
 			});
 
 			setWalletProvider(localProvider!);
-			setLocalStorage(LOCAL_WEB3AUTH_LOGINED, StatusLogin.LOGINED)
+			setLocalStorage(LOCAL_WEB3AUTH_LOGINED, StatusLogin.PROCESSING)
 		} catch (error) {
 			console.log('error', error);
 		} finally {
