@@ -1,0 +1,80 @@
+{
+	"METAMASK": {
+		"ETH_RPC": "https://goerli.infura.io/v3/63879614c9424d27853c10322b38169a",
+		"SPC_RPC": "",
+		"BNB_RPC": "",
+		"ETH_SCAN": "",
+		"BNB_SCAN": "",
+		"SPEC_SCAN": "",
+		"INFURA_ID": "63879614c9424d27853c10322b38169a",
+		"MAX_GAS_LIMIT": 0,
+		"GAS": 0,
+		"NONCE": 0,
+		"USDT_ADDRESS": "",
+		"BUSD_ADDRESS": "",
+		"ETH_ADDRESS": "0x10cED108C2F0f793bb7B9D014667a1D29E2A226B",
+		"BSC_ADDRESS": "",
+		"SPC_ETH_ADDRESS": "",
+		"SPC_BSC_ADDRESS": "",
+		"HTC_ADDRESS": "",
+		"TOKENIZE_ADDRESS": "",
+		"PRZ_ADDRESS": "",
+		"CCT_ADDRESS": "",
+		"VAULT_CLAIM_ADDRESS": "",
+		"RECEIVE_STAKING_POOL_ADDRESS": "",
+		"ERC20_STAKING_POOL_ADDRESS": "",
+		"NATIVE_STAKING_POOL_ADDRESS": "",
+		"ICO_LOCK_ADDRESS": "",
+		"ICO_RECEIVE_ADDRESS": "",
+		"MAX_TOKEN_APPROVE": "0",
+		"ADMIN_ADDRESS": {
+			"EXCHANGE_USDT_HTC": ""
+		},
+		"USDT_DECIMALS": 0,
+		"PRZ_DECIMALS": 0,
+		"EXCHANGE_PAIR": [
+			["SPC", "USDT"],
+			["USDT", "SPC"],
+			["USDT", "HTC"]
+		],
+		"TOKENIZING_PAIR": [
+			["PRZ", "CCT"],
+			["SPC", "HTC"],
+			["PRZ", "SPC"],
+			["HTC", "SPC"]
+		],
+		"ETH_NETWORK": {
+			"chainId": "0",
+			"chainName": "ETH NETWORK",
+			"nativeCurrency": {
+				"name": "ETH",
+				"symbol": "ETH",
+				"decimals": 18
+			},
+			"rpcUrls": [""],
+			"blockExplorerUrls": [""]
+		},
+		"SPEC_NETWORK": {
+			"chainId": "55",
+			"chainName": "SPEC NETWORK",
+			"nativeCurrency": {
+				"name": "SPC",
+				"symbol": "SPC",
+				"decimals": 18
+			},
+			"rpcUrls": [""],
+			"blockExplorerUrls": [""]
+		},
+		"BNB_NETWORK": {
+			"chainId": "97",
+			"chainName": "BNB NETWORK",
+			"nativeCurrency": {
+				"name": "BNB",
+				"symbol": "BNB",
+				"decimals": 18
+			},
+			"rpcUrls": [""],
+			"blockExplorerUrls": [""]
+		}
+	}
+}
