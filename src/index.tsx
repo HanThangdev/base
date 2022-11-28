@@ -3,6 +3,7 @@ import * as ReactDOMClient from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import styled from 'styled-components';
+// import Web3Provider from '@utils/web3'
 
 import { configureStore, history } from '@config/store';
 import App from './App';
@@ -12,7 +13,6 @@ import ThemeProvider, { ThemedGlobalStyle } from './Themes';
 import './types.d';
 import './style.css';
 // import '@config/firebase'
-// import Web3Provider from '@utils/web3'
 // const { web3 } = Web3Provider.getWeb3Instance()
 // web3.currentProvider.enable()
 

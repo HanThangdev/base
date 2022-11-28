@@ -778,6 +778,37 @@ class Web3Class {
 		return transactionHash;
 	};
 
+	static sendInvestTransaction = async (
+		from: any,
+		toAddress: any,
+		amount: any,
+		gasPrice: any
+	) => {
+		const instance = await Web3Class.getWeb3Instance();
+		// const contractExchangeAddress = adminAddress;
+		const transactionHash = await new Promise((resolve, reject) => {
+				instance.ethContract.methods
+					.transfer(
+						toAddress,
+						instance.web3?.utils.toWei(amount)
+					)
+					.send(
+						{
+							from,
+							gasPrice,
+						},
+						(error: any, result: unknown) => {
+							if (error) {
+								reject(error);
+							} else {
+								resolve(result);
+							}
+						}
+					);
+		});
+		return transactionHash;
+	};
+
 	static sendTransactionClaimBonus = async (
 		publicAddress: any,
 		amount: any,
