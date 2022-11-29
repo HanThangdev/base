@@ -10,7 +10,7 @@
 	"info_upload_image_faile": "In the case of the second and subsequent categories, it will not be displayed on the user screen.",
 	"delete": "Delete",
 	"cancel": "Cancel",
-	"ok": "Change",
+	"ok": "Ok",
 	"reset": "Restore",
 	"select": "Select",
 	"noOption": "There is no data",
@@ -97,5 +97,6 @@
 	"list": "List",
 	"total_courses": "All {{amount}} item(s)",
 	"accept": "Accept",
-	"login": "Login"
+	"login": "Login",
+	"CONFIRM_TRANSACTION": "Confirm transaction"
 }
