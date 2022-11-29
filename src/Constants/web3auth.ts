@@ -27,3 +27,5 @@ export const CHAIN_INFOR= {
     method:""
   } ,
 } as const;
+
+export const CLIENT_ID = "BD8pvWp8a7mYvc8V2adDX4BrnEb72psCq4CcIkvFUyuj44c6e0InroHoMWqk1Wz6IKw1dJ8Jbbye0X8sSGi9IJU"
