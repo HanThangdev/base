@@ -2,7 +2,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable max-lines */
 import Web3 from 'web3';
-import web3Json from '@web3/web3.json';
 import {
 	ethAbi,
 	spcAbi,
@@ -21,12 +20,13 @@ import {
 	icoLockAbi,
 	icoReceiveAbi,
 } from '@web3/contract-abi';
+import { web3Json } from '@web3/web3-config';
 import { CLIENT_ID } from '@constants';
 import { Web3AuthCore } from '@web3auth/core';
 import { CHAIN_CONFIG } from '@config/chainConfig';
 import { OpenloginAdapter } from '@web3auth/openlogin-adapter';
 
-const web3Info: any = web3Json.METAMASK;
+const web3Info: any = web3Json;
 let web3Instance: any;
 let usdtContract: any;
 let busdContract: any;

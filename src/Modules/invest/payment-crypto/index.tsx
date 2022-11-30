@@ -81,16 +81,16 @@ function CryptoPayment() {
 			} else {
         setModalHandlingType(TYPE_TRANSACTION.PENDING)
 				const { amount } = value;
-				const { ethContract } = await Web3Class.getWeb3Instance();
+				const { ethContract, web3 } = await Web3Class.getWeb3Instance();
 				const response = await ethContract.methods.transfer(FundAddess, amount);
-				const accounts = profile.walletAddress;
+				const accounts = await web3.eth.getAccounts();
 				const data = response.encodeABI();
-				const gas = await response.estimateGas({ from: accounts });
+				const gas = await response.estimateGas({ from: accounts[0] });
 				const transactionParameters = {
 					// nonce: "0x00",
 					// gasPrice: "0x0",
 					gas,
-					from: accounts,
+					from: accounts[0],
 					to: ERC20Test,
 					data,
 					// value: web3.utils.toWei(`${amount}`)

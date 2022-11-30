@@ -1,18 +1,17 @@
 {
-	"METAMASK": {
-		"ETH_RPC": "",
+		"ETH_RPC": "https://goerli.infura.io/v3/63879614c9424d27853c10322b38169a",
 		"SPC_RPC": "",
 		"BNB_RPC": "",
 		"ETH_SCAN": "",
 		"BNB_SCAN": "",
 		"SPEC_SCAN": "",
-		"INFURA_ID": "",
+		"INFURA_ID": "63879614c9424d27853c10322b38169a",
 		"MAX_GAS_LIMIT": 0,
 		"GAS": 0,
 		"NONCE": 0,
 		"USDT_ADDRESS": "",
 		"BUSD_ADDRESS": "",
-		"ETH_ADDRESS": "",
+		"ETH_ADDRESS": "0x10cED108C2F0f793bb7B9D014667a1D29E2A226B",
 		"BSC_ADDRESS": "",
 		"SPC_ETH_ADDRESS": "",
 		"SPC_BSC_ADDRESS": "",
@@ -76,5 +75,4 @@
 			"rpcUrls": [""],
 			"blockExplorerUrls": [""]
 		}
-	}
 }
