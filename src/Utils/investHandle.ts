@@ -2,6 +2,7 @@
 /* eslint-disable no-promise-executor-return */
 import { TYPE_TRANSACTION } from '@constants';
 import Web3Class from '@utils/web3';
+import * as Message from '@components/message';
 
 /*
  * @params transactionParams
@@ -27,13 +28,15 @@ export const transactionRequestHandle = async (params: any, setModalHandlingType
 			}
 		}
 	} catch (error: any) {
+    Message.error(error.message)
     /** Transaction rejected */
-		if (
-      error.code === 4001 ||
-      error.code === -32603 ||
-      error.message === "User rejected the transaction"
-    ) {
-      setModalHandlingType(TYPE_TRANSACTION.REJECTED)
-    }
+		// if (
+    //   error.code === 4001 ||
+    //   error.code === -32603 ||
+    //   error.message === "User rejected the transaction"
+    // ) {
+    //   setModalHandlingType(TYPE_TRANSACTION.REJECTED)
+    // }
+    setModalHandlingType(TYPE_TRANSACTION.REJECTED)
 	}
 };

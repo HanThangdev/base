@@ -29,9 +29,9 @@ function Navbar() {
 	};
 
 	useEffect(() => {
-		if (web3Auth) {
+		if (provider) {
 			const getProfile = async () => {
-				const user = await web3Auth.getUserInfo();
+				const user = await web3Auth?.getUserInfo();
 				const account = await provider?.getAccounts();
 				let inforUser;
 				user?.typeOfLogin === TypeLoginProvider.DISCORD ||
@@ -47,7 +47,8 @@ function Navbar() {
 			getProfile();
 			urlFormKycAccountAction();
 		}
-	}, [web3Auth]);
+	}, [provider]);
+
 
 	const toggle = () => setIsOpen(!isOpen);
 

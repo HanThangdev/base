@@ -5,7 +5,7 @@ import { CustomRoute } from '@components';
 import { Loading } from '@components/common';
 import { useAuth, useRoot } from '@hooks';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
-import { getLocalStorage } from '@utils/storage';
+import { getLocalStorage, STORAGE } from '@utils/storage';
 import { logoutAllTabsEventListener } from '@config/broadcastChannel';
 import NotFoundScreen from '@modules/other/404';
 import { LOCAL_WEB3AUTH_LOGINED, StatusLogin } from '@constants';
@@ -22,11 +22,17 @@ export default function AppRoutes() {
 	const { toggleSessionAccountAction } = useRoot();
 	const { loginAction } = useAuth();
 	const isLogined = getLocalStorage(LOCAL_WEB3AUTH_LOGINED);
+	const token = getLocalStorage(STORAGE.USER_TOKEN);
 
 	useEffect(() => {
 		switch (isLogined) {
-			case StatusLogin.LOGINED || StatusLogin.PROCESSING:
-				if (paramsToLogin.app_pub_key && paramsToLogin.id_token) {
+			case StatusLogin.LOGINED:
+				if (paramsToLogin.app_pub_key && paramsToLogin.id_token && !token) {
+					loginAction(paramsToLogin);
+				}
+				break;
+			case  StatusLogin.PROCESSING:
+				if (paramsToLogin.app_pub_key && paramsToLogin.id_token && !token) {
 					loginAction(paramsToLogin);
 				}
 				break;
