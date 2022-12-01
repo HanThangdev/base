@@ -19,7 +19,7 @@ import { useParams } from 'react-router-dom';
 // import { useTranslation } from 'react-i18next';
 import { isEmpty } from 'lodash';
 import navigator from '@routes/navigation';
-import CalculateFund from '@components/calculateFund';
+import CalculateFund from '@modules/home/calculateFund';
 import Card from '@components/card';
 import Diccussion from '@components/diccussion';
 import { formatFundSize, formatCurrentcy } from '@utils/number';

@@ -6,7 +6,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { useLoadFund, useNavigate } from '@hooks';
 // import { useTranslation } from 'react-i18next';
-import CalculateFund from '@components/calculateFund';
+import CalculateFund from '@modules/home/calculateFund';
 import Pagination from '@components/pagination';
 import Card from '@components/card';
 import { isEmpty } from 'lodash';
