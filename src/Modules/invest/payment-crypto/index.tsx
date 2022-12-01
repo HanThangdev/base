@@ -99,13 +99,14 @@ function CryptoPayment() {
 			}
 		} catch (error: any) {
       Message.error(error.message)
-			if (
-        error.code === 4001 ||
-        error.code === -32603 ||
-        error.message === "User rejected the transaction"
-      ) {
-        setModalHandlingType(TYPE_TRANSACTION.REJECTED)
-      }
+      setModalHandlingType(TYPE_TRANSACTION.REJECTED)
+			// if (
+      //   error.code === 4001 ||
+      //   error.code === -32603 ||
+      //   error.message === "User rejected the transaction"
+      // ) {
+      //   setModalHandlingType(TYPE_TRANSACTION.REJECTED)
+      // }
 		}
 	};
 
