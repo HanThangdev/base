@@ -34,6 +34,6 @@ export const formatCurrentcy = (
 	value: number,
 	typeCurrentcy: string = 'en-US'
 ) => {
-	const total = Intl.NumberFormat(typeCurrentcy);
+	const total = Intl.NumberFormat(typeCurrentcy, { minimumFractionDigits: 2 });
 	return total.format(value);
 };
