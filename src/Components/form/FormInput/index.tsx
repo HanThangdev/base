@@ -13,6 +13,18 @@ const WrapperFormItem = styled(Form.Item)`
 		border-radius: 4px;
 	}
 
+	.input-group{
+		flex-wrap: nowrap !important
+	}
+
+	.ant-input-affix-wrapper-focused, .ant-input-affix-wrapper:focus{
+		border-color:	transparent !important;
+	}
+
+	.ant-input-affix-wrapper:hover{
+		border-color:	#d9d9d9 !important;
+	}
+
 	.ant-form-item-label {
 		font-size: 14px;
 		overflow: unset;
@@ -54,7 +66,7 @@ function FormInput({
 			validateStatus={error ? 'error' : ''}
 			help={error?.message}
 		>
-			<Input onChange={onChange} value={value} {...rest} />
+			<Input className='form-control' onChange={onChange} value={value} {...rest} />
 		</WrapperFormItem>
 	);
 }
