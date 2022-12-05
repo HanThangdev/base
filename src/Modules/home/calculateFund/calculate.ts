@@ -1,3 +1,5 @@
+import { CALCULATE } from "@constants";
+
 /* eslint-disable class-methods-use-this */
 class Calculator {
 	invest_per_quarter: number;
@@ -42,11 +44,11 @@ class Calculator {
   }
 
   managementFees(){
-    return this.contributedCapital() * ((this.management_fee/100)*10)
+    return this.contributedCapital() * ((this.management_fee/100)*CALCULATE.PAID_YEAR)
   }
 
   goemonAdminFees(){
-    return this.contributedCapital() * ((0.15/100)*10)
+    return this.contributedCapital() * ((CALCULATE.GOEMON_ADMIN_FEES_PERCENT)*CALCULATE.PAID_YEAR)
   }
 
   investableCapital():number{

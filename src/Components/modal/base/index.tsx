@@ -20,7 +20,7 @@ function ModalComponent({
 		<ModalWrapper
 			isOpen={visible}
 			toggle={toggle}
-			size="lg"
+			size="xl"
 		>
 			{children}
 		</ModalWrapper>

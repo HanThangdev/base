@@ -8,4 +8,5 @@ export * from './time';
 export * from './s3';
 export * from './redux';
 export * from './investHandle';
+export * from './regex';
 export { default as Web3Class } from './web3';

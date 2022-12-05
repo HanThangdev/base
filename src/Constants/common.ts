@@ -128,3 +128,9 @@ export const DEFAULT_VISIBLE_MODAL = {
   confirming:false,
   error:false
 }
+
+export const CALCULATE = {
+	PAID_YEAR: 10,
+	GOEMON_ADMIN_FEES_PERCENT: 0.15/100,
+	GOEMON_ADMIN_FEES:0.15
+}
