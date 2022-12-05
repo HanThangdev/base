@@ -86,6 +86,7 @@ export const errorForm = {
   HARD_CAP_GREATER_MIN_ALLOCATION: 'Hard cap must be greater than min allocation',
   MIN_ALLOCATION_INVALID_AFTER_SWITCH_IN_CSV_WITH_MAX_ALLOCATION: 'Min allocation must be less than max allocation in file csv',
   GREATER_THAN_0: 'This field must be greater than 0',
+  GREATER_THAN_5K_QUARTER: 'Rolling Funds subscriptions start at $5k per quarter',
   START_TIME_AFTER: 'Must be after current time',
   CONTRACT_ADDRESS_IS_LIVE_OR_UPCOMING: 'Token is live or upcoming or has been sold successfully',
   INVALID_TOKEN_ADDRESS: 'Invalid token address',
@@ -123,5 +124,8 @@ export const errorForm = {
   INVALID_LAST_LISTING_TIME_LESS_TIME_VESTING: 'Listing time last update must be less time in the vesting period',
   INVALID_FILE_CSV: 'The csv file is empty or invalid format',
   REQUIRED_TOKEN_NAME: "Required token name",
-  TOKEN_CONTRACT_ADDRESS_EXISTED: "Token contract address already exists"
+  TOKEN_CONTRACT_ADDRESS_EXISTED: "Token contract address already exists",
+  INVESTMENT_PER_QUARTER_MAX: 'Investment per Quarter over limited',
+  MANAGERMENT_FEE_LIMITED: 'Most fund managers charge between 1%-3% in management fees',
+  CARRY_LIMITED: 'Most fund managers charge 10%-30% in carry',
 }

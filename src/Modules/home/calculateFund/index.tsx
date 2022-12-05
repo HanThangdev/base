@@ -1,13 +1,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-useless-return */
+/* eslint-disable no-else-return */
 import { useState } from 'react';
 import { WavesWhite } from '@assets/template/img';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+// import { isEmpty } from 'lodash';
 import { Collapse, ModalBody, ModalHeader } from 'reactstrap';
+import { FormInput } from '@components';
 import { Modal } from '@components/modal';
 import { formatCurrentcy } from '@utils/number';
+import { regex } from '@utils/regex';
 // import { errorForm } from '@constants';
 import { Divider } from '@themes/goemon';
 import { CALCULATE, errorForm } from '@constants';
@@ -17,46 +22,54 @@ const validationSchema = yup
 	.object({
 		invest_per_quarter: yup
 			.number()
+			.typeError(errorForm.REQUIRED)
 			.required(errorForm.REQUIRED)
-			.moreThan(0, errorForm.GREATER_THAN_0),
+			.moreThan(4999, errorForm.GREATER_THAN_5K_QUARTER)
+			.max(999999999, errorForm.INVESTMENT_PER_QUARTER_MAX),
 		how_long_do_you_invester: yup
 			.number()
+			.typeError(errorForm.REQUIRED)
 			.required(errorForm.REQUIRED)
 			.moreThan(0, errorForm.GREATER_THAN_0),
 		management_fee: yup
 			.number()
+			.typeError(errorForm.REQUIRED)
 			.required(errorForm.REQUIRED)
-			.moreThan(0, errorForm.GREATER_THAN_0),
+			.moreThan(0, errorForm.MANAGERMENT_FEE_LIMITED)
+			.max(3, errorForm.MANAGERMENT_FEE_LIMITED),
 		carry: yup
 			.number()
+			.typeError(errorForm.REQUIRED)
 			.required(errorForm.REQUIRED)
-			.moreThan(0, errorForm.GREATER_THAN_0),
+			.moreThan(0.09, errorForm.CARRY_LIMITED)
+			.max(30, errorForm.CARRY_LIMITED),
 		expected_return_multiple: yup
 			.number()
+			.typeError(errorForm.REQUIRED)
 			.required(errorForm.REQUIRED)
 			.moreThan(0, errorForm.GREATER_THAN_0),
 	})
 	.required();
 
 const defaultValues = {
-	invest_per_quarter: '',
-	how_long_do_you_invester: '',
-	management_fee: '',
-	carry: '',
-	expected_return_multiple: '',
+	invest_per_quarter: 0,
+	how_long_do_you_invester: 0,
+	management_fee: 0,
+	carry: 0,
+	expected_return_multiple: 0,
 };
 
 function CalculateFund() {
 	const form = useForm({
 		resolver: yupResolver(validationSchema),
-		defaultValues,
 	});
 	const {
-		register,
 		handleSubmit,
 		reset,
+		setValue
 		// formState: { errors },
 	} = form;
+
 	const [dataCalculate, setDataCalculate] = useState(
 		new Calculator(0, 0, 0, 0, 0)
 	);
@@ -139,8 +152,8 @@ function CalculateFund() {
 						Net distribution paid out to the investor
 					</div>
 					<div className="col-6 text-end">
-						
-					${` `}{formatCurrentcy(
+						${` `}
+						{formatCurrentcy(
 							dataCalculate.netDistributionPaidOutToTheInvestor()
 						)}
 					</div>
@@ -210,9 +223,8 @@ function CalculateFund() {
 						<div className="col-4 font-weight-bolder">Contributed capital</div>
 						<div className="col-6">{`[${formatCurrentcy(
 							dataCalculate.invest_per_quarter
-						)} per quarter x ${
-							dataCalculate.how_long_do_you_invester
-						} quarters]`}</div>
+						)} per quarter x ${dataCalculate.how_long_do_you_invester
+							} quarters]`}</div>
 						<div className="col-2 text-end">
 							{formatCurrentcy(dataCalculate.contributedCapital())}
 						</div>
@@ -270,7 +282,9 @@ function CalculateFund() {
 						<div className="col-4 font-weight-bolder">
 							Net distribution paid out to the investor
 						</div>
-						<div className="col-6">[distribution - carry paid to the fund manager]</div>
+						<div className="col-6">
+							[distribution - carry paid to the fund manager]
+						</div>
 						<div className="col-2 text-end">
 							${' '}
 							{formatCurrentcy(
@@ -339,84 +353,93 @@ function CalculateFund() {
 										<div className="row">
 											<div className="col-md-6">
 												<label className="">Investment per Quarter</label>
-												<div className="input-group mb-4">
-													<span className="input-group-text">$</span>
-													<input
-														type="text"
-														{...register('invest_per_quarter', {
-															required: true,
-														})}
-														name="invest_per_quarter"
-														className="form-control"
-														inputMode="numeric"
-														placeholder="0"
-													/>
-												</div>
+												<FormInput
+													type="text"
+													name="invest_per_quarter"
+													placeholder="0,000"
+													className="input-group mb-4"
+													prefix="$"
+													onChange={
+														(e: any) => {
+															if (!regex.integer.test(e.target.value) && e.target.value !== '') {
+																return;
+															}else{
+																setValue("invest_per_quarter", e.target.value)
+															}
+														}}
+												/>
 											</div>
 											<div className="col-md-6">
 												<label className="">How long do you invest?</label>
-												<div className="input-group mb-4">
-													<input
-														type="text"
-														{...register('how_long_do_you_invester', {
-															required: true,
-														})}
-														name="how_long_do_you_invester"
-														className="form-control"
-														inputMode="numeric"
-														placeholder="0"
-													/>
-													<span className="input-group-text input-right-text">
-														Quarter
-													</span>
-												</div>
+												<FormInput
+													className="input-group  mb-4"
+													type="text"
+													name="how_long_do_you_invester"
+													placeholder="0"
+													suffix="quarter"
+													onChange={
+														(e: any) => {
+															if (!regex.interger2_digit.test(e.target.value) && e.target.value !== '') {
+																return;
+															}else{
+																setValue("how_long_do_you_invester", e.target.value)
+															}
+														}}
+												/>
 											</div>
 											<div className="col-md-4">
 												<label className="">Management Fee</label>
-												<div className="input-group mb-4">
-													<input
-														type="text"
-														{...register('management_fee', { required: true })}
-														className="form-control"
-														inputMode="numeric"
-														placeholder="0"
-													/>
-													<span className="input-group-text input-right-text">
-														%
-													</span>
-												</div>
+												<FormInput
+													className="input-group mb-4"
+													type="text"
+													name="management_fee"
+													placeholder="0"
+													suffix="%"
+													onChange={
+														(e: any) => {
+															if (!regex.decimal0to99_2digit.test(e.target.value) && e.target.value !== '') {
+																return;
+															}else{
+																setValue("management_fee", e.target.value)
+															}
+														}}
+												/>
 											</div>
 											<div className="col-md-4">
 												<label className="">Carry</label>
-												<div className="input-group mb-4">
-													<input
-														type="text"
-														{...register('carry', { required: true })}
-														className="form-control"
-														inputMode="numeric"
-														placeholder="0"
-													/>
-													<span className="input-group-text input-right-text">
-														%
-													</span>
-												</div>
+												<FormInput
+													className="input-group mb-4"
+													type="text"
+													name="carry"
+													placeholder="0"
+													suffix="%"
+													onChange={
+														(e: any) => {
+															if (!regex.decimal0to99_2digit.test(e.target.value) && e.target.value !== '') {
+																return;
+															}else{
+																setValue("carry", e.target.value)
+															}
+														}}
+												/>
 											</div>
 											<div className="col-md-4">
 												<label className="">Expected return multiple</label>
-												<div className="input-group mb-4">
-													<input
-														type="text"
-														{...register('expected_return_multiple', {
-															required: true,
-														})}
-														className="form-control"
-														inputMode="numeric"
-														placeholder="0"
-													/>
-													<span className="input-group-text input-right-text">
-														X
-													</span>
-												</div>
+												<FormInput
+													className="input-group mb-4"
+													type="text"
+													name="expected_return_multiple"
+													placeholder="0"
+													suffix="X"
+													onChange={
+														(e: any) => {
+															if (!regex.decimal0to99_2digit.test(e.target.value) && e.target.value !== '') {
+																return;
+															}else{
+																setValue("expected_return_multiple", e.target.value)
+															}
+														}}
+												/>
 											</div>
 										</div>
 										<div className="row">
