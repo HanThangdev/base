@@ -49,9 +49,9 @@ function HeaderHome() {
 								quarterly, invest alongside top VCs, and adjust your investment
 								size as your goals evolve.
 							</p>
-							<button type="button" className="btn btn-outline-light my-4">
+							<a href='#calculator' type="button" className="btn btn-outline-light my-4">
 								Calculate Fund Returns
-							</button>
+							</a>
 						</div>
 					</div>
 				</div>

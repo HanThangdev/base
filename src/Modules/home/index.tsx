@@ -35,7 +35,7 @@ function HomeScreen() {
 					)}
 				</div>
 			</section>
-			<CalculateFund />
+			<CalculateFund/>
 		</Wrapper>
 	);
 }

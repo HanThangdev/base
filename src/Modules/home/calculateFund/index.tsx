@@ -316,7 +316,7 @@ function CalculateFund() {
 	);
 
 	return (
-		<section className="pt-9 pb-8 my-10 bg-gradient-primary position-relative overflow-hidden">
+		<section className="pt-9 pb-8 my-10 bg-gradient-primary position-relative overflow-hidden" id="calculator">
 			<img
 				src={WavesWhite}
 				alt="pattern-lines"

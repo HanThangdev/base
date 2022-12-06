@@ -21,9 +21,13 @@ const WrapperFormItem = styled(Form.Item)`
 		border-color:	transparent !important;
 	}
 
-	.ant-input-affix-wrapper:hover{
-		border-color:	#d9d9d9 !important;
+	.ant-input-affix-wrapper-status-error .ant-input-prefix{
+		color: rgba(0,0,0,.85);
 	}
+
+	/* .ant-input-affix-wrapper:hover{
+		border-color:	#d9d9d9 !important;
+	} */
 
 	.ant-form-item-label {
 		font-size: 14px;
