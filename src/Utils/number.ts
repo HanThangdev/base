@@ -35,5 +35,5 @@ export const formatCurrentcy = (
 	typeCurrentcy: string = 'en-US'
 ) => {
 	const total = Intl.NumberFormat(typeCurrentcy, { minimumFractionDigits: 2 });
-	return total.format(value);
+	return total.format(Number(value.toFixed(2))).replace(/\.00$/,'');
 };

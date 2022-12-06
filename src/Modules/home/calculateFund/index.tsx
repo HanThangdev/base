@@ -35,7 +35,7 @@ const validationSchema = yup
 			.number()
 			.typeError(errorForm.REQUIRED)
 			.required(errorForm.REQUIRED)
-			.moreThan(0, errorForm.MANAGERMENT_FEE_LIMITED)
+			.moreThan(-0.00000000000001, errorForm.MANAGERMENT_FEE_LIMITED)
 			.max(3, errorForm.MANAGERMENT_FEE_LIMITED),
 		carry: yup
 			.number()
@@ -47,7 +47,7 @@ const validationSchema = yup
 			.number()
 			.typeError(errorForm.REQUIRED)
 			.required(errorForm.REQUIRED)
-			.moreThan(0, errorForm.GREATER_THAN_0),
+			.moreThan(0.999999, errorForm.GREATER_THAN_0),
 	})
 	.required();
 
@@ -121,37 +121,37 @@ function CalculateFund() {
 				</div>
 			</ModalHeader>
 			<ModalBody>
-				<div className="row py-md-3">
-					<div className="col-6 font-weight-bolder">Invested capital</div>
-					<div className="col-6 text-end">
+				<div className="row py-3">
+					<div className="col-md-6 font-weight-bolder">Invested capital</div>
+					<div className="col-md-6 text-md-end">
 						$ {formatCurrentcy(dataCalculate.investmentCapital())}
 					</div>
 				</div>
 				<Divider />
-				<div className="row py-md-3">
-					<div className="col-6 font-weight-bolder">Distribution</div>
+				<div className="row py-3">
+					<div className="col-md-6 font-weight-bolder">Distribution</div>
 
-					<div className="col-6 text-end">
+					<div className="col-md-6 text-md-end">
 						$ {formatCurrentcy(dataCalculate.distribution())}
 					</div>
 				</div>
 
 				<Divider />
-				<div className="row py-md-3">
-					<div className="col-6 font-weight-bolder">
+				<div className="row py-3">
+					<div className="col-md-6 font-weight-bolder">
 						Carry Paid to the Fund Manager
 					</div>
-					<div className="col-6 text-end">
+					<div className="col-md-6 text-md-end">
 						$ {formatCurrentcy(dataCalculate.carryPaidToTheFundManager())}
 					</div>
 				</div>
 
 				<Divider style={{ height: '2px', backgroundColor: '#000' }} />
-				<div className="row py-md-3">
-					<div className="col-6 font-weight-bolder">
+				<div className="row py-3">
+					<div className="col-md-6 font-weight-bolder">
 						Net distribution paid out to the investor
 					</div>
-					<div className="col-6 text-end">
+					<div className="col-md-6 text-md-end">
 						${` `}
 						{formatCurrentcy(
 							dataCalculate.netDistributionPaidOutToTheInvestor()
@@ -159,9 +159,9 @@ function CalculateFund() {
 					</div>
 				</div>
 				<Divider />
-				<div className="row py-md-3">
-					<div className="col-6 font-weight-bolder">Net Return Multiple</div>
-					<div className="col-6 text-end">
+				<div className="row py-3">
+					<div className="col-md-6 font-weight-bolder">Net Return Multiple</div>
+					<div className="col-md-6 text-md-end">
 						{formatCurrentcy(dataCalculate.netReturnMultiple())}x
 					</div>
 				</div>
@@ -176,116 +176,116 @@ function CalculateFund() {
 					className="row px-3 max-height-vh-40 overflow-y-scroll"
 					isOpen={colapse}
 				>
-					<h5 className="row py-md-3 font-weight-bold">Inputs</h5>
+					<h5 className="row py-3 font-weight-bold">Inputs</h5>
 					<Divider style={{ height: '2px', backgroundColor: '#000' }} />
-					<div className="row py-md-3">
-						<div className="col-6 font-weight-bolder">
+					<div className="row py-3">
+						<div className="col-md-6 font-weight-bolder">
 							Invested capital per quarter
 						</div>
-						<div className="col-6 text-end">
+						<div className="col-md-6 text-md-end">
 							$ {formatCurrentcy(dataCalculate.invest_per_quarter)}
 						</div>
 					</div>
 					<Divider />
-					<div className="row py-md-3">
-						<div className="col-6 font-weight-bolder">
+					<div className="row py-3">
+						<div className="col-md-6 font-weight-bolder">
 							Minimum subscription period
 						</div>
-						<div className="col-6 text-end">
+						<div className="col-md-6 text-md-end">
 							{dataCalculate.how_long_do_you_invester} quarters
 						</div>
 					</div>
 					<Divider />
-					<div className="row py-md-3">
-						<div className="col-6 font-weight-bolder">Management fee</div>
-						<div className="col-6 text-end">
+					<div className="row py-3">
+						<div className="col-md-6 font-weight-bolder">Management fee</div>
+						<div className="col-md-6 text-md-end">
 							{formatCurrentcy(dataCalculate.management_fee)}%
 						</div>
 					</div>
 					<Divider />
-					<div className="row py-md-3">
-						<div className="col-6 font-weight-bolder">Carry percentage</div>
-						<div className="col-6 text-end">{dataCalculate.carry}%</div>
+					<div className="row py-3">
+						<div className="col-md-6 font-weight-bolder">Carry percentage</div>
+						<div className="col-md-6 text-md-end">{dataCalculate.carry}%</div>
 					</div>
 					<Divider />
-					<div className="row py-md-3">
-						<div className="col-6 font-weight-bolder">
-							Gross Return Multiple
+					<div className="row py-3">
+						<div className="col-md-6 font-weight-bolder">
+							Expected Return Multiple
 						</div>
-						<div className="col-6 text-end">
+						<div className="col-md-6 text-md-end">
 							{formatCurrentcy(dataCalculate.expected_return_multiple)}x
 						</div>
 					</div>
 					<Divider />
-					<h5 className="row py-md-3 font-weight-bold">Breakdown</h5>
+					<h5 className="row py-3 font-weight-bold">Breakdown</h5>
 					<Divider style={{ height: '2px', backgroundColor: '#000' }} />
-					<div className="row py-md-3">
-						<div className="col-4 font-weight-bolder">Contributed capital</div>
-						<div className="col-6">{`[${formatCurrentcy(
+					<div className="row py-3">
+						<div className="col-sm-4 font-weight-bolder">Contributed capital</div>
+						<span className="col-sm-4 fs-8">{`[${formatCurrentcy(
 							dataCalculate.invest_per_quarter
 						)} per quarter x ${dataCalculate.how_long_do_you_invester
-							} quarters]`}</div>
-						<div className="col-2 text-end">
+							} quarters]`}</span>
+						<div className="col-sm-4 text-sm-end">
 							{formatCurrentcy(dataCalculate.contributedCapital())}
 						</div>
 					</div>
 					<Divider />
-					<div className="row py-md-3">
-						<div className="col-4 font-weight-bolder">Management fees</div>
-						<div className="col-6">{`
-[invested capital x ${dataCalculate.management_fee}%] paid out over ${CALCULATE.PAID_YEAR} years`}</div>
-						<div className="col-2 text-end">
+					<div className="row py-3">
+						<div className="col-sm-4 font-weight-bolder">Management fees</div>
+						<span className="col-sm-4 fs-8">{`
+[invested capital x ${dataCalculate.management_fee}%] paid out over ${CALCULATE.PAID_YEAR} years`}</span>
+						<div className="col-sm-4 text-sm-end">
 							-$ {formatCurrentcy(dataCalculate.managementFees())}
 						</div>
 					</div>
 					<Divider />
-					<div className="row py-md-3">
-						<div className="col-4 font-weight-bolder">Goemon admin. fees</div>
-						<div className="col-6">{`[invested capital x ${CALCULATE.GOEMON_ADMIN_FEES}%] paid out over ${CALCULATE.PAID_YEAR} years`}</div>
-						<div className="col-2 text-end">
+					<div className="row py-3">
+						<div className="col-sm-4 font-weight-bolder">Goemon admin. fees</div>
+						<span className="col-sm-4 fs-8">{`[invested capital x ${CALCULATE.GOEMON_ADMIN_FEES}%] paid out over ${CALCULATE.PAID_YEAR} years`}</span>
+						<div className="col-sm-4 text-sm-end">
 							-$ {formatCurrentcy(dataCalculate.goemonAdminFees())}
 						</div>
 					</div>
 					<Divider />
-					<div className="row py-md-3">
-						<div className="col-4 font-weight-bolder">Investable capital</div>
-						<div className="col-6">{`[invested capital - (management fees + AngelList admin. fees)]
-`}</div>
-						<div className="col-2 text-end">
+					<div className="row py-3">
+						<div className="col-sm-4 font-weight-bolder">Investable capital</div>
+						<span className="col-sm-4 fs-8">{`[invested capital - (management fees + Goemon admin. fees)]
+`}</span>
+						<div className="col-sm-4 text-sm-end">
 							$ {formatCurrentcy(dataCalculate.investableCapital())}
 						</div>
 					</div>
 					<Divider />
-					<div className="row py-md-3">
-						<div className="col-4 font-weight-bolder">Distribution</div>
-						<div className="col-6">{`
-[investable capital x ${dataCalculate.expected_return_multiple}x gross return multiple]`}</div>
-						<div className="col-2 text-end">
+					<div className="row py-3">
+						<div className="col-sm-4 font-weight-bolder">Distribution</div>
+						<span className="col-sm-4 fs-8">{`
+[investable capital x ${dataCalculate.expected_return_multiple}x Expected return multiple]`}</span>
+						<div className="col-sm-4 text-sm-end">
 							$ {formatCurrentcy(dataCalculate.distribution())}
 						</div>
 					</div>
 					<Divider />
-					<div className="row py-md-3">
-						<div className="col-4 font-weight-bolder">
+					<div className="row py-3">
+						<div className="col-sm-4 font-weight-bolder">
 							Carry paid to the fund manager
 						</div>
-						<div className="col-6">{`
-							[${dataCalculate.carry}% carry of distribution]`}</div>
-						<div className="col-2 text-end">
+						<span className="col-sm-4 fs-8">{`
+							[${dataCalculate.carry}% carry of distribution]`}</span>
+						<div className="col-sm-4 text-sm-end">
 							-$ {formatCurrentcy(dataCalculate.carryPaidToTheFundManager())}
 						</div>
 					</div>
 					<Divider />
-					<h5 className="row py-md-3 font-weight-bold">Net returns</h5>
+					<h5 className="row py-3 font-weight-bold">Net returns</h5>
 					<Divider style={{ height: '2px', backgroundColor: '#000' }} />
-					<div className="row py-md-3">
-						<div className="col-4 font-weight-bolder">
+					<div className="row py-3">
+						<div className="col-sm-4 font-weight-bolder">
 							Net distribution paid out to the investor
 						</div>
-						<div className="col-6">
+						<span className="col-sm-4 fs-8">
 							[distribution - carry paid to the fund manager]
-						</div>
-						<div className="col-2 text-end">
+						</span>
+						<div className="col-sm-4 text-sm-end">
 							${' '}
 							{formatCurrentcy(
 								dataCalculate.netDistributionPaidOutToTheInvestor()
@@ -293,15 +293,15 @@ function CalculateFund() {
 						</div>
 					</div>
 					<Divider />
-					<div className="row py-md-3">
-						<div className="col-4 font-weight-bolder">Net Return Multiple</div>
-						<div className="col-6">[net distribution / invested capital]</div>
-						<div className="col-2 text-end">
+					<div className="row py-3">
+						<div className="col-sm-4 font-weight-bolder">Net Return Multiple</div>
+						<span className="col-sm-4 fs-8">[net distribution / invested capital]</span>
+						<div className="col-sm-4 text-sm-end">
 							{formatCurrentcy(dataCalculate.netReturnMultiple())}x
 						</div>
 					</div>
 					<Divider />
-					<div className="row py-md-3 justify-content-center">
+					<div className="row py-3 justify-content-center">
 						<button
 							type="button"
 							className="btn text-primary w-25"
@@ -357,11 +357,11 @@ function CalculateFund() {
 													type="text"
 													name="invest_per_quarter"
 													placeholder="0,000"
-													className="input-group mb-4"
+													className="input-group mb-2"
 													prefix="$"
 													onChange={
 														(e: any) => {
-															if (!regex.integer.test(e.target.value) && e.target.value !== '') {
+															if ((!regex.integerNumber0.test((e.target.value)) && e.target.value !== '') || e.target.value > 999999999  ) {
 																return;
 															}else{
 																setValue("invest_per_quarter", e.target.value)
@@ -372,14 +372,14 @@ function CalculateFund() {
 											<div className="col-md-6">
 												<label className="">How long do you invest?</label>
 												<FormInput
-													className="input-group  mb-4"
+													className="input-group  mb-2"
 													type="text"
 													name="how_long_do_you_invester"
 													placeholder="0"
 													suffix="quarter"
 													onChange={
 														(e: any) => {
-															if (!regex.interger2_digit.test(e.target.value) && e.target.value !== '') {
+															if (!regex.interger0to100.test(e.target.value) && e.target.value !== '') {
 																return;
 															}else{
 																setValue("how_long_do_you_invester", e.target.value)
@@ -390,7 +390,7 @@ function CalculateFund() {
 											<div className="col-md-4">
 												<label className="">Management Fee</label>
 												<FormInput
-													className="input-group mb-4"
+													className="input-group mb-2"
 													type="text"
 													name="management_fee"
 													placeholder="0"
@@ -408,7 +408,7 @@ function CalculateFund() {
 											<div className="col-md-4">
 												<label className="">Carry</label>
 												<FormInput
-													className="input-group mb-4"
+													className="input-group mb-2"
 													type="text"
 													name="carry"
 													placeholder="0"
@@ -426,14 +426,14 @@ function CalculateFund() {
 											<div className="col-md-4">
 												<label className="">Expected return multiple</label>
 												<FormInput
-													className="input-group mb-4"
+													className="input-group mb-2"
 													type="text"
 													name="expected_return_multiple"
 													placeholder="0"
 													suffix="X"
 													onChange={
 														(e: any) => {
-															if (!regex.decimal0to99_2digit.test(e.target.value) && e.target.value !== '') {
+															if ((!regex.decimal1to100_2digit.test(e.target.value) && e.target.value !== '') ||  e.target.value > 100.001 ) {
 																return;
 															}else{
 																setValue("expected_return_multiple", e.target.value)

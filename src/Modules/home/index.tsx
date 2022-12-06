@@ -26,7 +26,7 @@ function HomeScreen() {
 								<Card dataCard={it} key={it.id} navigate={navigate} />
 							))}
 							<Pagination
-								data={paginationFund.item_count}
+								data={paginationFund}
 								buttonConst={3}
 								contentPerPage={5}
 								siblingCount={1}
