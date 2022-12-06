@@ -11,4 +11,4 @@ export { default as LOGO_TWITTER } from './logo-twitter.png';
 export { default as LOGO_GOOGLE } from './logo-google.png';
 export { default as LOGO_DISCORD } from './logo-discord.png';
 export { default as LOGO_PAYMENT } from './trustbadge-wide.png';
-export { default as DEFAULT_AVATAR } from './default_avatar.png';
+export { default as DEFAULT_AVATAR } from './avatar_1.png';

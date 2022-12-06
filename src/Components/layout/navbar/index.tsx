@@ -5,7 +5,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect, useState } from 'react';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
-import { useAuth } from '@hooks';
+import { useAuth, useNavigate } from '@hooks';
 import { GOEMON_LOGO, DownArrowDark } from '@assets/template/img';
 import { Collapse, NavbarBrand, NavbarToggler, NavLink } from 'reactstrap';
 import { ModalLogin, ModalSessionExp } from '@components/modal';
@@ -17,6 +17,7 @@ import { Wrapper } from './styled';
 
 
 function Navbar() {
+	const navigate = useNavigate();
 	const [visibleSideBar, setVisibleSideBar] = useState(false);
 	const [visibleModalLogin, setVisibleModalLogin] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
@@ -60,10 +61,10 @@ function Navbar() {
 						<div className="container-fluid px-0">
 							<NavbarBrand
 								className="font-weight-bolder ms-sm-3"
-								href=" https://mockup.goemon.io/v01"
+								onClick={() => navigate("/")}
 								title="GOEMON - Crypto Rolling Fund"
 								data-placement="bottom"
-								target="_blank"
+								// target="_blank"
 							>
 								<img src={GOEMON_LOGO} width="150" alt="logo goemon" />
 							</NavbarBrand>
