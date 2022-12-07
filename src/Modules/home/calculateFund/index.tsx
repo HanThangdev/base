@@ -24,8 +24,8 @@ const validationSchema = yup
 			.number()
 			.typeError(errorForm.REQUIRED)
 			.required(errorForm.REQUIRED)
-			.moreThan(4999, errorForm.GREATER_THAN_5K_QUARTER)
-			.max(999999999, errorForm.INVESTMENT_PER_QUARTER_MAX),
+			.moreThan(CALCULATE.MIN_INVEST_PER_QUARTER, errorForm.GREATER_THAN_5K_QUARTER)
+			.max(CALCULATE.MAX_INVEST_PER_QUARTER, errorForm.INVESTMENT_PER_QUARTER_MAX),
 		how_long_do_you_invester: yup
 			.number()
 			.typeError(errorForm.REQUIRED)
@@ -35,19 +35,19 @@ const validationSchema = yup
 			.number()
 			.typeError(errorForm.REQUIRED)
 			.required(errorForm.REQUIRED)
-			.moreThan(-0.00000000000001, errorForm.MANAGERMENT_FEE_LIMITED)
-			.max(3, errorForm.MANAGERMENT_FEE_LIMITED),
+			.moreThan(CALCULATE.MIN_MANAGEMENT_FEE, errorForm.MANAGERMENT_FEE_LIMITED)
+			.max(CALCULATE.MAX_MANAGEMENT_FEE, errorForm.MANAGERMENT_FEE_LIMITED),
 		carry: yup
 			.number()
 			.typeError(errorForm.REQUIRED)
 			.required(errorForm.REQUIRED)
-			.moreThan(0.09, errorForm.CARRY_LIMITED)
-			.max(30, errorForm.CARRY_LIMITED),
+			.moreThan(CALCULATE.MIN_CARRY, errorForm.CARRY_LIMITED)
+			.max(CALCULATE.MAX_CARRY, errorForm.CARRY_LIMITED),
 		expected_return_multiple: yup
 			.number()
 			.typeError(errorForm.REQUIRED)
 			.required(errorForm.REQUIRED)
-			.moreThan(0.999999, errorForm.GREATER_THAN_0),
+			.moreThan(CALCULATE.MIN_EXPECTED_RETURN_MULTIPLE, errorForm.GREATER_THAN_0),
 	})
 	.required();
 
@@ -361,7 +361,7 @@ function CalculateFund() {
 													prefix="$"
 													onChange={
 														(e: any) => {
-															if ((!regex.integerNumber0.test((e.target.value)) && e.target.value !== '') || e.target.value > 999999999  ) {
+															if ((!regex.integerNumber0.test((e.target.value)) && e.target.value !== '') || e.target.value > CALCULATE.MAX_INVEST_PER_QUARTER  ) {
 																return;
 															}else{
 																setValue("invest_per_quarter", e.target.value)
@@ -433,7 +433,7 @@ function CalculateFund() {
 													suffix="X"
 													onChange={
 														(e: any) => {
-															if ((!regex.decimal1to100_2digit.test(e.target.value) && e.target.value !== '') ||  e.target.value > 100.001 ) {
+															if ((!regex.decimal1to100_2digit.test(e.target.value) && e.target.value !== '') ||  e.target.value > CALCULATE.MAX_EXPECTED_RETURN_MULTIPLE ) {
 																return;
 															}else{
 																setValue("expected_return_multiple", e.target.value)

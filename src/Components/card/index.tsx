@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable @typescript-eslint/naming-convention */
 import navigator from '@routes/navigation';
-import { formatCurrentcy, formatFundSize } from '@utils/number';
+import {formatFundSize } from '@utils/number';
 import { HeaderCard, Wrapper } from './styled';
 
 interface ICardProps {
@@ -102,7 +102,7 @@ function Card({ dataCard, navigate }: ICardProps) {
 						<hr className="horizontal dark" />
 						<div className="col-6">
 							<span className="fs-8">Min Quarterly Investment</span>
-							<p className="fs-7 font-weight-bolder mt-minus1 mb-1">${formatCurrentcy(min_investment_amount)}</p>
+							<p className="fs-7 font-weight-bolder mt-minus1 mb-1">${formatFundSize(min_investment_amount)}</p>
 						</div>
 						<div className="col-6">
 							<span className="fs-8">Min Subscription Period</span>

@@ -5,7 +5,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/alt-text */
 import navigator from '@routes/navigation';
-import { formatCurrentcy } from '@utils/number';
+import { formatFundSize } from '@utils/number';
 import { Wrapper } from './styled';
 
 function SideCard({navigate, fund}: any) {
@@ -61,7 +61,7 @@ function SideCard({navigate, fund}: any) {
 					<hr className="horizontal dark" />
 					<div className="col-6">
 						<span className="fs-8">Min Quarterly Investment</span>
-						<p className="fs-7 font-weight-bolder mt-minus1 mb-1">${formatCurrentcy(fund?.min_investment_amount)}</p>
+						<p className="fs-7 font-weight-bolder mt-minus1 mb-1">${formatFundSize(fund?.min_investment_amount)}</p>
 					</div>
 					<div className="col-6">
 						<span className="fs-8">Min Subscription Period</span>

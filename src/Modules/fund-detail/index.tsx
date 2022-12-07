@@ -19,10 +19,9 @@ import { useParams } from 'react-router-dom';
 // import { useTranslation } from 'react-i18next';
 import { isEmpty } from 'lodash';
 import navigator from '@routes/navigation';
-import CalculateFund from '@modules/home/calculateFund';
 import Card from '@components/card';
 import Diccussion from '@components/diccussion';
-import { formatFundSize, formatCurrentcy } from '@utils/number';
+import { formatFundSize } from '@utils/number';
 import { Link, Wrapper } from './styled';
 import { listNav } from './constant';
 import SideCard from './SideCard';
@@ -225,7 +224,7 @@ function FundDetail() {
 										<div className="col-6">
 											<span className="fs-7">Min Quarterly Investment</span>
 											<p className="fs-5 font-weight-bolder mt-minus1 mb-3">
-												${formatCurrentcy(fund?.min_investment_amount)}
+												${formatFundSize(fund?.min_investment_amount)}
 											</p>
 										</div>
 										<div className="col-6">
@@ -437,7 +436,6 @@ function FundDetail() {
 					</div>
 				</div>
 			</section>
-			<CalculateFund />
 		</Wrapper>
 	);
 }
