@@ -977,7 +977,7 @@ function Navbar() {
 				setVisible={setVisibleModalLogin}
 			/>
 			<ModalSessionExp
-				setVisible={setVisibleModalLogin}
+				// setVisible={setVisibleModalLogin}
 			/>
 		</Wrapper>
 	);
