@@ -7,14 +7,14 @@ import { useTranslation } from 'react-i18next';
 import { useAuth, useRoot } from '@hooks';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
 import { removeLocalStorage, STORAGE } from '@utils/storage';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { useEffect } from 'react';
 
 
-interface IProps {
-	setVisible: Dispatch<SetStateAction<boolean>>;
-}
+// interface IProps {
+// 	setVisible: Dispatch<SetStateAction<boolean>>;
+// }
 
-function ModalSessionExp({setVisible} : IProps) {
+function ModalSessionExp() {
 	const { t } = useTranslation(['error_message']);
 	const { sessionAccount, toggleSessionAccountAction } = useRoot();
 	const { loadProfileAction } = useAuth();
@@ -23,7 +23,8 @@ function ModalSessionExp({setVisible} : IProps) {
 	const onAcceptLogout = () => {
 		toggleSessionAccountAction();
 		removeLocalStorage(STORAGE.USER_TOKEN);
-		setVisible(true)
+		window.location.reload()
+		// setVisible(true)
 	};
 
 	useEffect(() => {

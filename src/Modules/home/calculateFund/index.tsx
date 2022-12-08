@@ -52,11 +52,11 @@ const validationSchema = yup
 	.required();
 
 const defaultValues = {
-	invest_per_quarter: 0,
-	how_long_do_you_invester: 0,
-	management_fee: 0,
-	carry: 0,
-	expected_return_multiple: 0,
+	invest_per_quarter: '',
+	how_long_do_you_invester: '',
+	management_fee: '',
+	carry: '',
+	expected_return_multiple: '',
 };
 
 function CalculateFund() {
@@ -226,7 +226,7 @@ function CalculateFund() {
 						)} per quarter x ${dataCalculate.how_long_do_you_invester
 							} quarters]`}</span>
 						<div className="col-sm-4 text-sm-end">
-							{formatCurrentcy(dataCalculate.contributedCapital())}
+							$ {formatCurrentcy(dataCalculate.contributedCapital())}
 						</div>
 					</div>
 					<Divider />
@@ -249,8 +249,7 @@ function CalculateFund() {
 					<Divider />
 					<div className="row py-3">
 						<div className="col-sm-4 font-weight-bolder">Investable capital</div>
-						<span className="col-sm-4 fs-8">{`[invested capital - (management fees + Goemon admin. fees)]
-`}</span>
+						<span className="col-sm-4 text-modal-nowrap fs-8">[invested capital - (management fees + Goemon admin. fees)]</span>
 						<div className="col-sm-4 text-sm-end">
 							$ {formatCurrentcy(dataCalculate.investableCapital())}
 						</div>
