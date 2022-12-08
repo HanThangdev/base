@@ -1,12 +1,13 @@
 /* eslint-disable no-console */
 /* eslint-disable consistent-return */
 /* eslint-disable react/prop-types */
+/* eslint-disable no-extra-boolean-cast */
 import { GOEMON_LOGO } from '@assets/template/img';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import { useAuth, useRoot } from '@hooks';
 import { useWeb3Auth } from '@hooks/useWeb3auth';
-import { removeLocalStorage, STORAGE } from '@utils/storage';
+import { clearLocalStorage } from '@utils/storage';
 import { useEffect } from 'react';
 
 
@@ -20,22 +21,22 @@ function ModalSessionExp() {
 	const { loadProfileAction } = useAuth();
 	const { logout } = useWeb3Auth();
 
-	const onAcceptLogout = () => {
-		toggleSessionAccountAction();
-		removeLocalStorage(STORAGE.USER_TOKEN);
+	const onAcceptLogout = async() => {
+		await toggleSessionAccountAction();
+		await clearLocalStorage()
 		window.location.reload()
 		// setVisible(true)
 	};
 
 	useEffect(() => {
-		if (sessionAccount) {
+		if (!!sessionAccount) {
 			logout();
 			loadProfileAction({});
 		}
 	}, [sessionAccount]);
 
 	return (
-		<Modal isOpen={sessionAccount} className="modal-400 modal-dialog-centered">
+		<Modal isOpen={!!sessionAccount} className="modal-400 modal-dialog-centered">
 			<ModalHeader className="border-0 pb-0">
 				<img src={GOEMON_LOGO} alt="" width={150} />
 			</ModalHeader>
@@ -50,7 +51,7 @@ function ModalSessionExp() {
 					className="btn bg-gradient-primary w-100"
 					onClick={onAcceptLogout}
 				>
-					{t('common:login')}
+					{t('common:ok')}
 				</button>
 			</ModalFooter>
 		</Modal>
