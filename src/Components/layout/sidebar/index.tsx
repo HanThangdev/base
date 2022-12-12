@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { Dispatch, SetStateAction } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
 	DEFAULT_AVATAR,
 	LOGO_ETH,
@@ -20,6 +21,8 @@ interface IProps {
 }
 
 function SiderBar({ visible, setVisible }: IProps) {
+	const history = useHistory();
+
 	const { profile, logoutAction, urlFormKyc } = useAuth();
 	const { logout } = useWeb3Auth();
 
@@ -76,10 +79,12 @@ function SiderBar({ visible, setVisible }: IProps) {
 							</NavbarIcon>
 						</div>
 						<div className="col-6 ps-0">
-							<a href="/">
+							<span
+								onClick={() => history.push('/investor_panel/account_security')}
+							>
 								<i className="fa-light fa-id-card" />
 								<span>Account</span>
-							</a>
+							</span>
 						</div>
 						<div className="col-6 pe-0">
 							<span onClick={onOpenFormKyc}>
@@ -100,10 +105,10 @@ function SiderBar({ visible, setVisible }: IProps) {
 							</a>
 						</div>
 						<div className="col-6 ps-0">
-							<a href="/">
+							<span onClick={() => history.push('/investor_panel/referral')}>
 								<i className="far fa-users" />
 								<span>Referral</span>
-							</a>
+							</span>
 						</div>
 						<div className="col-6 pe-0">
 							<a href="/">

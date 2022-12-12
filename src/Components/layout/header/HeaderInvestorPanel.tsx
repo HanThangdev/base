@@ -111,7 +111,7 @@ function HeaderInvestorPanel() {
 								<div className="col-12 mx-auto">
 									<div className="nav-wrapper position-relative end-0">
 										<ul
-											className="nav nav-pills nav-fill p-1 text-uppercase font-weight-bold"
+											className="nav nav-pills nav-fill p-1 text-uppercase font-weight-bold overflow-hidden"
 											role="tablist"
 										>
 											{listNavItem}
