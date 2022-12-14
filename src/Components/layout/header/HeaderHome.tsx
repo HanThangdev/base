@@ -49,7 +49,10 @@ function HeaderHome() {
 								quarterly, invest alongside top VCs, and adjust your investment
 								size as your goals evolve.
 							</p>
-							<a href='#calculator' type="button" className="btn btn-outline-light my-4">
+							<a
+								href="#calculator"
+								className="d-inline-block btn btn-outline-light my-4"
+							>
 								Calculate Fund Returns
 							</a>
 						</div>
@@ -81,10 +84,7 @@ function HeaderHome() {
 				</div>
 			</div>
 			<FormProvider {...form}>
-				<Form
-					className="container"
-					onSubmit={handleSubmit(onSubmit)}
-				>
+				<Form className="container" onSubmit={handleSubmit(onSubmit)}>
 					<div className="row bg-white shadow-lg mt-n6 border-radius-md pb-4 p-3 mx-sm-0 mx-1 position-relative">
 						<div className="col-lg-3 mt-lg-n2 mt-2">
 							<label className="">Filter by: </label>
@@ -94,9 +94,7 @@ function HeaderHome() {
 								name="choices-button"
 								id="choices-button"
 							>
-								<option value="allfunds">
-									All Funds
-								</option>
+								<option value="allfunds">All Funds</option>
 								<option value="featured">Featured</option>
 								<option value="notwhitelist">Not Whitelist</option>
 							</select>
@@ -109,9 +107,7 @@ function HeaderHome() {
 								name="choices-remove-button"
 								id="choices-remove-button"
 							>
-								<option value="mostfollower">
-									Most Follower
-								</option>
+								<option value="mostfollower">Most Follower</option>
 								<option value="hiestfundsize">Hiest Fund size</option>
 								<option value="newest">Newest</option>
 								<option value="oldest">Oldest</option>
